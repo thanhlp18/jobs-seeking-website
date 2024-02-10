@@ -1,30 +1,26 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
+import icon_google from "../assets/icons/icon_google.svg";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import Title from "../components/Title";
 import Link from "../components/Link";
-import icon_google from "../assets/icons/icon_google.svg";
-
-const LOGIN_PAGE_TEXT = [
-  "View salary to help you negotiate your offer or pay rise",
-  "Find out about benefits, interview, company culture via reviews",
-  "Easy apply with only 1 click",
-  "Manage your own profile & privacy",
-];
+import Title from "../components/Title";
+import { LOGIN_PAGE_TEXT_USP } from "../utils/TextConstants";
 
 export default function Login() {
   return (
     <div className="flex flex-col gap-4 ">
-      <Title type="h2" className="my-4">
-        Welcome to ITViet
+      <Title type="h2" className="mb-4 mt-8">
+        Welcome to ITViet!
       </Title>
       <div className="flex flex-col-reverse md:flex-row md:gap-40 gap-10 w-full">
         <div className="flex flex-col gap-4 ">
           <div className="text-base">
-            By signing in, you agree to ITviec’s Terms & Conditions and Privacy
-            Policy in relation to your privacy information.
+            By signing in, you agree to ITviec’s{" "}
+            <Link to="terms-conditions"> Terms & Conditions</Link> and{" "}
+            <Link to="privacy-policy">Privacy Policy</Link> in relation to your
+            privacy information.
           </div>
           <div>
             <Button buttonType="outline" type="button">
@@ -83,7 +79,7 @@ export default function Login() {
             information
           </Title>
           <ul className="flex flex-col">
-            {LOGIN_PAGE_TEXT.map((text, idx) => (
+            {LOGIN_PAGE_TEXT_USP.map((text, idx) => (
               <li key={idx}>
                 <span className="text-green-500 mr-2 text-xl">
                   <FontAwesomeIcon icon={faCheck} />

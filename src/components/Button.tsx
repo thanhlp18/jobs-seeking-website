@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { COLOR_PRIMARY } from "../utills/constants";
+import { COLOR_PRIMARY } from "../utils/ColorConstants";
 import { ReactNode } from "react";
+import React from "react";
 
 type Props = {
   onClick?: () => void;
   children: ReactNode;
-  buttonType?: string;
+  buttonType?: "outline" | "disabled" | "primary";
   type?: "button" | "submit" | "reset" | undefined;
 };
 const Button = styled.button`
@@ -49,6 +50,12 @@ const OutlineButton = styled(Button)`
   }
 `;
 
+const DisabledButton = styled(Button)`
+  background-color: #fff;
+  color: #c0c0c0;
+  border: solid 1px #c0c0c0;
+`;
+
 export default function cButton({
   onClick,
   children,
@@ -61,6 +68,16 @@ export default function cButton({
         <OutlineButton onClick={onClick} type={type ? type : "submit"}>
           {children}
         </OutlineButton>
+      );
+    case "disabled":
+      return (
+        <DisabledButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          disabled={true}
+        >
+          {children}
+        </DisabledButton>
       );
     default:
       return (
