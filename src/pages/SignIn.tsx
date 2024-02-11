@@ -1,18 +1,34 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
+import toast from "react-hot-toast";
+import {
+  ActionFunctionArgs,
+  Form,
+  redirect,
+  useNavigate,
+} from "react-router-dom";
 import icon_google from "../assets/icons/icon_google.svg";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Link from "../components/Link";
 import Title from "../components/Title";
+import { loginApi } from "../services/api";
 import { LOGIN_PAGE_TEXT_USP } from "../utils/TextConstants";
+import { ApiLoginResponse } from "../utils/type";
+import { useEffect } from "react";
 
 export default function Login() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin") === "true";
+    console.log(isLogin);
+    if (isLogin) navigate("/home");
+  }, []);
+
   return (
     <div className="flex flex-col gap-4 ">
       <Title type="h2" className="mb-4 mt-8">
-        Welcome to ITViet!
+        Welcome to ITViec!
       </Title>
       <div className="flex flex-col-reverse md:flex-row md:gap-40 gap-10 w-full">
         <div className="flex flex-col gap-4 ">
@@ -101,8 +117,19 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     formToJSON[key] = value;
   }
 
-  console.log("OKKK");
-  console.log(formToJSON);
-
-  return redirect("/home");
+  const res: ApiLoginResponse = await loginApi(
+    formToJSON.email.toString(),
+    formToJSON.password.toString()
+  );
+  if (res.status === 200) {
+    document.cookie = `token=${res.data.token}`;
+    document.cookie = `token_expires=${res.data.expires_in}`;
+    document.cookie = `token_created_at=${res.data.created_at}`;
+    document.cookie = `user_id=${res.data.user_id}`;
+    toast.success("Login successfully!");
+    return redirect("/home");
+  } else {
+    toast.error(res.data.message ? res.data.message : "Login fail!");
+    return null;
+  }
 };
