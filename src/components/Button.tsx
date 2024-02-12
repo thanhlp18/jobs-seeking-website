@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import { COLOR_PRIMARY } from "../utils/ColorConstants";
 import { ReactNode } from "react";
+import { COLOR_PRIMARY } from "../utils/constants";
 import React from "react";
 
 type Props = {
   onClick?: () => void;
   children: ReactNode;
-  buttonType?: "outline" | "disabled" | "primary";
+  buttonType?: "outline" | "disabled" | "primary" | "colored";
   type?: "button" | "submit" | "reset" | undefined;
+  className?: string;
+  backgroundColor?: string;
+  textColor?: string;
 };
 const Button = styled.button`
   display: block;
-  width: 100%;
-  border-radius: 0.375rem;
-  padding: 0.625rem;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -32,6 +32,14 @@ const PrimaryButton = styled(Button)`
     outline: 2px solid ${COLOR_PRIMARY};
     outline-offset: 2px;
   }
+`;
+
+const ColoredButton = styled(PrimaryButton)<{
+  $backgroundColor?: string;
+  $color?: string;
+}>`
+  background-color: ${(props) => props.$backgroundColor};
+  color: ${(props) => props.color};
 `;
 
 const OutlineButton = styled(Button)`
@@ -61,11 +69,18 @@ export default function cButton({
   children,
   buttonType,
   type,
+  className,
+  backgroundColor,
+  textColor,
 }: Props) {
   switch (buttonType) {
     case "outline":
       return (
-        <OutlineButton onClick={onClick} type={type ? type : "submit"}>
+        <OutlineButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+        >
           {children}
         </OutlineButton>
       );
@@ -75,13 +90,30 @@ export default function cButton({
           onClick={onClick}
           type={type ? type : "submit"}
           disabled={true}
+          className={className}
         >
           {children}
         </DisabledButton>
       );
+    case "colored":
+      return (
+        <ColoredButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+          $color={textColor}
+          $backgroundColor={backgroundColor}
+        >
+          {children}
+        </ColoredButton>
+      );
     default:
       return (
-        <PrimaryButton onClick={onClick} type={type ? type : "submit"}>
+        <PrimaryButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+        >
           {children}
         </PrimaryButton>
       );

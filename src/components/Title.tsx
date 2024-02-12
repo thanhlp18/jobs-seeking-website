@@ -1,4 +1,4 @@
-type Props = { type: string; children: string; className: string };
+type Props = { type: string; children: string; className?: string };
 
 export default function Title({ type, children, className }: Props) {
   switch (type) {
