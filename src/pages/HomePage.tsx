@@ -1,20 +1,24 @@
 import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import Button from "../components/Button";
+import CompanyCard from "../components/CompanyCard";
 import Dropdown from "../components/Dropdown";
 import Input from "../components/Input";
 import Title from "../components/Title";
-import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
+import Wrapper from "../components/Wrapper";
 import {
   COLOR_SECONDARY,
   HOMEPAGE_JOBS_CITIES,
   HOMEPAGE_SKILLS_TRENDING,
+  HOMEPAGE_TOP_EMPLOYERS,
+  HOMEPAGE_USPS,
 } from "../utils/constants";
-import Wrapper from "../components/Wrapper";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-4 ">
+      {/* Search box */}
       <section className="py-4 pb-12  bg-gradient-to-r from-gray-950 from-40%  to-blue-800 ">
         <Wrapper className="gap-4 grid grid-cols-1 ">
           <Title type="h2" className="text-white">
@@ -32,21 +36,23 @@ export default function HomePage() {
               containerClassName="md:w-56 h-12 text-lg font-semibold w-full"
             />
 
-            <Input
-              containerClassName="flex-1 "
-              type="text"
-              name="keyword"
-              required
-              placeholder="Enter keyword skill (Java, iOS...), job title, company..."
-            />
-            <Button
-              buttonType="primary"
-              type="submit"
-              className="px-4 rounded-lg  h-12"
-            >
-              <FontAwesomeIcon icon={faSearch} />
-              <span className="ml-2 ">Search</span>
-            </Button>
+            <div className="flex flex-row flex-1 md:gap-2">
+              <Input
+                containerClassName="flex-1"
+                type="text"
+                name="keyword"
+                required
+                placeholder="Enter keyword skill (Java, iOS...), job title, company..."
+              />
+              <Button
+                buttonType="primary"
+                type="submit"
+                className="-ml-1   rounded-s-none rounded-e-lg md:ml-0 px-4 md:rounded-lg  h-12"
+              >
+                <FontAwesomeIcon icon={faSearch} />
+                <span className="ml-2 md:inline hidden">Search</span>
+              </Button>
+            </div>
           </Form>
 
           <div className="flex flex-row flex-wrap gap-2 ">
@@ -63,6 +69,67 @@ export default function HomePage() {
               >
                 {skill}
               </Button>
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+
+      {/* Platform's USP */}
+      <section className="py-4 pb-12">
+        <Wrapper>
+          <Title type="h2" className="text-center">
+            Best tools for your application journey
+          </Title>
+          <div className="grid lg:grid-cols-3 gap-4 pt-8">
+            {HOMEPAGE_USPS.map((usp, index) => (
+              <div
+                className="flex flex-col sm:flex-row items-center gap-4 w-full"
+                key={`usp-${index}`}
+              >
+                <div>
+                  <img
+                    src={usp.icon}
+                    className="min-w-48 lg:min-w-28 p-6 pt-0 lg:p-3"
+                  />
+                </div>
+                <div className="grid grid-row-4 gap-2 text-center sm:text-left">
+                  <Title type="h4">{usp.title}</Title>
+                  <p className="text-base font-semibold text-gray-700 row-span-2 pb-4">
+                    {usp.description}
+                  </p>
+                  <Button
+                    type="button"
+                    buttonType={index % 2 != 0 ? "primary" : "outline"}
+                    className="min-w-36 rounded-lg max-w-48 h-12 mx-auto sm:mx-0"
+                  >
+                    <span className={`text-base font-semibold `}>
+                      {usp.cta}
+                    </span>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+
+      {/* Top Employers */}
+      <section className="py-4 pb-12">
+        <Wrapper>
+          <Title type="h2" className="text-center">
+            Top Employers
+          </Title>
+
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 pt-8">
+            {HOMEPAGE_TOP_EMPLOYERS.map((employer, index) => (
+              <CompanyCard
+                key={`top-employer-${index}`}
+                title={employer.title}
+                skills={[...employer.skills]}
+                location={employer.location}
+                jobsCount={employer.jobsCount}
+                className="mx-auto w-full"
+              />
             ))}
           </div>
         </Wrapper>
