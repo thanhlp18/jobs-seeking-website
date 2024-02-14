@@ -136,7 +136,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     document.cookie = `token_created_at=${res.data.created_at}`;
     document.cookie = `user_id=${res.data.user_id}`;
     toast.success("Login successfully!");
-    return redirect("/home");
+    return redirect("/");
   } else {
     toast.error(res.data.message ? res.data.message : "Login fail!");
     return null;

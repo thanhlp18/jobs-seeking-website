@@ -16,7 +16,7 @@ export default function Layout() {
         <div className="flex-1 w-full">
           <Outlet />
         </div>
-        <Footer className=" w-full mt-8 " />
+        <Footer className=" w-full pt-8" />
       </div>
     </div>
   );

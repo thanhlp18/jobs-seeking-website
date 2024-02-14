@@ -1,14 +1,21 @@
-import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faLocationDot,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import Button from "../components/Button";
-import CompanyCard from "../components/CompanyCard";
+import CompanyCard from "../ui/CompanyCard";
+import ArticleCard from "../ui/ArticleCard";
 import Dropdown from "../components/Dropdown";
 import Input from "../components/Input";
+import Link from "../components/Link";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
 import {
   COLOR_SECONDARY,
+  HOMEPAGE_FEATURE_ARTICLES,
   HOMEPAGE_JOBS_CITIES,
   HOMEPAGE_SKILLS_TRENDING,
   HOMEPAGE_TOP_EMPLOYERS,
@@ -16,8 +23,9 @@ import {
 } from "../utils/constants";
 
 export default function HomePage() {
+  // const navigate = useNavigate();
   return (
-    <div className="flex flex-col gap-4 ">
+    <div className="flex flex-col gap-4">
       {/* Search box */}
       <section className="py-4 pb-12  bg-gradient-to-r from-gray-950 from-40%  to-blue-800 ">
         <Wrapper className="gap-4 grid grid-cols-1 ">
@@ -56,7 +64,7 @@ export default function HomePage() {
           </Form>
 
           <div className="flex flex-row flex-wrap gap-2 ">
-            <Title type="h-3" className="font-semibold text-gray-200">
+            <Title type="h-3" className="font-semibold text-gray-100">
               Trending now:
             </Title>
             {HOMEPAGE_SKILLS_TRENDING.map((skill, index) => (
@@ -129,6 +137,42 @@ export default function HomePage() {
                 location={employer.location}
                 jobsCount={employer.jobsCount}
                 className="mx-auto w-full"
+              />
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+
+      {/* Features articles */}
+      <section className="py-4 pb-12 bg-gray-100">
+        <Wrapper>
+          <div className="flex flex-row  justify-between items-center">
+            <Title type="h2" className="text-center">
+              Feature Articles
+            </Title>
+            <Link to="/blog">
+              <>
+                <span>View all articles </span>
+                <span>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </span>
+              </>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 pt-8">
+            {HOMEPAGE_FEATURE_ARTICLES.map((article, index) => (
+              <ArticleCard
+                key={`feature-article-${index}`}
+                containerClassName={`shadow-sm ${
+                  article.isHighlight
+                    ? "md:row-start-1 md:row-end-3 md:col-start-1 md:col-end-3 flex-col"
+                    : "flex-row"
+                }`}
+                title={article.title}
+                description={article.description}
+                link={article.link}
+                imageSrc={article.image}
+                isHighlight={article.isHighlight}
               />
             ))}
           </div>

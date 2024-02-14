@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
-import { COLOR_PRIMARY } from "../utils/constants";
+import {
+  BG_COLOR_DISABLE,
+  COLOR_PRIMARY,
+  TEXT_COLOR_NORMAL,
+} from "../utils/constants";
 import React from "react";
 
 type Props = {
@@ -12,7 +16,7 @@ type Props = {
   backgroundColor?: string;
   textColor?: string;
 };
-const Button = styled.button`
+const StyledButton = styled.button`
   display: block;
   text-align: center;
   font-size: 1rem;
@@ -22,7 +26,7 @@ const Button = styled.button`
   /* transition: color 0.2s ease-in-out; */
 `;
 
-const PrimaryButton = styled(Button)`
+const PrimaryButton = styled(StyledButton)`
   background-color: ${COLOR_PRIMARY};
   color: #fff;
   &:hover {
@@ -42,7 +46,7 @@ const ColoredButton = styled(PrimaryButton)<{
   color: ${(props) => props.color};
 `;
 
-const OutlineButton = styled(Button)`
+const OutlineButton = styled(StyledButton)`
   background-color: #fff;
   color: ${COLOR_PRIMARY};
   border: solid 1px ${COLOR_PRIMARY};
@@ -58,13 +62,12 @@ const OutlineButton = styled(Button)`
   }
 `;
 
-const DisabledButton = styled(Button)`
-  background-color: #fff;
-  color: #c0c0c0;
-  border: solid 1px #c0c0c0;
+const DisabledButton = styled(StyledButton)`
+  background-color: ${BG_COLOR_DISABLE};
+  color: ${TEXT_COLOR_NORMAL};
 `;
 
-export default function cButton({
+export default function Button({
   onClick,
   children,
   buttonType,

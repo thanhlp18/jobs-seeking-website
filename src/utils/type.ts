@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ApiLoginResponse = {
   status: number;
   data: {
@@ -12,4 +14,26 @@ export type ApiLoginResponse = {
 export type LoaderLoginResponse = {
   user_id: string;
   isLogin: boolean;
+};
+
+export type ProfileNavLinkItemsType = {
+  label: string;
+  to: string;
+}[];
+
+export type ProfileContactInformationType = {
+  email: string;
+  phone: string;
+  birthday: string;
+  gender: string;
+  location: string;
+  website: string;
+};
+
+export type ProfileContractCategoryType = {
+  title: string;
+  id: string;
+  description: string;
+  icon: string;
+  content?: React.ReactNode;
 };
