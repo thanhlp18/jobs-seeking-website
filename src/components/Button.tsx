@@ -1,19 +1,23 @@
 import styled from "styled-components";
-import { COLOR_PRIMARY } from "../utils/ColorConstants";
 import { ReactNode } from "react";
+import {
+  BG_COLOR_DISABLE,
+  COLOR_PRIMARY,
+  TEXT_COLOR_NORMAL,
+} from "../utils/constants";
 import React from "react";
 
 type Props = {
   onClick?: () => void;
   children: ReactNode;
-  buttonType?: "outline" | "disabled" | "primary";
+  buttonType?: "outline" | "disabled" | "primary" | "colored";
   type?: "button" | "submit" | "reset" | undefined;
+  className?: string;
+  backgroundColor?: string;
+  textColor?: string;
 };
-const Button = styled.button`
+const StyledButton = styled.button`
   display: block;
-  width: 100%;
-  border-radius: 0.375rem;
-  padding: 0.625rem;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -22,7 +26,7 @@ const Button = styled.button`
   /* transition: color 0.2s ease-in-out; */
 `;
 
-const PrimaryButton = styled(Button)`
+const PrimaryButton = styled(StyledButton)`
   background-color: ${COLOR_PRIMARY};
   color: #fff;
   &:hover {
@@ -34,7 +38,15 @@ const PrimaryButton = styled(Button)`
   }
 `;
 
-const OutlineButton = styled(Button)`
+const ColoredButton = styled(PrimaryButton)<{
+  $backgroundColor?: string;
+  $color?: string;
+}>`
+  background-color: ${(props) => props.$backgroundColor};
+  color: ${(props) => props.color};
+`;
+
+const OutlineButton = styled(StyledButton)`
   background-color: #fff;
   color: ${COLOR_PRIMARY};
   border: solid 1px ${COLOR_PRIMARY};
@@ -50,22 +62,28 @@ const OutlineButton = styled(Button)`
   }
 `;
 
-const DisabledButton = styled(Button)`
-  background-color: #fff;
-  color: #c0c0c0;
-  border: solid 1px #c0c0c0;
+const DisabledButton = styled(StyledButton)`
+  background-color: ${BG_COLOR_DISABLE};
+  color: ${TEXT_COLOR_NORMAL};
 `;
 
-export default function cButton({
+export default function Button({
   onClick,
   children,
   buttonType,
   type,
+  className,
+  backgroundColor,
+  textColor,
 }: Props) {
   switch (buttonType) {
     case "outline":
       return (
-        <OutlineButton onClick={onClick} type={type ? type : "submit"}>
+        <OutlineButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+        >
           {children}
         </OutlineButton>
       );
@@ -75,13 +93,30 @@ export default function cButton({
           onClick={onClick}
           type={type ? type : "submit"}
           disabled={true}
+          className={className}
         >
           {children}
         </DisabledButton>
       );
+    case "colored":
+      return (
+        <ColoredButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+          $color={textColor}
+          $backgroundColor={backgroundColor}
+        >
+          {children}
+        </ColoredButton>
+      );
     default:
       return (
-        <PrimaryButton onClick={onClick} type={type ? type : "submit"}>
+        <PrimaryButton
+          onClick={onClick}
+          type={type ? type : "submit"}
+          className={className}
+        >
           {children}
         </PrimaryButton>
       );

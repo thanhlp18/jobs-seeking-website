@@ -4,7 +4,7 @@ const Header: React.FC = () => {
   const isLogin = localStorage.getItem("isLogin");
   const user_id = localStorage.getItem("user_id");
   return (
-    <header className="bg-gray-800 	max-w-full fixed right-0 left-0 z-10 top-0 h-11">
+    <header className="bg-gray-800 	max-w-full fixed right-0 left-0 z-50 top-0 h-11">
       <div className="flex items-center justify-between px-4 py-2 mx-auto xl:max-w-[1280px]">
         <div className="text-white text-lg font-bold">Logo</div>
         <nav>
