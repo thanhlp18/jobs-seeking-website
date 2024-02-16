@@ -37,3 +37,18 @@ export type ProfileContractCategoryType = {
   icon: string;
   content?: React.ReactNode;
 };
+
+export type ComponentSelectionWithSearchType = {
+  id: number;
+  name: string;
+};
+
+export type ProfileJobLevelType = {
+  id: string;
+  text: string;
+};
+
+export type ToggleType = {
+  name: string;
+  isChecked: boolean;
+};

@@ -1,6 +1,8 @@
 import {
+  ComponentSelectionWithSearchType,
   ProfileContactInformationType,
   ProfileContractCategoryType,
+  ProfileJobLevelType,
   ProfileNavLinkItemsType,
 } from "./type";
 
@@ -9,7 +11,7 @@ export const COLOR_PRIMARY = "#4f46e5";
 export const COLOR_SECONDARY = "#121212";
 export const TEXT_COLOR_NORMAL = "#4E4C4D";
 export const TEXT_COLOR_BOLD = "#383536";
-export const BG_COLOR_DISABLE = "#e9e9e9";
+export const COLOR_DISABLED = "#e9e9e9";
 
 // ------------------------------------------
 // TEXT CONSTANT
@@ -200,4 +202,60 @@ export const PROFILE_CONTRACT_CATEGORY: ProfileContractCategoryType[] = [
     description: "Introduce yourself and why you'd make a great hire",
     icon: "../src/assets/profile_cover_letter.svg",
   },
+];
+
+export const PROFILE_JOB_PREFERENCES_SKILLS: ComponentSelectionWithSearchType[] =
+  [
+    { id: 1, name: "JavaScript" },
+    { id: 2, name: "Python" },
+    { id: 3, name: "Java" },
+    { id: 4, name: "C++" },
+    { id: 5, name: "C#" },
+    { id: 6, name: "Ruby" },
+    { id: 7, name: "Go" },
+    { id: 8, name: "Swift" },
+    { id: 9, name: "TypeScript" },
+    { id: 10, name: "Kotlin" },
+    { id: 11, name: "Rust" },
+    { id: 12, name: "PHP" },
+    { id: 13, name: "HTML" },
+    { id: 14, name: "CSS" },
+  ];
+
+export const PROFILE_JOB_LEVELS: ProfileJobLevelType[] = [
+  {
+    id: "job-level-fresher",
+    text: "Fresher (0 - 10 months of experience)",
+  },
+  {
+    id: "job-level-junior",
+    text: "Junior (10 - 36 months of experience)",
+  },
+  {
+    id: "job-level-senior",
+    text: "Senior (37 - 60 months of experience)",
+  },
+  {
+    id: "job-level-manager",
+    text: "Manager (> 60 months of experience)",
+  },
+];
+
+export const PROFILE_CURRENT_SALARY_CURRENCY: string[] = ["VND", "USD", "EUR"];
+
+export const PROFILE_WORKING_TYPE: string[] = ["At office", "Remote", "Hybrid"];
+export const PROFILE_COMPANY_TYPE: string[] = [
+  "IT Product",
+  "IT Outsourcing",
+  "Headhunt",
+  "It Service and Consulting",
+  "Non-IT",
+];
+export const PROFILE_COMPANY_SIZE: string[] = [
+  "1-50",
+  "51-150",
+  "151-300",
+  "301-500",
+  "501-1000",
+  "1000+",
 ];

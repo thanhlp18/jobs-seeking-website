@@ -9,12 +9,13 @@ type props = {
   name?: string;
   icon?: React.ReactNode;
   options: string[];
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const StyledSelect = styled.select<{ $isIcon?: boolean }>`
   ${inputStyle}
   appearance: none;
-  padding-right: 2.5rem;
+  padding-right: 3rem;
   ${(props) => props.$isIcon && `padding-left: 2.5rem;`}
 `;
 
@@ -23,9 +24,10 @@ export default function Dropdown({
   name,
   icon,
   options,
+  onChange,
 }: props) {
   return (
-    <div className={`${containerClassName} relative`}>
+    <div className={`${containerClassName} relative w-fit overflow-hidden`}>
       {icon && (
         <span className="pointer-events-none absolute left-4 top-2 pt-0.5 text-lg font-bold text-gray-400 z-10">
           {icon}
@@ -34,8 +36,9 @@ export default function Dropdown({
       <StyledSelect
         id={name}
         name={name}
-        className="absolute w-full"
+        className="w-full"
         $isIcon={!!icon}
+        onChange={onChange}
       >
         {options.map((option, index) => (
           <option key={index}>{option}</option>

@@ -4,44 +4,45 @@ import { COLOR_PRIMARY } from "../utils/constants";
 
 type Props = {
   placeholder?: string;
-  type: string;
+  type: "checkbox" | "no-style" | string;
   name: string;
   required?: boolean | undefined;
   label?: string;
   id?: string;
   containerClassName?: string;
+  inputClassName?: string;
+  labelClassName?: string;
   handleOnChange?: (arg1: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const inputStyle = `
 padding: 0.75rem;
-outline: none;
 border-radius: 0.375rem;
-border: none;
+outline: none;
 color: #000;
-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 background-color: #fff;
-line-height: 1.5rem;
---tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-  var(--tw-ring-offset-width) var(--tw-ring-offset-color);
---tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-  calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
-  var(--tw-shadow, 0 0 #0000);
---tw-ring-inset: inset;
---tw-placeholder-color: rgb(255, 255, 255);
---tw-ring-color: #ccc;
-&:focus {
-  box-shadow: var(--tw-ring-inset) 0 0 0
-    calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  --tw-ring-inset: inset;
-  --tw-ring-color: ${COLOR_PRIMARY};
-}
-line-height: 1.5rem;
+
 `;
-const StyledInput = styled.input`
+
+const NoStyleInput = styled.input``;
+
+const PrimaryStyleInput = styled.input`
   ${inputStyle}
-  font-size: 0.875rem;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
+    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+    var(--tw-shadow, 0 0 #0000);
+  --tw-ring-inset: inset;
+  --tw-placeholder-color: rgb(255, 255, 255);
+  --tw-ring-color: #ccc;
+  &:focus {
+    box-shadow: var(--tw-ring-inset) 0 0 0
+      calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    --tw-ring-inset: inset;
+    --tw-ring-color: ${COLOR_PRIMARY};
+  }
 `;
 
 const Input: React.FC<Props> = ({
@@ -53,34 +54,38 @@ const Input: React.FC<Props> = ({
   label,
   id,
   containerClassName,
+  inputClassName,
+  labelClassName,
 }) => {
   switch (type) {
-    case "checkbox":
+    case "no-style":
       return (
-        <StyledInput
+        <NoStyleInput
           id={id}
-          type="checkbox"
+          type={type ? type : "text"}
           required={required ? required : false}
           name={name}
-          className={containerClassName}
+          className={`${inputClassName} ${containerClassName}`}
           onChange={handleOnChange}
+          placeholder={placeholder}
         />
       );
     default:
       return (
-        <div className={`flex flex-col ${containerClassName}`}>
+        <div className={`${containerClassName}`}>
           {label && (
-            <label htmlFor={id} className=" mb-1">
+            <label htmlFor={id} className={`${labelClassName}`}>
               {label} {required && <span className="text-red-600">*</span>}
             </label>
           )}
-          <StyledInput
+          <PrimaryStyleInput
             id={id}
             type={type ? type : "text"}
             required={required ? required : false}
             name={name}
             placeholder={placeholder}
             onChange={handleOnChange}
+            className={` ${inputClassName}`}
           />
         </div>
       );
