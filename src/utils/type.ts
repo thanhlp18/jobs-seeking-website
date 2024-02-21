@@ -21,16 +21,18 @@ export type ProfileNavLinkItemsType = {
   to: string;
 }[];
 
-export type ProfileContactInformationType = {
+export type ProfileUserInformationType = {
+  name: string;
+  title: string;
   email: string;
   phone: string;
   birthday: string;
-  gender: string;
-  location: string;
-  website: string;
+  gender?: string;
+  location?: string;
+  website?: string;
 };
 
-export type ProfileContractCategoryType = {
+export type ProfileDataCategoryType = {
   title: string;
   id: string;
   description: string;
@@ -51,4 +53,62 @@ export type ProfileJobLevelType = {
 export type ToggleType = {
   name: string;
   isChecked: boolean;
+};
+
+export type Duration = {
+  start: string;
+  end: string;
+};
+
+export type Education = {
+  degree: string;
+  institution: string;
+  duration: Duration;
+  additionalDetail: string;
+};
+
+export type WorkExperience = {
+  position: string;
+  company: string;
+  duration: Duration;
+  responsibilities: string;
+};
+
+export type Skills = {
+  excellent?: string[];
+  intermediate?: string[];
+  beginner?: string[];
+};
+
+export type PersonalProject = {
+  title: string;
+  duration: Duration;
+  description: string;
+};
+
+export type Certificate = {
+  title: string;
+  provider: string;
+  issueDate: string;
+  description: string;
+  certificateUrl: string;
+};
+
+export type Award = {
+  title: string;
+  provider: string;
+  issueDate: string;
+  description: string;
+};
+
+export type ProfileDataForCV = {
+  aboutMe: {
+    description: string;
+  };
+  education: Education[];
+  workExperience: WorkExperience[];
+  skills: Skills;
+  personalProjects: PersonalProject[];
+  certificates: Certificate[];
+  awards: Award[];
 };

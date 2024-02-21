@@ -11,20 +11,23 @@ import { faGift } from "@fortawesome/free-solid-svg-icons/faGift";
 import { faPhone } from "@fortawesome/free-solid-svg-icons/faPhone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Transition } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cvDownloadIcon from "../assets/profile-cv-download-icon.svg";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import Divider from "../components/Divider";
+import EditIcon from "../components/EditIcon";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
+import CardWithTitle from "../ui/CardWithTitle";
+import ProfileCV from "../ui/ProfileCV";
 import {
   PROFILE_CONTACT_INFORMATION,
-  PROFILE_CONTRACT_CATEGORY,
-  PROFILE_UPDATE_PROFILE_CTA,
+  PROFILE_DATA_CATEGORY,
+  PROFILE_EXAMPLE_DATA_FOR_CV,
 } from "../utils/constants";
-import EditIcon from "../components/EditIcon";
-import CardWithTitle from "../ui/CardWithTitle";
+import { ProfileDataForCV, ProfileUserInformationType } from "../utils/type";
+import { useNavigate } from "react-router-dom";
 
 const percentage = 0.75;
 const CIRCLE_COLOR: { [key: string]: string } = {
@@ -48,7 +51,104 @@ const getPercentageRate = (percentage: number) => {
 };
 
 export default function Profile() {
+  const navigate = useNavigate();
   const [isShowMoreUpdateProfile, setIsShowMoreUpdateProfile] = useState(false);
+  const [userData, setUserData] = useState<ProfileUserInformationType>({
+    name: "",
+    title: "",
+    email: "",
+    phone: "",
+    birthday: "",
+    gender: "",
+    location: "",
+  });
+  const [ProfileForCV, setProfileForCV] = useState<ProfileDataForCV>({
+    aboutMe: {
+      description: "",
+    },
+    education: [
+      {
+        degree: "",
+        institution: "",
+        duration: {
+          start: "",
+          end: "",
+        },
+        additionalDetail: "",
+      },
+    ],
+    workExperience: [
+      {
+        position: "",
+        company: "",
+        duration: {
+          start: "",
+          end: "",
+        },
+        responsibilities: "",
+      },
+    ],
+    skills: {
+      excellent: [],
+      intermediate: [],
+      beginner: [],
+    },
+    personalProjects: [],
+    certificates: [],
+    awards: [],
+  });
+  const [profileCTA, setProfileCTA] = useState<string[]>([]);
+  useEffect(() => {
+    setUserData(PROFILE_CONTACT_INFORMATION);
+    setProfileForCV(PROFILE_EXAMPLE_DATA_FOR_CV);
+    PROFILE_DATA_CATEGORY.map((category) => {
+      console.log(PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.description.length);
+      let profileCTATemp: string[] = [];
+      switch (category.id) {
+        case "about-me": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.description.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add About Me"]);
+          break;
+        }
+        case "education": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.education.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add Education"]);
+          break;
+        }
+        case "work-experience": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.workExperience.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add Work Experience"]);
+          break;
+        }
+        case "skills": {
+          (PROFILE_EXAMPLE_DATA_FOR_CV.skills.excellent?.length === 0 &&
+            PROFILE_EXAMPLE_DATA_FOR_CV.skills.intermediate?.length === 0 &&
+            PROFILE_EXAMPLE_DATA_FOR_CV.skills.beginner?.length === 0) ??
+            (profileCTATemp = [...profileCTATemp, "Add Skills"]);
+          break;
+        }
+        case "personal-projects": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.personalProjects.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add Personal Projects"]);
+          break;
+        }
+        case "certificates": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.certificates.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add Certificates"]);
+          break;
+        }
+        case "awards": {
+          PROFILE_EXAMPLE_DATA_FOR_CV.awards.length === 0 ??
+            (profileCTATemp = [...profileCTATemp, "Add Awards"]);
+          break;
+        }
+        default:
+          break;
+      }
+      setProfileCTA(profileCTATemp);
+    });
+  }, []);
+
   return (
     <Wrapper className="">
       <div className="grid grid-cols-10 gap-6">
@@ -100,7 +200,7 @@ export default function Profile() {
               Upgrade profile to "Excellent" to unlock Download CV
             </Title>
             <ul className="flex flex-col gap-3  ">
-              {PROFILE_UPDATE_PROFILE_CTA.map((cta, index) => {
+              {profileCTA.map((cta, index) => {
                 if (index <= 2)
                   return (
                     <li
@@ -114,8 +214,8 @@ export default function Profile() {
                     </li>
                   );
               })}
-              {PROFILE_UPDATE_PROFILE_CTA.length > 3 &&
-                PROFILE_UPDATE_PROFILE_CTA.map((cta, index) => (
+              {profileCTA.length > 3 &&
+                profileCTA.map((cta, index) => (
                   <li
                     key={`update-profile-${index}`}
                     className={`cursor-pointer text-blue-500 font-medium ${
@@ -129,7 +229,7 @@ export default function Profile() {
                   </li>
                 ))}
 
-              {PROFILE_UPDATE_PROFILE_CTA.length > 3 && (
+              {profileCTA.length > 3 && (
                 <li
                   className="cursor-pointer text-gray-500 font-medium transition delay-1000 ease-in"
                   onClick={() =>
@@ -191,6 +291,7 @@ export default function Profile() {
               <Button
                 buttonType="primary"
                 className="py-2 px-4 w-full rounded-sm"
+                onClick={() => navigate("/create-cv")}
               >
                 Preview & Download CV
               </Button>
@@ -212,14 +313,14 @@ export default function Profile() {
               <div className="gap-2 flex flex-col w-full">
                 <div>
                   <Title type="h2" className="text-center md:text-start">
-                    Le Phuoc Thanh
+                    {userData.name}
                   </Title>
                 </div>
                 <Title
                   type="h4"
                   className="text-gray-600  text-center md:text-start"
                 >
-                  Front end developer intern
+                  {userData.title}
                 </Title>
                 <Divider />
                 <div className="sm:grid-cols-2 sm:grid-rows-3 grid grid-cols-1 gap-x-4 gap-y-2 ">
@@ -228,7 +329,7 @@ export default function Profile() {
                       <FontAwesomeIcon icon={faEnvelope} />
                     </span>
                     <span className="font-medium text-base text-gray-700 line-clamp-1">
-                      {PROFILE_CONTACT_INFORMATION.email}
+                      {userData.email}
                     </span>
                   </div>
                   <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -236,7 +337,7 @@ export default function Profile() {
                       <FontAwesomeIcon icon={faPhone} />
                     </span>
                     <span className="font-medium text-base text-gray-700 line-clamp-1">
-                      {PROFILE_CONTACT_INFORMATION.phone}
+                      {userData.phone}
                     </span>
                   </div>
                   <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -244,32 +345,36 @@ export default function Profile() {
                       <FontAwesomeIcon icon={faGift} />
                     </span>
                     <span className="font-medium text-base text-gray-700 line-clamp-1">
-                      {PROFILE_CONTACT_INFORMATION.birthday}
+                      {userData.birthday}
                     </span>
                   </div>
                   <div className="flex flex-row gap-2 flex-nowrap items-center">
                     <span className="text-lg text-gray-400">
                       <FontAwesomeIcon icon={faGift} />
                     </span>
-                    <span className="font-medium text-base text-gray-700 line-clamp-1">
-                      {PROFILE_CONTACT_INFORMATION.gender}
-                    </span>
+                    {userData.gender && (
+                      <span className="font-medium text-base text-gray-700 line-clamp-1">
+                        {userData.gender}
+                      </span>
+                    )}
                   </div>
                   <div className="flex flex-row gap-2 flex-nowrap items-center">
                     <span className="text-lg text-gray-400">
                       <FontAwesomeIcon icon={faLocation} />
                     </span>
-                    <span className="font-medium text-base text-gray-700 line-clamp-1">
-                      {PROFILE_CONTACT_INFORMATION.location}
-                    </span>
+                    {userData.location && (
+                      <span className="font-medium text-base text-gray-700 line-clamp-1">
+                        {userData.location}
+                      </span>
+                    )}
                   </div>
                   <div className="flex flex-row gap-2 flex-nowrap items-center">
                     <span className="text-lg text-gray-400">
                       <FontAwesomeIcon icon={faGlobe} />
                     </span>
-                    {PROFILE_CONTACT_INFORMATION.website && (
+                    {userData.website && (
                       <span className="font-medium text-base text-gray-700 line-clamp-1">
-                        {PROFILE_CONTACT_INFORMATION.website}
+                        {userData.website}
                       </span>
                     )}
                   </div>
@@ -278,15 +383,24 @@ export default function Profile() {
             </div>
             <EditIcon className="absolute right-4 top-4 text-lg" />
           </Card>
-          {PROFILE_CONTRACT_CATEGORY.map((category, index) => (
-            <CardWithTitle
-              title={category.title}
-              titleType="h3"
-              key={`about-${index}`}
-              description={category.description}
-              icon={category.icon}
-            ></CardWithTitle>
-          ))}
+          {PROFILE_DATA_CATEGORY.map((category, index) => {
+            return (
+              category.id !== "cover-letter" && (
+                <CardWithTitle
+                  title={category.title}
+                  titleType="h3"
+                  key={`about-${index}`}
+                  description={category.description}
+                  icon={category.icon}
+                >
+                  <ProfileCV
+                    ProfileData={ProfileForCV}
+                    sectionKey={category.id}
+                  />
+                </CardWithTitle>
+              )
+            );
+          })}
         </div>
       </div>
     </Wrapper>

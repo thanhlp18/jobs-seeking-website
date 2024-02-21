@@ -1,11 +1,7 @@
-import {
-  faCheck,
-  faClose,
-  faPlus,
-  faQuestionCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faClose, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { memo, useCallback, useState } from "react";
+import Button from "../components/Button";
 import Card from "../components/Card";
 import Divider from "../components/Divider";
 import Dropdown from "../components/Dropdown";
@@ -13,6 +9,7 @@ import DropdownSearchCopy from "../components/DropdownSearch";
 import Input from "../components/Input";
 import Title from "../components/Title";
 import ToggleButton from "../components/ToggleButton";
+import Tooltip from "../components/Tooltip";
 import Wrapper from "../components/Wrapper";
 import {
   HOMEPAGE_JOBS_CITIES,
@@ -24,7 +21,6 @@ import {
   PROFILE_WORKING_TYPE,
 } from "../utils/constants";
 import { ComponentSelectionWithSearchType, ToggleType } from "../utils/type";
-import Button from "../components/Button";
 
 const GridLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="grid grid-cols-12 gap-4">{children}</div>
@@ -155,32 +151,7 @@ function JobPreferences() {
             <Title type="h4" className="inline pr-2">
               Current Salary per month
             </Title>
-            <div className="inline z-100">
-              <span className="group relative z-20">
-                <div className="absolute bottom-[calc(100%+0.5rem)] left-[50%] -translate-x-[50%] hidden group-hover:block w-auto">
-                  <div className=" bottom-full  right-0 rounded bg-normal px-4 py-1 text-base text-white ">
-                    The system is only used for job recommendation purposes. It
-                    is not visible to any users
-                    <svg
-                      className="absolute left-0 top-full h-2 w-full text-black"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 255 255"
-                      xmlSpace="preserve"
-                    >
-                      <polygon
-                        className="fill-current"
-                        points="0,0 127.5,127.5 255,0"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <FontAwesomeIcon
-                  icon={faQuestionCircle}
-                  className="text-gray-400"
-                />
-              </span>
-            </div>
+            <Tooltip text="The system is only used for job recommendation purposes. It is not visible to any users" />
           </TitleWrap>
           <ContentWrap>
             <div className="flex flex-row flex-nowrap gap-6">

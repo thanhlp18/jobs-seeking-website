@@ -9,7 +9,7 @@ import Card from "../components/Card";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
 import CardWithTitle from "../ui/CardWithTitle";
-import { PROFILE_CONTRACT_CATEGORY } from "../utils/constants";
+import { PROFILE_DATA_CATEGORY } from "../utils/constants";
 
 export default function ManageCV() {
   return (
@@ -53,7 +53,7 @@ export default function ManageCV() {
           </Button>
         </div>
       </Card>
-      {PROFILE_CONTRACT_CATEGORY.filter(
+      {PROFILE_DATA_CATEGORY.filter(
         (category) => category.id === "cover-letter"
       ).map((category) => (
         <CardWithTitle

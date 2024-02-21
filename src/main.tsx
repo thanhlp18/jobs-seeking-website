@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp.tsx";
 import Layout from "./ui/Layout.tsx";
 import { loadLoginStatus } from "./utils/loadersFunction.ts";
 import ProfileLayout from "./ui/ProfileLayout.tsx";
+import CreateCV from "./pages/CreateCV.tsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
             element: <JobPreferences />,
           },
         ],
+      },
+      {
+        path: "/create-cv",
+        element: <CreateCV />,
+        action: signInAction,
       },
     ],
   },
