@@ -1,6 +1,9 @@
 import {
-  ProfileContactInformationType,
-  ProfileContractCategoryType,
+  ComponentSelectionWithSearchType,
+  ProfileUserInformationType,
+  ProfileDataCategoryType,
+  ProfileDataForCV,
+  ProfileJobLevelType,
   ProfileNavLinkItemsType,
 } from "./type";
 
@@ -9,7 +12,7 @@ export const COLOR_PRIMARY = "#4f46e5";
 export const COLOR_SECONDARY = "#121212";
 export const TEXT_COLOR_NORMAL = "#4E4C4D";
 export const TEXT_COLOR_BOLD = "#383536";
-export const BG_COLOR_DISABLE = "#e9e9e9";
+export const COLOR_DISABLED = "#e9e9e9";
 
 // ------------------------------------------
 // TEXT CONSTANT
@@ -140,7 +143,9 @@ export const PROFILE_UPDATE_PROFILE_CTA: string[] = [
   "Add Personal Projects",
 ];
 
-export const PROFILE_CONTACT_INFORMATION: ProfileContactInformationType = {
+export const PROFILE_CONTACT_INFORMATION: ProfileUserInformationType = {
+  name: "Le Phuoc Thanh",
+  title: "Front end developer intern",
   email: "thanhlp18@gmail.com",
   phone: "0795442122",
   birthday: "18/08/2002",
@@ -149,7 +154,7 @@ export const PROFILE_CONTACT_INFORMATION: ProfileContactInformationType = {
   website: "https://fontawesome.com/icons/globe?f=classic&s=solid",
 };
 
-export const PROFILE_CONTRACT_CATEGORY: ProfileContractCategoryType[] = [
+export const PROFILE_DATA_CATEGORY: ProfileDataCategoryType[] = [
   {
     title: "About Me",
     id: "about-me",
@@ -201,3 +206,148 @@ export const PROFILE_CONTRACT_CATEGORY: ProfileContractCategoryType[] = [
     icon: "../src/assets/profile_cover_letter.svg",
   },
 ];
+
+export const PROFILE_JOB_PREFERENCES_SKILLS: ComponentSelectionWithSearchType[] =
+  [
+    { id: 1, name: "JavaScript" },
+    { id: 2, name: "Python" },
+    { id: 3, name: "Java" },
+    { id: 4, name: "C++" },
+    { id: 5, name: "C#" },
+    { id: 6, name: "Ruby" },
+    { id: 7, name: "Go" },
+    { id: 8, name: "Swift" },
+    { id: 9, name: "TypeScript" },
+    { id: 10, name: "Kotlin" },
+    { id: 11, name: "Rust" },
+    { id: 12, name: "PHP" },
+    { id: 13, name: "HTML" },
+    { id: 14, name: "CSS" },
+  ];
+
+export const PROFILE_JOB_LEVELS: ProfileJobLevelType[] = [
+  {
+    id: "job-level-fresher",
+    text: "Fresher (0 - 10 months of experience)",
+  },
+  {
+    id: "job-level-junior",
+    text: "Junior (10 - 36 months of experience)",
+  },
+  {
+    id: "job-level-senior",
+    text: "Senior (37 - 60 months of experience)",
+  },
+  {
+    id: "job-level-manager",
+    text: "Manager (> 60 months of experience)",
+  },
+];
+
+export const PROFILE_CURRENT_SALARY_CURRENCY: string[] = ["VND", "USD", "EUR"];
+
+export const PROFILE_WORKING_TYPE: string[] = ["At office", "Remote", "Hybrid"];
+export const PROFILE_COMPANY_TYPE: string[] = [
+  "IT Product",
+  "IT Outsourcing",
+  "Headhunt",
+  "It Service and Consulting",
+  "Non-IT",
+];
+export const PROFILE_COMPANY_SIZE: string[] = [
+  "1-50",
+  "51-150",
+  "151-300",
+  "301-500",
+  "501-1000",
+  "1000+",
+];
+
+export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
+  aboutMe: {
+    description:
+      "I am seeking an opportunity to contribute my values, curiosity, and creativity while pursuing personal and professional growth",
+  },
+  education: [
+    {
+      degree: "Computer Network and Data Communication",
+      institution: "Can Tho University",
+      duration: {
+        start: "08/2020",
+        end: "NOW",
+      },
+      additionalDetail: "Learn about front end with html, css, javascript.",
+    },
+  ],
+  workExperience: [
+    {
+      position: "Technical staff",
+      company: "Fabulous Mekong Eco Tours - FME Travel",
+      duration: {
+        start: "05/2022",
+        end: "NOW",
+      },
+      responsibilities:
+        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li>Utilize no-code platforms (e.g., Airtable) for cost-effective data management and improved staff accessibility.</li><li>Resolve technical issues and implement new features to enhance productivity.</li><li>Manage Google Workspace, shared drive storage, and ICT policies for seamless operations.</li><li>Create comprehensive documentation for all company software.</li></ul>',
+    },
+  ],
+  skills: {
+    excellent: ["react js", "node js", "html", "css", "javascript"],
+    intermediate: [
+      "docker",
+      "kubernetes",
+      "aws",
+      "gcp",
+      "azure",
+      "git",
+      "github",
+    ],
+    beginner: ["python"],
+  },
+  personalProjects: [
+    {
+      title: "Social management using node js and react js",
+      duration: {
+        start: "09/2023",
+        end: "NOW",
+      },
+      description:
+        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li>Built a simple learning project to display real-time weather information</li><li> Technologies used: React JS, Material UI, and RESTful APIs.</li></ul>',
+    },
+    {
+      title: "VietHope Student Development Program Application Tool",
+      duration: {
+        start: "05/2022",
+        end: "07/2022",
+      },
+      description:
+        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li><b>Description:</b> Created tool to automate merging scholar applications from Google Sheets into user-friendly HTML, streamlining review process for judges, saving time. (Github respository: https://github.com/thanhlp18/vsdp-application-tool)</li><li><b>Technologies used:</b> HTML, CSS, and Python (Pandas, Googleapiclient, and Google Auth) for data extraction from Google Sheets (csv file type).</li></ul>',
+    },
+  ],
+  certificates: [
+    {
+      title: "Programming with JavaScript",
+      provider: "Coursera",
+      issueDate: "08/2023",
+      description:
+        "This course teaches the fundamentals of programming using JavaScript. It covers topics such as variables, data types, control flow, functions, and object-oriented programming. By the end of the course, students will have a solid understanding of JavaScript and be able to build interactive web applications.",
+      certificateUrl: "https://fontawesome.com/search?q=delete&o=r&m=free",
+    },
+    {
+      title: "Programming with JavaScript",
+      provider: "Coursera",
+      issueDate: "08/2023",
+      description: "<b>This is an example description.</b>",
+      certificateUrl: "https://fontawesome.com/search?q=delete&o=r&m=free",
+    },
+  ],
+  awards: [
+    {
+      title: "University Scholarship Program",
+      provider: "VietHope",
+      issueDate: "12/2020",
+      description:
+        "The goal of University Scholarship program is to lift the heavy financial burden as well as build a platform to prepare first-year university students for their success in the future. The program provides scholarships of $300, sufficient to cover half of tuition and educational supplies for the first year for students. And all students received USP awards are also qualified for other community and leadership programs such as Youth Development Program, Youth Workshop Program, and Alumni Development Program that provide them soft-skill training for community service and career development.",
+    },
+  ],
+};

@@ -67,6 +67,7 @@ export default function Login() {
                 type="text"
                 name="email"
                 id="login-email"
+                containerClassName="flex flex-col gap-1"
                 required
                 label="Email"
               />
@@ -77,6 +78,7 @@ export default function Login() {
                 name="password"
                 label="Password"
                 id="login-password"
+                containerClassName="flex flex-col gap-1"
                 required
               />
               <span>

@@ -41,12 +41,12 @@ export default function HomePage() {
               name="city"
               options={HOMEPAGE_JOBS_CITIES}
               icon={<FontAwesomeIcon icon={faLocationDot} />}
-              containerClassName="md:w-56 h-12 text-lg font-semibold w-full"
+              containerClassName="h-12  font-semibold"
             />
 
             <div className="flex flex-row flex-1 md:gap-2">
               <Input
-                containerClassName="flex-1"
+                containerClassName="flex-1 flex flex-col"
                 type="text"
                 name="keyword"
                 required

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type Props = {
   className?: string;
@@ -25,4 +25,4 @@ const Footer: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

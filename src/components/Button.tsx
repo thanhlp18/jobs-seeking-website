@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
 import {
-  BG_COLOR_DISABLE,
+  COLOR_DISABLED,
   COLOR_PRIMARY,
   TEXT_COLOR_NORMAL,
 } from "../utils/constants";
@@ -63,7 +63,7 @@ const OutlineButton = styled(StyledButton)`
 `;
 
 const DisabledButton = styled(StyledButton)`
-  background-color: ${BG_COLOR_DISABLE};
+  background-color: ${COLOR_DISABLED};
   color: ${TEXT_COLOR_NORMAL};
 `;
 

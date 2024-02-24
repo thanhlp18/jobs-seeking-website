@@ -25,7 +25,8 @@ export default function SignUp() {
                 handleOnChange={() => {
                   setIsAgreeGoogle(!isAgreeGoogle);
                 }}
-                containerClassName="h-6 w-6 transform translate-y-1.5 mr-2"
+                containerClassName="contents"
+                inputClassName="h-6 w-6 transform translate-y-1.5 mr-1 "
               />
               By signing up with Google, I agree to ITviec’s{" "}
               <Link to="terms-conditions"> Terms & Conditions</Link> and{" "}
@@ -52,10 +53,7 @@ export default function SignUp() {
               <div className="flex-grow border-t-2 border-slate-200 border-solid"></div>
             </div>
 
-            <Form
-              method="POST"
-              className="text-base flex flex-col gap-4 text-base"
-            >
+            <Form method="POST" className="text-base flex flex-col gap-4">
               <Input
                 placeholder="Name"
                 type="text"
@@ -63,6 +61,7 @@ export default function SignUp() {
                 id="sign-up-name"
                 required
                 label="Name"
+                containerClassName="flex flex-col gap-1"
               />
               <Input
                 placeholder="Email"
@@ -71,6 +70,7 @@ export default function SignUp() {
                 id="sign-up-email"
                 required
                 label="Email"
+                containerClassName="flex flex-col gap-1"
               />
 
               <Input
@@ -79,6 +79,7 @@ export default function SignUp() {
                 name="password"
                 label="Password"
                 id="sign-up-password"
+                containerClassName="flex flex-col gap-1"
                 required
               />
               <div className="text-base ">
@@ -87,7 +88,8 @@ export default function SignUp() {
                   placeholder=""
                   name="sign-with-google"
                   required
-                  containerClassName="h-6 w-6 transform translate-y-1.5 mr-2 "
+                  containerClassName="contents"
+                  inputClassName="h-6 w-6 transform translate-y-1.5 mr-1"
                   handleOnChange={() => {
                     setIsAgreeTerms(!isAgreeTerms);
                   }}
