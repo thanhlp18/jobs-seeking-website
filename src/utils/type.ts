@@ -22,6 +22,7 @@ export type ProfileNavLinkItemsType = {
 }[];
 
 export type ProfileUserInformationType = {
+  profileImage: string;
   name: string;
   title: string;
   email: string;

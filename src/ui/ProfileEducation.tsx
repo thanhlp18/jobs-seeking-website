@@ -8,19 +8,17 @@ export default function ProfileEducation({
   additionalDetail,
 }: Education) {
   return (
-    <div className="flex flex-col gap-2 flex-nowrap">
-      <div className="flex flex-col  flex-nowrap">
+    <div className="flex flex-col gap-2 flex-nowrap ">
+      <div className="flex  flex-col  flex-nowrap">
         <Title type="h4">{degree}</Title>
 
-        <div className="text-base text-normal font-medium">{institution}</div>
+        <div className="text-base text-bold  ">{institution}</div>
       </div>
       <div className="flex flex-col  flex-nowrap">
-        <div className="text-base font-medium text-normal">
+        <div className="text-base  text-bold  ">
           <span>{start}</span> - <span>{end}</span>
         </div>
-        <div className="font-medium text-base text-normal ">
-          {additionalDetail}
-        </div>
+        <div className=" text-base text-bold   ">{additionalDetail}</div>
       </div>
     </div>
   );

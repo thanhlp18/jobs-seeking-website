@@ -54,6 +54,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const [isShowMoreUpdateProfile, setIsShowMoreUpdateProfile] = useState(false);
   const [userData, setUserData] = useState<ProfileUserInformationType>({
+    profileImage: "",
     name: "",
     title: "",
     email: "",
@@ -303,7 +304,7 @@ export default function Profile() {
             <div className="flex gap-6 flex-col md:flex-row items-center md:items-start">
               <div>
                 <img
-                  src="../src/assets/profile-avatar.jpg"
+                  src={userData.profileImage}
                   alt="profile-avatar"
                   height={140}
                   width={140}

@@ -144,6 +144,7 @@ export const PROFILE_UPDATE_PROFILE_CTA: string[] = [
 ];
 
 export const PROFILE_CONTACT_INFORMATION: ProfileUserInformationType = {
+  profileImage: "src/assets/profile-avatar.jpg",
   name: "Le Phuoc Thanh",
   title: "Front end developer intern",
   email: "thanhlp18@gmail.com",
