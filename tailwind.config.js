@@ -23,6 +23,9 @@ export default {
         normal: TEXT_COLOR_NORMAL,
         disabled: COLOR_DISABLED,
       },
+      aspectRatio: {
+        A4: "210 / 297",
+      },
     },
   },
   plugins: [],

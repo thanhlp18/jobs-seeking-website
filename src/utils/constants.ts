@@ -289,7 +289,7 @@ export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
         end: "NOW",
       },
       responsibilities:
-        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li>Utilize no-code platforms (e.g., Airtable) for cost-effective data management and improved staff accessibility.</li><li>Resolve technical issues and implement new features to enhance productivity.</li><li>Manage Google Workspace, shared drive storage, and ICT policies for seamless operations.</li><li>Create comprehensive documentation for all company software.</li></ul>',
+        '<ul class="list-disc list-inside "><li>Utilize no-code platforms (e.g., Airtable) for cost-effective data management and improved staff accessibility.</li><li>Resolve technical issues and implement new features to enhance productivity.</li><li>Manage Google Workspace, shared drive storage, and ICT policies for seamless operations.</li><li>Create comprehensive documentation for all company software.</li></ul>',
     },
   ],
   skills: {
@@ -313,7 +313,7 @@ export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
         end: "NOW",
       },
       description:
-        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li>Built a simple learning project to display real-time weather information</li><li> Technologies used: React JS, Material UI, and RESTful APIs.</li></ul>',
+        '<ul class="list-disc list-inside "><li>Built a simple learning project to display real-time weather information</li><li> Technologies used: React JS, Material UI, and RESTful APIs.</li></ul>',
     },
     {
       title: "VietHope Student Development Program Application Tool",
@@ -322,7 +322,7 @@ export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
         end: "07/2022",
       },
       description:
-        '<ul class="list-disc list-inside marker:text-primary marker:text-xl"><li><b>Description:</b> Created tool to automate merging scholar applications from Google Sheets into user-friendly HTML, streamlining review process for judges, saving time. (Github respository: https://github.com/thanhlp18/vsdp-application-tool)</li><li><b>Technologies used:</b> HTML, CSS, and Python (Pandas, Googleapiclient, and Google Auth) for data extraction from Google Sheets (csv file type).</li></ul>',
+        '<ul class="list-disc list-inside "><li><b>Description:</b> Created tool to automate merging scholar applications from Google Sheets into user-friendly HTML, streamlining review process for judges, saving time. (Github respository: https://github.com/thanhlp18/vsdp-application-tool)</li><li><b>Technologies used:</b> HTML, CSS, and Python (Pandas, Googleapiclient, and Google Auth) for data extraction from Google Sheets (csv file type).</li></ul>',
     },
   ],
   certificates: [
@@ -338,7 +338,8 @@ export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
       title: "Programming with JavaScript",
       provider: "Coursera",
       issueDate: "08/2023",
-      description: "<b>This is an example description.</b>",
+      description:
+        "<b>This course teaches the fundamentals of programming using JavaScript. It covers topics such as variables, data types, control flow, functions, and object-oriented programming. By the end of the course, students will have a solid understanding of JavaScript and be able to build interactive web applications..</b>",
       certificateUrl: "https://fontawesome.com/search?q=delete&o=r&m=free",
     },
   ],

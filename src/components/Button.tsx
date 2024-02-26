@@ -19,8 +19,6 @@ type Props = {
 const StyledButton = styled.button`
   display: block;
   text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: background-color 0.2s ease-in-out;
   /* transition: color 0.2s ease-in-out; */

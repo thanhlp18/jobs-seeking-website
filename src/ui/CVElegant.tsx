@@ -13,6 +13,7 @@ import {
 } from "../utils/constants";
 import { ProfileDataForCV, ProfileUserInformationType } from "../utils/type";
 import Button from "../components/Button";
+import Divider from "../components/Divider";
 // import EditIcon from "../components/EditIcon";
 
 type props = {
@@ -54,36 +55,36 @@ export default function CVElegant({ className }: props) {
 
             <div className="sm:grid-cols-2 sm:grid-rows-2 grid grid-cols-1  gap-y-2 ">
               <div className="flex flex-row gap-2 flex-nowrap">
-                <span className="text-sm text-white items-center">
+                <span className="text-base text-white items-center">
                   <FontAwesomeIcon icon={faEnvelope} />
                 </span>
-                <span className="text-sm text-white line-clamp-1">
+                <span className="text-base text-white line-clamp-1">
                   {personalInformation.email}
                 </span>
               </div>
               <div className="flex flex-row gap-2 flex-nowrap items-center">
-                <span className="text-sm text-white">
+                <span className="text-base text-white">
                   <FontAwesomeIcon icon={faPhone} />
                 </span>
-                <span className="text-sm text-white line-clamp-1">
+                <span className="text-base text-white line-clamp-1">
                   {personalInformation.phone}
                 </span>
               </div>
               <div className="flex flex-row gap-2 flex-nowrap items-center">
-                <span className="text-sm text-white">
+                <span className="text-base text-white">
                   <FontAwesomeIcon icon={faGift} />
                 </span>
-                <span className="text-sm text-white line-clamp-1">
+                <span className="text-base text-white line-clamp-1">
                   {personalInformation.birthday}
                 </span>
               </div>
 
               <div className="flex flex-row gap-2 flex-nowrap items-center">
-                <span className="text-sm text-white">
+                <span className="text-base text-white">
                   <FontAwesomeIcon icon={faLocation} />
                 </span>
                 {personalInformation.location && (
-                  <span className="text-sm text-white line-clamp-1">
+                  <span className="text-base text-white line-clamp-1">
                     {personalInformation.location}
                   </span>
                 )}
@@ -93,9 +94,9 @@ export default function CVElegant({ className }: props) {
         </div>
         {/* <EditIcon className="absolute right-4 top-4 text-sm" /> */}
       </div>
-      <div className="p-6">
+      <div className="p-6  flex flex-col flex-nowrap gap-1">
         {/* Render the aboutMe section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 !text-base">
             About Me
           </p>
@@ -104,9 +105,9 @@ export default function CVElegant({ className }: props) {
             {userProfile.aboutMe.description}
           </p>
         </div>
-
+        <Divider />
         {/* Render the education section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 ">
             Education
           </p>
@@ -115,7 +116,7 @@ export default function CVElegant({ className }: props) {
             {userProfile.education.map((education) => (
               <div className="flex flex-col gap-2 flex-nowrap">
                 <div className="flex flex-col  flex-nowrap">
-                  <div className="text-base  text-bold font-medium">
+                  <div className="text-base  text-bold font-bold">
                     {education.institution}
                   </div>
                   <div className="flex flex-row gap-2  flex-nowrap">
@@ -135,9 +136,10 @@ export default function CVElegant({ className }: props) {
             ))}
           </div>
         </div>
+        <Divider />
 
         {/* Render the work experience section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 !text-base">
             Work Experience
           </p>
@@ -145,10 +147,10 @@ export default function CVElegant({ className }: props) {
             {userProfile.workExperience.map((experience) => (
               <div className="flex flex-col gap-2 flex-nowrap">
                 <div className="flex flex-col  flex-nowrap">
-                  <div className="text-base  text-bold font-medium">
+                  <div className="text-base  text-bold ">
                     {experience.duration.start} - {experience.duration.end}
                   </div>
-                  <div className="flex flex-row gap-2  flex-nowrap">
+                  <div className="flex flex-row gap-2  flex-nowrap font-bold">
                     <div className="text-base  text-bold">
                       {experience.position}
                     </div>
@@ -168,9 +170,10 @@ export default function CVElegant({ className }: props) {
             ))}
           </div>
         </div>
+        <Divider />
 
         {/* Render the skills section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 !text-base">
             Skills
           </p>
@@ -232,9 +235,10 @@ export default function CVElegant({ className }: props) {
             )}
           </div>
         </div>
+        <Divider />
 
         {/* Render the personal projects section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 !text-base">
             Personal Projects
           </p>
@@ -245,10 +249,8 @@ export default function CVElegant({ className }: props) {
                   <div className="text-base  text-bold font-medium">
                     {project.duration.start} - {project.duration.end}
                   </div>
-                  <div className="flex flex-row gap-2  flex-nowrap">
-                    <div className="text-base  text-bold font-medium">
-                      {project.title}
-                    </div>
+                  <div className="flex flex-row gap-2  flex-nowrap font-bold">
+                    <div className="text-base  text-bold ">{project.title}</div>
 
                     <span>|</span>
                     <p className="text-bold text-base ">
@@ -267,9 +269,10 @@ export default function CVElegant({ className }: props) {
             ))}
           </div>
         </div>
+        <Divider />
 
         {/* Render the certificates section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 ">
             Certificates
           </p>
@@ -278,7 +281,7 @@ export default function CVElegant({ className }: props) {
             {userProfile.certificates.map((certificate) => (
               <div className="flex flex-col gap-2 flex-nowrap">
                 <div className="flex flex-col  flex-nowrap">
-                  <div className="text-base  text-bold font-medium">
+                  <div className="text-base  text-bold font-bold">
                     {certificate.title}
                   </div>
                   <div className="flex flex-row gap-2  flex-nowrap">
@@ -302,9 +305,10 @@ export default function CVElegant({ className }: props) {
             ))}
           </div>
         </div>
+        <Divider />
 
         {/* Render the awards section */}
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-4">
           <p className="text-bold text-center md:text-start font-bold col-span-2 ">
             Awards
           </p>
@@ -313,7 +317,7 @@ export default function CVElegant({ className }: props) {
             {userProfile.awards.map((award) => (
               <div className="flex flex-col gap-2 flex-nowrap">
                 <div className="flex flex-col  flex-nowrap">
-                  <div className="text-base  text-bold font-medium">
+                  <div className="text-base  text-bold font-bold">
                     {award.title}
                   </div>
                   <div className="flex flex-row gap-2  flex-nowrap">
