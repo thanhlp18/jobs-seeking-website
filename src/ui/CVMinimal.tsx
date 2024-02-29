@@ -200,9 +200,6 @@ export default function CVMinimal({ className }: props) {
         <div className="pl-4 col-span-8 flex flex-col gap-5 ">
           {/* Render the work experience section */}
           <div className="flex flex-col gap-1.5">
-            <Title type="h6" className={`font-medium text-[${templateColor}]`}>
-              ABOUT ME
-            </Title>
             <div className="text-bold col-span-10 text-base">
               {userProfile.workExperience.map((experience, index) => (
                 <div

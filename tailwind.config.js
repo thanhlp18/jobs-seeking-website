@@ -22,6 +22,7 @@ export default {
         bold: TEXT_COLOR_BOLD,
         normal: TEXT_COLOR_NORMAL,
         disabled: COLOR_DISABLED,
+        cv_color_red: "#ed1b2f",
       },
       aspectRatio: {
         A4: "210 / 297",

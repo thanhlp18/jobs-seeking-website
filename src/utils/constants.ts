@@ -265,10 +265,9 @@ export const PROFILE_COMPANY_SIZE: string[] = [
 ];
 
 export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
-  aboutMe: {
-    description:
-      "I am seeking an opportunity to contribute my values, curiosity, and creativity while pursuing personal and professional growth",
-  },
+  aboutMe:
+    "I am seeking an opportunity to contribute my values, curiosity, and creativity while pursuing personal and professional growth",
+
   education: [
     {
       degree: "Computer Network and Data Communication",

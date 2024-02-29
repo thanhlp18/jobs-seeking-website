@@ -64,9 +64,8 @@ export default function Profile() {
     location: "",
   });
   const [ProfileForCV, setProfileForCV] = useState<ProfileDataForCV>({
-    aboutMe: {
-      description: "",
-    },
+    aboutMe: "",
+
     education: [
       {
         degree: "",
@@ -99,15 +98,16 @@ export default function Profile() {
     awards: [],
   });
   const [profileCTA, setProfileCTA] = useState<string[]>([]);
+
   useEffect(() => {
     setUserData(PROFILE_CONTACT_INFORMATION);
     setProfileForCV(PROFILE_EXAMPLE_DATA_FOR_CV);
     PROFILE_DATA_CATEGORY.map((category) => {
-      console.log(PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.description.length);
+      console.log(PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.length);
       let profileCTATemp: string[] = [];
       switch (category.id) {
         case "about-me": {
-          PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.description.length === 0 ??
+          PROFILE_EXAMPLE_DATA_FOR_CV.aboutMe.length === 0 ??
             (profileCTATemp = [...profileCTATemp, "Add About Me"]);
           break;
         }
@@ -150,6 +150,28 @@ export default function Profile() {
     });
   }, []);
 
+  // useEffect(() => {
+  //   const token = "1|9GZRXAoIVwSb2BP5MyEE640To2HMwPcteusl1wFffe7aa874"; // Replace "your_bearer_token_here" with your actual token
+
+  //   fetch("http://127.0.0.1:8000/api/profiles", {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       setUserData({ ...userData, ...data.data[0] });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // }, []);
   return (
     <Wrapper className="">
       <div className="grid grid-cols-10 gap-6">

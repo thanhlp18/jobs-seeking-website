@@ -103,9 +103,7 @@ export type Award = {
 };
 
 export type ProfileDataForCV = {
-  aboutMe: {
-    description: string;
-  };
+  aboutMe: string;
   education: Education[];
   workExperience: WorkExperience[];
   skills: Skills;

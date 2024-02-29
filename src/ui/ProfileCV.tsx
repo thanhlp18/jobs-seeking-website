@@ -22,7 +22,7 @@ export default function ProfileCV({ ProfileData, sectionKey }: Props) {
     case "about-me":
       return (
         <div>
-          <p>{ProfileData.aboutMe.description}</p>
+          <p>{ProfileData.aboutMe}</p>
         </div>
       );
     case "education":
