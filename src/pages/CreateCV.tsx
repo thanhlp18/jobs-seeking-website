@@ -1,9 +1,9 @@
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef } from "react";
-import CVElegant from "../ui/CVElegant";
-import CVMinimal from "../ui/CVMinimal";
-import CVCubic from "../ui/CVCubic";
+import CVElegant from "../ui/CVTemplates/CVElegant/CVElegant";
+import CVMinimal from "../ui/CVTemplates/CVMinimal/CVMinimal";
+import CVCubic from "../ui/CVTemplates/CVCubic/CVCubic";
 
 import Button from "../components/Button";
 import ReactToPrint from "react-to-print";
@@ -37,7 +37,7 @@ const CVTemplate = [
 ];
 
 export default function CreateCV() {
-  const [selectedTemplate, setSelectedTemplate] = React.useState<number>(0);
+  const [selectedTemplate, setSelectedTemplate] = React.useState<number>(1);
   const ref = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -65,12 +65,14 @@ export default function CreateCV() {
                 }`}
               />
             </span>
-            <p className="font-semibold text-bold">{template.name}</p>
+            <p className="font-medium tracking-wide text-gray-200">
+              {template.name}
+            </p>
           </div>
         ))}
       </section>
       <section className="col-span-8 grid-rows-12  pt-6 px-4 fixed top-11 bottom-0 bg-gray-300  left-[30%] right-0 overflow-scroll no-scrollbar">
-        <div className="mx-2 md:mx-4 lg:mx-6 my-2 md:my-2 lg:my-2">
+        <div className="mx-2 md:mx-4 lg:mx-6 my-2 md:my-2 lg:my-2  !mb-24">
           <div className="mx-auto" ref={ref}>
             {CVTemplate[selectedTemplate - 1]?.template}
           </div>
