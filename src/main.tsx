@@ -8,11 +8,13 @@ import JobPreferences from "./pages/JobPreferences.tsx";
 import ManageCV from "./pages/ManageCV.tsx";
 import Profile from "./pages/Profile.tsx";
 import SignIn, { action as signInAction } from "./pages/SignIn.tsx";
-import SignUp from "./pages/SignUp.tsx";
-import Layout from "./ui/Layout.tsx";
-import LayoutWithoutFooter from "./ui/LayoutWithoutFooter.tsx";
-import ProfileLayout from "./ui/ProfileLayout.tsx";
+import SignUp, { action as signUpAction } from "./pages/SignUp.tsx";
+import Layout from "./ui/Layout/Layout.tsx";
+import LayoutWithoutFooter from "./ui/Layout/LayoutWithoutFooter.tsx";
+import ProfileLayout from "./ui/Profile/ProfileLayout.tsx";
 import { loadLoginStatus } from "./utils/loadersFunction.ts";
+import { store } from "./app/store.ts";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
-        action: signInAction,
+        action: signUpAction,
       },
       {
         path: "/profile",
@@ -69,6 +71,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

@@ -14,13 +14,14 @@ export async function loadLoginStatus(): Promise<LoaderLoginResponse> {
 
   const cookieString = document.cookie;
   const cookies = parseCookieString(cookieString);
-  if (
-    cookies["token"] !== undefined ||
-    Number(cookies["expires_in"] + cookies["created_at"]) >=
-      new Date().getTime()
-  ) {
-    return Promise.resolve({ user_id: cookies.user_id, isLogin: true });
+  if (cookies["token"] !== undefined) {
+    return Promise.resolve({
+      isLogin: true,
+      token: cookies.token,
+      token_type: cookies.token_type,
+      name: cookies.name,
+    });
   } else {
-    return Promise.resolve({ user_id: "", isLogin: false });
+    return Promise.resolve({ isLogin: false });
   }
 }

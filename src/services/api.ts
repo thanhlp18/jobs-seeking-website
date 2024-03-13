@@ -1,32 +1,89 @@
 import { ApiLoginResponse } from "../utils/type";
+// const API_BASE = "http://127.0.0.1:8000/api";
 
-export const loginApi = async (
+export const signInApi = async (
   email: string,
   password: string
 ): Promise<ApiLoginResponse> => {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      let res; // Declare the 'res' variable
-      if (email === "admin" && password === "admin") {
-        console.log(email, password, "res");
-        res = {
-          status: 200,
-          data: {
-            token: "faf234rfasfd",
-            expires_in: 36000,
-            created_at: new Date().getTime(),
-            user_id: "1234567890",
-          },
-        };
-      } else {
-        res = {
+    fetch(`http://127.0.0.1:8000/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status_code === 200) {
+          resolve({
+            status: 200,
+            data: {
+              name: res.name,
+              token: res.access_token,
+              token_type: res.token_type,
+              success: true,
+              message: "Login successfully",
+            },
+          });
+        } else {
+          resolve({
+            status: res.status_code,
+            data: {},
+            errors: res.error,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+        resolve({
           status: 401,
-          data: {
-            message: "Invalid email or password",
-          },
-        };
-      }
-      resolve(res); // Resolve
-    }, 1000);
+          data: { success: false, message: "Invalid email or password" },
+        });
+      });
+  });
+};
+
+export const signUpApi = async (
+  email: string,
+  password: string,
+  name: string
+): Promise<ApiLoginResponse> => {
+  return new Promise((resolve) => {
+    fetch(`http://127.0.0.1:8000/api/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password, name }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status_code === 200) {
+          resolve({
+            status: 200,
+            data: {
+              name: res.user.name,
+              token: res.access_token,
+              token_type: res.token_type,
+              message: "Sign up successfully",
+            },
+          });
+        } else {
+          resolve({
+            status: res.status_code,
+            // the error response from back end are email, password, name
+            errors: res.error,
+            data: {},
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+        resolve({
+          status: err.status_code,
+          data: { success: false, message: err },
+        });
+      });
   });
 };

@@ -1,12 +1,12 @@
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef } from "react";
+import CVCubic from "../ui/CVTemplates/CVCubic/CVCubic";
 import CVElegant from "../ui/CVTemplates/CVElegant/CVElegant";
 import CVMinimal from "../ui/CVTemplates/CVMinimal/CVMinimal";
-import CVCubic from "../ui/CVTemplates/CVCubic/CVCubic";
 
-import Button from "../components/Button";
 import ReactToPrint from "react-to-print";
+import Button from "../components/Button";
 import CVModern from "../ui/CVTemplates/CVModern/CVModern";
 
 const CVTemplate = [
@@ -35,6 +35,8 @@ const CVTemplate = [
     template: <CVModern />,
   },
 ];
+
+const CVTemplateColor = ["#ED1B2F", "#121212", "#0A3E7A"];
 
 export default function CreateCV() {
   const [selectedTemplate, setSelectedTemplate] = React.useState<number>(1);
@@ -80,7 +82,18 @@ export default function CreateCV() {
       </section>
       <div className="fixed left-[30%] right-0 bottom-0 bg-gray-600 border-l-2 border-solid border-gray-700 flex flex-row justify-between py-2 px-8 items-center">
         <div>
-          <span>Select color</span>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="text-base text-white tracking-wide font-medium">
+              Select color
+            </span>
+            {CVTemplateColor.map((color, index) => (
+              <button
+                onClick={() => localStorage.setItem("CvColor", color)}
+                key={index}
+                className={`bg-[${color}] w-6 h-6 hover:scale-125 transition-transform		 border border-solid border-gray-100 drop-shadow-sm rounded-full`}
+              ></button>
+            ))}
+          </div>
         </div>
         <ReactToPrint
           bodyClass="print-agreement"

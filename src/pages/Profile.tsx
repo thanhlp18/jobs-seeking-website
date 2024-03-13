@@ -19,8 +19,8 @@ import Divider from "../components/Divider";
 import EditIcon from "../components/EditIcon";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
-import CardWithTitle from "../ui/CardWithTitle";
-import ProfileCV from "../ui/ProfileCV";
+import CardWithTitle from "../ui/Card/CardWithTitle";
+import ProfileCV from "../ui/Profile/ProfileCV";
 import {
   PROFILE_CONTACT_INFORMATION,
   PROFILE_DATA_CATEGORY,

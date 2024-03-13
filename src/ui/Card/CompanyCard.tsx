@@ -1,6 +1,6 @@
 import { faChevronRight, faDotCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Title from "../components/Title";
+import Title from "../../components/Title";
 
 type Props = {
   title: string;

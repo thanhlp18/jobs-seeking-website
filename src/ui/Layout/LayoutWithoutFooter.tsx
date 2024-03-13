@@ -1,12 +1,8 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import Toast from "../components/Toast";
-import { LoaderLoginResponse } from "../utils/type";
+import { Outlet } from "react-router-dom";
+import Toast from "../../components/Toast";
 import Header from "./Header";
 
 export default function LayoutWithoutFooter() {
-  const loginData: LoaderLoginResponse = useLoaderData() as LoaderLoginResponse;
-  localStorage.setItem("isLogin", loginData?.isLogin.toString());
-  localStorage.setItem("user_id", loginData?.user_id.toString());
   return (
     <div className="relative  h-screen">
       <Toast />

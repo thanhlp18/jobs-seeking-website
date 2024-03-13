@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { PROFILE_NAV_LINK_ITEMS } from "../utils/constants";
-import Wrapper from "../components/Wrapper";
+import { PROFILE_NAV_LINK_ITEMS } from "../../utils/constants";
+import Wrapper from "../../components/Wrapper";
 import { memo } from "react";
 
 function ProfileNavigation() {

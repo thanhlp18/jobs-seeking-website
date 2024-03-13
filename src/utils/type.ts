@@ -3,17 +3,23 @@ import React from "react";
 export type ApiLoginResponse = {
   status: number;
   data: {
+    name?: string;
     token?: string;
     message?: string;
-    expires_in?: number;
-    created_at?: number;
-    user_id?: string;
+
+    token_type?: string;
+    success?: boolean;
+  };
+  errors?: {
+    [key: string]: string[];
   };
 };
 
 export type LoaderLoginResponse = {
-  user_id: string;
   isLogin: boolean;
+  token?: string;
+  token_type?: string;
+  name?: string;
 };
 
 export type ProfileNavLinkItemsType = {

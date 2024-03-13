@@ -1,5 +1,5 @@
-import Title from "../components/Title";
-import { Education } from "../utils/type";
+import Title from "../../components/Title";
+import { Education } from "../../utils/type";
 
 export default function ProfileEducation({
   degree,

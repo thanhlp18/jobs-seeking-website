@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../components/Card";
-import Divider from "../components/Divider";
-import EditIcon from "../components/EditIcon";
-import Title from "../components/Title";
+import Card from "../../components/Card";
+import Divider from "../../components/Divider";
+import EditIcon from "../../components/EditIcon";
+import Title from "../../components/Title";
 
 type Props = {
   children?: React.ReactNode;

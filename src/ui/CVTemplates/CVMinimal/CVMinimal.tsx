@@ -1,6 +1,6 @@
 // import EditIcon from "../components/EditIcon";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   PROFILE_CONTACT_INFORMATION,
   PROFILE_EXAMPLE_DATA_FOR_CV,
@@ -27,7 +27,13 @@ export default function CVMinimal({ className }: props) {
   const [personalInformation] = useState<ProfileUserInformationType>(
     PROFILE_CONTACT_INFORMATION
   );
-  const [templateColor] = useState<string>("#ed1b2f");
+
+  const [templateColor, setTemplateColor] = useState<string>("#ed1b2f");
+  useEffect(() => {
+    const CvColor = localStorage.getItem("CvColor");
+    setTemplateColor(CvColor ? CvColor : "#ed1b2f");
+  }, []);
+  console.log("templateColor", templateColor);
   return (
     <div className={`${className} rounded-lg overflow-hidden w-full  bg-white`}>
       {/* information cv*/}

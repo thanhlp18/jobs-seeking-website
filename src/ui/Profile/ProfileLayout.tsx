@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import ProfileNavigation from "../ui/ProfileNavigation";
+import ProfileNavigation from "./ProfileNavigation";
 
 export default function ProfileLayout() {
   return (

@@ -8,7 +8,7 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
-import CardWithTitle from "../ui/CardWithTitle";
+import CardWithTitle from "../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../utils/constants";
 
 export default function ManageCV() {

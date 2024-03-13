@@ -1,8 +1,10 @@
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../services/redux/user";
 
 const Header: React.FC = () => {
-  const isLogin = localStorage.getItem("isLogin");
-  const user_id = localStorage.getItem("user_id");
+  const user = useSelector(selectUser);
+
   return (
     <header className="bg-gray-800 	max-w-full fixed right-0 left-0 z-50 top-0 h-11">
       <div className="flex items-center justify-between px-4 py-2 mx-auto xl:max-w-[1280px]">
@@ -35,9 +37,13 @@ const Header: React.FC = () => {
               </a>
             </li>
             <li>
-              {isLogin === "true" ? (
+              {!(
+                user.name === "" &&
+                user.token === "" &&
+                user.token_type === ""
+              ) ? (
                 <a href="/profile" className="text-white">
-                  Chào mừng {user_id}
+                  Chào mừng {user.name}
                 </a>
               ) : (
                 <a href="/sign-in" className="text-white">

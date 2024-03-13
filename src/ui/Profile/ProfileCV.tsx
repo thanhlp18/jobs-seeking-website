@@ -4,7 +4,7 @@ import {
   PersonalProject,
   ProfileDataForCV,
   WorkExperience,
-} from "../utils/type";
+} from "../../utils/type";
 import ProfileAward from "./ProfileAward";
 import ProfileCertificate from "./ProfileCertificate";
 import ProfileEducation from "./ProfileEducation";
