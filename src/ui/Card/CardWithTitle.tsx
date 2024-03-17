@@ -25,7 +25,7 @@ export default function CardWithTitle({
     <Card
       className={`${
         className ? className : ""
-      } flex flex-row gap-2 justify-center !py-6 relative bg-white`}
+      } flex flex-row gap-2 justify-center !py-6 relative bg-white h-fit`}
     >
       <div className="flex-1 flex flex-col gap-2">
         <Title type={titleType} className="capitalize">

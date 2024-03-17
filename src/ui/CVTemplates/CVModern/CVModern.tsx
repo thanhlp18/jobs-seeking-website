@@ -1,14 +1,8 @@
 // import EditIcon from "../components/EditIcon";
 
 import { useState } from "react";
-import {
-  PROFILE_CONTACT_INFORMATION,
-  PROFILE_EXAMPLE_DATA_FOR_CV,
-} from "../../../utils/constants";
-import {
-  ProfileDataForCV,
-  ProfileUserInformationType,
-} from "../../../utils/type";
+import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
+import { ProfileDataForCV } from "../../../utils/type";
 import AboutMeSection from "./components/AboutMeSection";
 import CertificateSection from "./components/CertificateSection";
 import EducationSection from "./components/EducationSection";
@@ -16,13 +10,14 @@ import PersonalDetailSection from "./components/PersonalDetailSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
+import { ProfileUserInformationType } from "../../../utils/type/profileType";
 
 type props = {
   className?: string;
 };
 
 export default function CVModern({ className }: props) {
-  const [userProfile] = useState<ProfileDataForCV>(PROFILE_EXAMPLE_DATA_FOR_CV);
+  const [userProfile] = useState<ProfileDataForCV>();
   const [personalInformation] = useState<ProfileUserInformationType>(
     PROFILE_CONTACT_INFORMATION
   );
@@ -70,8 +65,8 @@ export default function CVModern({ className }: props) {
         <div className="pl-4 col-span-7 2xl:col-span-8 flex flex-col  z-10">
           {/* About me  */}
           <AboutMeSection
-            aboutMe={userProfile.aboutMe}
-            profileImage={personalInformation.profileImage}
+            aboutMe={userProfile.aboutMe.description}
+            profileImage={personalInformation.image_url}
           />
 
           {/* Render the work experience section */}

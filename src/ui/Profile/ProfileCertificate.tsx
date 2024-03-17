@@ -5,12 +5,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditIcon from "../../components/EditIcon";
 import Title from "../../components/Title";
-import { Certificate } from "../../utils/type";
+import { CertificateType } from "../../utils/type";
 import { Interweave } from "interweave";
 import Link from "../../components/Link";
 
 type Props = {
-  certificate: Certificate;
+  certificate: CertificateType;
   type?: string;
 };
 

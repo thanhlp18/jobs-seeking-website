@@ -1,14 +1,8 @@
 // import EditIcon from "../components/EditIcon";
 
 import { useEffect, useState } from "react";
-import {
-  PROFILE_CONTACT_INFORMATION,
-  PROFILE_EXAMPLE_DATA_FOR_CV,
-} from "../../../utils/constants";
-import {
-  ProfileDataForCV,
-  ProfileUserInformationType,
-} from "../../../utils/type";
+import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
+import { ProfileDataForCV } from "../../../utils/type";
 import AboutMeSection from "./components/AboutMeSection";
 import CertificateSection from "./components/CertificateSection";
 import EducationSection from "./components/EducationSection";
@@ -17,6 +11,7 @@ import PersonalDetailSection from "./components/PersonalDetailSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
+import { ProfileUserInformationType } from "../../../utils/type/profileType";
 
 type props = {
   className?: string;

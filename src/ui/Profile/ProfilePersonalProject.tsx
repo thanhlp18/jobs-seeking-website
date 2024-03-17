@@ -11,9 +11,8 @@ type Props = {
 };
 
 export default function ProfilePersonalProject({
-  project: { title, duration, description },
+  project: { title, start_date, end_date, description },
 }: Props) {
-  const { start, end } = duration;
   return (
     <div className="flex flex-col gap-2 flex-nowrap">
       <div className="flex flex-col  flex-nowrap">
@@ -32,7 +31,7 @@ export default function ProfilePersonalProject({
       </div>
       <div className="flex flex-col  flex-nowrap">
         <div className="text-base font-medium text-bold">
-          <span>{start}</span> - <span>{end}</span>
+          <span>{start_date}</span> - <span>{end_date}</span>
         </div>
         <Markup
           content={description}

@@ -1,13 +1,7 @@
 import { useState } from "react";
 import Divider from "../../../components/Divider";
-import {
-  PROFILE_CONTACT_INFORMATION,
-  PROFILE_EXAMPLE_DATA_FOR_CV,
-} from "../../../utils/constants";
-import {
-  ProfileDataForCV,
-  ProfileUserInformationType,
-} from "../../../utils/type";
+import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
+import { ProfileDataForCV } from "../../../utils/type";
 import AboutMeSection from "./components/AboutMeSection";
 import CertificatesSection from "./components/CertificatesSection";
 import EducationSection from "./components/EducationSection";
@@ -16,6 +10,7 @@ import PersonalsProjectSection from "./components/PersonalsProjectSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
 import AwardsSection from "./components/AwardsSection";
+import { ProfileUserInformationType } from "../../../utils/type/profileType";
 // import EditIcon from "../components/EditIcon";
 
 type props = {
@@ -23,7 +18,7 @@ type props = {
 };
 
 export default function CVElegant({ className }: props) {
-  const [userProfile] = useState<ProfileDataForCV>(PROFILE_EXAMPLE_DATA_FOR_CV);
+  const [userProfile] = useState<ProfileDataForCV>();
   const [personalInformation] = useState<ProfileUserInformationType>(
     PROFILE_CONTACT_INFORMATION
   );
@@ -33,7 +28,7 @@ export default function CVElegant({ className }: props) {
       <PersonalDetailSection personalInformation={personalInformation} />
       <div className="p-6  flex flex-col flex-nowrap gap-1">
         {/* Render the aboutMe section */}
-        <AboutMeSection aboutMe={userProfile.aboutMe} />
+        <AboutMeSection aboutMe={userProfile.aboutMe.description} />
         <Divider />
 
         {/* Render the education section */}

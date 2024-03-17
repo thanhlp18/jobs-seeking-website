@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  PROFILE_CONTACT_INFORMATION,
-  PROFILE_EXAMPLE_DATA_FOR_CV,
-} from "../../../utils/constants";
-import {
-  ProfileDataForCV,
-  ProfileUserInformationType,
-} from "../../../utils/type";
+import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
+import { ProfileDataForCV } from "../../../utils/type";
 import AboutMeSection from "./components/AboutMeSection";
 import AwardsSection from "./components/AwardsSection";
 import CertificateSection from "./components/CertificateSection";
@@ -14,6 +8,7 @@ import EducationSection from "./components/EducationSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
+import { ProfileUserInformationType } from "../../../utils/type/profileType";
 // import EditIcon from "../components/EditIcon";
 
 type props = {
@@ -21,9 +16,7 @@ type props = {
 };
 
 export default function CVCubic({ className }: props) {
-  const [userProfile] = React.useState<ProfileDataForCV>(
-    PROFILE_EXAMPLE_DATA_FOR_CV
-  );
+  const [userProfile] = React.useState<ProfileDataForCV>();
   const [personalInformation] = React.useState<ProfileUserInformationType>(
     PROFILE_CONTACT_INFORMATION
   );
@@ -56,7 +49,7 @@ export default function CVCubic({ className }: props) {
             <AboutMeSection
               templateColor={templateColor}
               personalInformation={personalInformation}
-              aboutMe={userProfile.aboutMe}
+              aboutMe={userProfile.aboutMe.description}
             />
           </div>
         </div>

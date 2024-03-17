@@ -7,7 +7,6 @@ import { LoaderLoginResponse } from "../utils/type";
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
   const loginData: LoaderLoginResponse = useLoaderData() as LoaderLoginResponse;
-  console.log(loginData);
   useEffect(() => {
     if (loginData.isLogin) {
       dispatch(

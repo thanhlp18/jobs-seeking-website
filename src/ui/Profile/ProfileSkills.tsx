@@ -1,10 +1,10 @@
 import Button from "../../components/Button";
 import Title from "../../components/Title";
 import Tooltip from "../../components/Tooltip";
-import { Skills } from "../../utils/type";
+import { SkillType } from "../../utils/type";
 
 type Props = {
-  skills: Skills;
+  skills: SkillType;
   type?: string;
 };
 

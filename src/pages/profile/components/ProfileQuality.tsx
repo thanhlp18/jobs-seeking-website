@@ -119,7 +119,6 @@ export default function ProfileQuality({ profileCTA }: Props) {
                 <span className="ml-2">{cta}</span>
               </li>
             ))}
-
           {profileCTA.length > 3 && (
             <li
               className="cursor-pointer text-gray-500 font-medium transition delay-1000 ease-in"

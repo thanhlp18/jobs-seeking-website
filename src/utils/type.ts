@@ -35,6 +35,17 @@ export type ProfileDataCategoryType = {
   content?: React.ReactNode;
 };
 
+export type ProfileCategoryType = {
+  aboutMe: ProfileDataCategoryType;
+  education: ProfileDataCategoryType;
+  workExperience: ProfileDataCategoryType;
+  skills: ProfileDataCategoryType;
+  personalProjects: ProfileDataCategoryType;
+  certificates: ProfileDataCategoryType;
+  awards: ProfileDataCategoryType;
+  coverLetter: ProfileDataCategoryType;
+};
+
 export type ComponentSelectionWithSearchType = {
   id: number;
   name: string;
@@ -51,37 +62,40 @@ export type ToggleType = {
 };
 
 export type Duration = {
-  start: string;
-  end: string;
+  start_date: string;
+  end_date: string;
 };
 
-export type Education = {
+export type EducationType = {
   degree: string;
   institution: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   additionalDetail: string;
 };
 
-export type WorkExperience = {
+export type WorkExperienceType = {
   position: string;
   company: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   responsibilities: string;
 };
 
-export type Skills = {
+export type SkillType = {
   excellent?: string[];
   intermediate?: string[];
   beginner?: string[];
 };
 
-export type PersonalProject = {
+export type PersonalProjectType = {
   title: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   description: string;
 };
 
-export type Certificate = {
+export type CertificateType = {
   title: string;
   provider: string;
   issueDate: string;
@@ -89,7 +103,7 @@ export type Certificate = {
   certificateUrl: string;
 };
 
-export type Award = {
+export type AwardType = {
   title: string;
   provider: string;
   issueDate: string;
@@ -97,11 +111,11 @@ export type Award = {
 };
 
 export type ProfileDataForCV = {
-  aboutMe: string;
-  education: Education[];
-  workExperience: WorkExperience[];
-  skills: Skills;
-  personalProjects: PersonalProject[];
-  certificates: Certificate[];
-  awards: Award[];
+  aboutMe: { description: string };
+  education: EducationType[] | [];
+  workExperience: WorkExperienceType[] | [];
+  skills: SkillType;
+  personalProjects: PersonalProjectType[] | [];
+  certificates: CertificateType[] | [];
+  awards: AwardType[] | [];
 };

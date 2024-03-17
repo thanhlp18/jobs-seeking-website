@@ -2,15 +2,16 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditIcon from "../../components/EditIcon";
 import Title from "../../components/Title";
-import { WorkExperience } from "../../utils/type";
+import { WorkExperienceType } from "../../utils/type";
 import { Interweave } from "interweave";
 
 export default function ProfileWorkExperience({
   position,
   company,
-  duration: { start, end },
+  start_date,
+  end_date,
   responsibilities,
-}: WorkExperience) {
+}: WorkExperienceType) {
   return (
     <div className="flex flex-col gap-2 flex-nowrap">
       <div className="flex flex-col  flex-nowrap">
@@ -27,7 +28,7 @@ export default function ProfileWorkExperience({
       </div>
       <div className="flex flex-col  flex-nowrap">
         <div className="text-base font-medium text-bold">
-          <span>{start}</span> - <span>{end}</span>
+          <span>{start_date}</span> - <span>{end_date}</span>
         </div>
         <div className="font-medium text-base text-bold list-disc list-inside ">
           <Interweave content={responsibilities} />

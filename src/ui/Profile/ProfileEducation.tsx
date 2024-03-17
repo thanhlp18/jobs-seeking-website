@@ -1,12 +1,13 @@
 import Title from "../../components/Title";
-import { Education } from "../../utils/type";
+import { EducationType } from "../../utils/type";
 
 export default function ProfileEducation({
   degree,
   institution,
-  duration: { start, end },
+  start_date,
+  end_date,
   additionalDetail,
-}: Education) {
+}: EducationType) {
   return (
     <div className="flex flex-col gap-2 flex-nowrap ">
       <div className="flex  flex-col  flex-nowrap">
@@ -16,7 +17,7 @@ export default function ProfileEducation({
       </div>
       <div className="flex flex-col  flex-nowrap">
         <div className="text-base  text-bold  ">
-          <span>{start}</span> - <span>{end}</span>
+          <span>{start_date}</span> - <span>{end_date}</span>
         </div>
         <div className=" text-base text-bold   ">{additionalDetail}</div>
       </div>
