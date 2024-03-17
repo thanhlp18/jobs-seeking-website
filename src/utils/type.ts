@@ -27,18 +27,6 @@ export type ProfileNavLinkItemsType = {
   to: string;
 }[];
 
-export type ProfileUserInformationType = {
-  profileImage: string;
-  name: string;
-  title: string;
-  email: string;
-  phone: string;
-  birthday: string;
-  gender?: string;
-  location?: string;
-  website?: string;
-};
-
 export type ProfileDataCategoryType = {
   title: string;
   id: string;

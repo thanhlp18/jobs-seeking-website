@@ -36,5 +36,6 @@ export const { signIn } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectUser = (state: RootState) => state.user;
+export const getToken = (state: RootState) => state.user.token;
 
 export default userSlice.reducer;

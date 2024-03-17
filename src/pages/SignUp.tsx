@@ -6,7 +6,7 @@ import Input from "../components/Input";
 import Link from "../components/Link";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
-import { signUpApi } from "../services/api";
+import { signUpApi } from "../services/api/authenticationApi";
 import toast from "react-hot-toast";
 
 export default function SignUp() {

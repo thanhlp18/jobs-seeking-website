@@ -6,7 +6,7 @@ export default function Toast() {
       toastOptions={{
         // Define default options
         className: "",
-        duration: 5000,
+        duration: 3000,
         style: {
           background: "#363636",
           color: "#fff",

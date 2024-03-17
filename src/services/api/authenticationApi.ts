@@ -1,12 +1,12 @@
-import { ApiLoginResponse } from "../utils/type";
-// const API_BASE = "http://127.0.0.1:8000/api";
+import { ApiLoginResponse } from "../../utils/type";
+import { BASE_URL_API } from "../../utils/constants";
 
 export const signInApi = async (
   email: string,
   password: string
 ): Promise<ApiLoginResponse> => {
   return new Promise((resolve) => {
-    fetch(`http://127.0.0.1:8000/api/login`, {
+    fetch(`${BASE_URL_API}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const signUpApi = async (
   name: string
 ): Promise<ApiLoginResponse> => {
   return new Promise((resolve) => {
-    fetch(`http://127.0.0.1:8000/api/register`, {
+    fetch(`${BASE_URL_API}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

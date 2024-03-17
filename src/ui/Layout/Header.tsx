@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../services/redux/user";
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   const user = useSelector(selectUser);
@@ -12,29 +13,29 @@ const Header: React.FC = () => {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <a href="/" className="text-white">
+              <NavLink to="/" className="text-white">
                 Trang chủ
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/search" className="text-white">
+              <NavLink to="/search" className="text-white">
                 Tìm kiếm công việc
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/companies" className="text-white">
+              <NavLink to="/companies" className="text-white">
                 Công Ty
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/contact" className="text-white">
+              <NavLink to="/contact" className="text-white">
                 Liên hệ
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/create-cv" className="text-white">
+              <NavLink to="/create-cv" className="text-white">
                 Tạo CV
-              </a>
+              </NavLink>
             </li>
             <li>
               {!(
@@ -42,13 +43,13 @@ const Header: React.FC = () => {
                 user.token === "" &&
                 user.token_type === ""
               ) ? (
-                <a href="/profile" className="text-white">
+                <NavLink to="/profile" className="text-white">
                   Chào mừng {user.name}
-                </a>
+                </NavLink>
               ) : (
-                <a href="/sign-in" className="text-white">
+                <NavLink to="/sign-in" className="text-white">
                   Đăng nhập
-                </a>
+                </NavLink>
               )}
             </li>
           </ul>

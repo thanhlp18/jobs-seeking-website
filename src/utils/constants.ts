@@ -1,11 +1,11 @@
 import {
   ComponentSelectionWithSearchType,
-  ProfileUserInformationType,
   ProfileDataCategoryType,
   ProfileDataForCV,
   ProfileJobLevelType,
   ProfileNavLinkItemsType,
 } from "./type";
+import { ProfileUserInformationType } from "./type/profileType";
 
 // COLOR CONSTANT
 export const COLOR_PRIMARY = "#4f46e5";
@@ -352,3 +352,5 @@ export const PROFILE_EXAMPLE_DATA_FOR_CV: ProfileDataForCV = {
     },
   ],
 };
+
+export const BASE_URL_API = "http://127.0.0.1:8000/api";

@@ -1,12 +1,12 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useEffect } from "react";
 import toast from "react-hot-toast";
 import {
   ActionFunctionArgs,
   Form,
   redirect,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import icon_google from "../assets/icons/icon_google.svg";
@@ -15,16 +15,27 @@ import Input from "../components/Input";
 import Link from "../components/Link";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
-import { signInApi } from "../services/api";
+import { signInApi } from "../services/api/authenticationApi";
 import { LOGIN_PAGE_TEXT_USP } from "../utils/constants";
 import { ApiLoginResponse } from "../utils/type";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../services/redux/user";
 
 export default function Login() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const alert = location.state?.alert;
+  const user = useSelector(selectUser);
   useEffect(() => {
-    const isLogin = localStorage.getItem("isLogin") === "true";
-    if (isLogin) navigate("/");
+    if (alert) toast.error(alert, { duration: 1000 });
   }, []);
+
+  useEffect(() => {
+    if (user.name !== "" && user.token !== "" && user.token_type !== "") {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   return (
     <Wrapper>
