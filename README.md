@@ -29,4 +29,4 @@ School project jobs-seeking-website, using: react@typescript, react-router-dom, 
 
 ## Screen
 
-- Homescreen: ![home-screen.png](./img/home-screen.png.png)
+- Homescreen: ![home-screen.png](./img/home-screen.png)
