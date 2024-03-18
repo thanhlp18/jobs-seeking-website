@@ -5,9 +5,8 @@ School project jobs-seeking-website, using: react@typescript, react-router-dom, 
 ## Table of Contents
 
 - [Library and Framework](#Library_and_Framework)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Features](#features)
+- [Screens](#Screen)
 
 ## Library_and_Framework
 
