@@ -5,7 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./app/store.ts";
 import "./index.css";
 import CreateCV from "./pages/CreateCV.tsx";
-import HomePage, { action as searchITJobAction } from "./pages/HomePage.tsx";
+import HomePage, {
+  action as searchITJobAction,
+} from "./pages/home/HomePage.tsx";
 import JobPreferences from "./pages/JobPreferences.tsx";
 import ManageCV from "./pages/ManageCV.tsx";
 import Profile from "./pages/profile/Profile.tsx";
