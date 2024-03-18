@@ -16,7 +16,7 @@ School project jobs-seeking-website, using: react@typescript, react-router-dom, 
 4. Tailwind CSS
 5. Axios
 
-## Screen
+## Screens
 
 1. Home screen: ![home-screen.png](./img/home-screen.png)
 2. Login screen: ![login-screen.png](./img/login-screen.png)
