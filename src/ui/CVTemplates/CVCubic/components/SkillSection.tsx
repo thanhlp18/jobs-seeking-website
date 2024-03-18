@@ -1,9 +1,9 @@
 import Button from "../../../../components/Button";
 import Divider from "../../../../components/Divider";
-import { Skills } from "../../../../utils/type";
+import { SkillType } from "../../../../utils/type";
 
 type Props = {
-  skills: Skills;
+  skills: SkillType;
   templateColor: string;
 };
 

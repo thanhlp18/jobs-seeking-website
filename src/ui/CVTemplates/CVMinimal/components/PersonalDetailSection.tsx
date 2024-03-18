@@ -6,14 +6,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "../../../../components/Title";
-import { ProfileUserInformationType } from "../../../../utils/type";
+import { UserInformationType } from "../../../../utils/type/profileType";
 
 type Props = {
-  personalInformation: ProfileUserInformationType;
+  userInformation: UserInformationType;
   templateColor: string;
 };
 export default function PersonalDetailSection({
-  personalInformation,
+  userInformation,
   templateColor,
 }: Props) {
   return (
@@ -27,7 +27,7 @@ export default function PersonalDetailSection({
             <FontAwesomeIcon icon={faEnvelope} />
           </span>
           <span className="text-base  line-clamp-1">
-            {personalInformation.email}
+            {userInformation.email}
           </span>
         </div>
         <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -35,7 +35,7 @@ export default function PersonalDetailSection({
             <FontAwesomeIcon icon={faPhone} />
           </span>
           <span className="text-base  line-clamp-1">
-            {personalInformation.phone}
+            {userInformation.phone}
           </span>
         </div>
         <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -43,7 +43,7 @@ export default function PersonalDetailSection({
             <FontAwesomeIcon icon={faGift} />
           </span>
           <span className="text-base  line-clamp-1">
-            {personalInformation.birthday}
+            {userInformation.birthday}
           </span>
         </div>
 
@@ -51,9 +51,9 @@ export default function PersonalDetailSection({
           <span className="text-base ">
             <FontAwesomeIcon icon={faLocation} />
           </span>
-          {personalInformation.location && (
+          {userInformation.location && (
             <span className="text-base  line-clamp-1">
-              {personalInformation.location}
+              {userInformation.location}
             </span>
           )}
         </div>

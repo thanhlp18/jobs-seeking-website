@@ -1,11 +1,10 @@
-import styled from "styled-components";
 import { ReactNode } from "react";
+import styled from "styled-components";
 import {
   COLOR_DISABLED,
   COLOR_PRIMARY,
   TEXT_COLOR_NORMAL,
 } from "../utils/constants";
-import React from "react";
 
 type Props = {
   onClick?: () => void;

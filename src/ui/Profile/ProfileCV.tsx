@@ -1,7 +1,4 @@
-import { Award, Certificate, ProfileDataForCV } from "../../utils/type";
-import ProfileAward from "./ProfileAward";
-import ProfileCertificate from "./ProfileCertificate";
-import ProfilePersonalProject from "./ProfilePersonalProject";
+import { ProfileDataForCV } from "../../utils/type";
 import ProfileSkills from "./ProfileSkills";
 
 type Props = {

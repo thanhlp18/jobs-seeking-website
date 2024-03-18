@@ -6,16 +6,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "../../../../components/Title";
-import { ProfileUserInformationType } from "../../../../utils/type";
+import { UserInformationType } from "../../../../utils/type/profileType";
 
 type Props = {
-  personalInformation: ProfileUserInformationType;
+  userInformation: UserInformationType;
   templateColor: string;
   aboutMe: string;
 };
 
 export default function AboutMeSection({
-  personalInformation,
+  userInformation,
   templateColor,
   aboutMe,
 }: Props) {
@@ -26,10 +26,10 @@ export default function AboutMeSection({
           type="h2"
           className={`md:text-start text-cv_color_red !text-${templateColor}`}
         >
-          {personalInformation.name}
+          {userInformation.name}
         </Title>
         <Title type="h4" className="text-bold md:text-start font-normal">
-          {personalInformation.title}
+          {userInformation.title}
         </Title>
       </div>
 
@@ -39,7 +39,7 @@ export default function AboutMeSection({
             <FontAwesomeIcon icon={faEnvelope} />
           </span>
           <span className="text-base text-bold line-clamp-1">
-            {personalInformation.email}
+            {userInformation.email}
           </span>
         </div>
         <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -47,7 +47,7 @@ export default function AboutMeSection({
             <FontAwesomeIcon icon={faPhone} />
           </span>
           <span className="text-base text-bold line-clamp-1">
-            {personalInformation.phone}
+            {userInformation.phone}
           </span>
         </div>
         <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -55,7 +55,7 @@ export default function AboutMeSection({
             <FontAwesomeIcon icon={faGift} />
           </span>
           <span className="text-base text-bold line-clamp-1">
-            {personalInformation.birthday}
+            {userInformation.birthday}
           </span>
         </div>
 
@@ -63,9 +63,9 @@ export default function AboutMeSection({
           <span className="text-base text-bold">
             <FontAwesomeIcon icon={faLocation} />
           </span>
-          {personalInformation.location && (
+          {userInformation.location && (
             <span className="text-base text-bold line-clamp-1">
-              {personalInformation.location}
+              {userInformation.location}
             </span>
           )}
         </div>

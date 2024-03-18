@@ -1,8 +1,8 @@
 import Title from "../../../../components/Title";
-import { PersonalProject } from "../../../../utils/type";
+import { PersonalProjectType } from "../../../../utils/type";
 
 type Props = {
-  personalProjects: PersonalProject[];
+  personalProjects: PersonalProjectType[];
   templateColor: string;
 };
 
@@ -24,12 +24,12 @@ export default function ProjectsSection({
               </div>
 
               <p className="text-bold text-base text-right">
-                {project.duration.start} - {project.duration.end}
+                {project.start_date} - {project.end_date}
               </p>
             </div>
 
             <div
-              className=" text-base text-bold ml-2"
+              className=" text-base text-bold"
               dangerouslySetInnerHTML={{
                 __html: project.description,
               }}

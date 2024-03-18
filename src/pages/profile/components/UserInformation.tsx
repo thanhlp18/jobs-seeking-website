@@ -8,8 +8,7 @@ import {
 import { faGift } from "@fortawesome/free-solid-svg-icons/faGift";
 import { faPhone } from "@fortawesome/free-solid-svg-icons/faPhone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AxiosError, isAxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import Card from "../../../components/Card";
 import Divider from "../../../components/Divider";
@@ -18,31 +17,20 @@ import Input from "../../../components/Input";
 import Modal from "../../../components/Modal";
 import Title from "../../../components/Title";
 import {
-  getUserInformationApi,
   srcToFile,
   updateUserInformationApi,
 } from "../../../services/api/profileApi";
-import {
-  ApiProfileUserInformationResponseType,
-  ProfileUserInformationType,
-} from "../../../utils/type/profileType";
 
+import { useDispatch, useSelector } from "react-redux";
 import PROFILE_NO_IMAGE_FILE from "../../../assets/profile_no_image.png";
-
-const initialUserDataState: ProfileUserInformationType = {
-  image_url: "",
-  name: "",
-  title: "",
-  email: "",
-  phone: "",
-  birthday: "",
-  gender: "",
-  location: "",
-};
+import {
+  getUserInformation,
+  updateUserInformation,
+} from "../../../services/redux/user";
 
 export default function UserInformation() {
-  const [userData, setUserData] =
-    useState<ProfileUserInformationType>(initialUserDataState);
+  const dispatch = useDispatch();
+  const userData = useSelector(getUserInformation);
   const [selectedImage, setSelectedImage] = useState<File | undefined>();
 
   const handleChangeProfileInformation = (
@@ -55,11 +43,11 @@ export default function UserInformation() {
           ...userData,
           image_url: URL.createObjectURL(e.target.files[0]),
         };
-        setUserData(newProfileImage);
+        dispatch(updateUserInformation(newProfileImage));
       }
     } else {
       const newUserData = { ...userData, [e.target.name]: e.target.value };
-      setUserData(newUserData);
+      dispatch(updateUserInformation(newUserData));
     }
   };
 
@@ -72,6 +60,7 @@ export default function UserInformation() {
       birthday: userData.birthday,
       gender: userData.gender === "Male" ? "1" : "0",
       location: userData.location,
+      image_url: "",
     };
 
     updateUserInformationApi(newUserData, selectedImage)
@@ -89,37 +78,6 @@ export default function UserInformation() {
       });
   };
 
-  // Call api to get user information
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res: ApiProfileUserInformationResponseType =
-          await getUserInformationApi();
-        setUserData(res.data[0]);
-      } catch (err) {
-        if (isAxiosError(err)) {
-          const axiosErr = err as AxiosError;
-          if (axiosErr.response && axiosErr.response.data) {
-            toast.error(
-              "Failed to fetch user information: " +
-                //@ts-expect-error  Property 'message' does not exist on type '{}'.ts(2339)
-                axiosErr.response.data.message
-            );
-          } else {
-            toast.error(
-              "Failed to fetch user information: An unexpected error occurred."
-            );
-          }
-        } else {
-          toast.error(
-            "Failed to fetch user information: An unexpected error occurred."
-          );
-        }
-      }
-    };
-
-    fetchData(); // Call the async function to fetch data
-  }, []);
   return (
     <Card className=" bg-white relative">
       <div className="flex gap-6 flex-col md:flex-row items-center md:items-start">
@@ -256,10 +214,12 @@ export default function UserInformation() {
                         PROFILE_NO_IMAGE_FILE,
                         "no-profile-image.png"
                       ).then((res) => {
-                        setUserData({
-                          ...userData,
-                          image_url: URL.createObjectURL(res),
-                        });
+                        dispatch(
+                          updateUserInformation({
+                            ...userData,
+                            image_url: URL.createObjectURL(res),
+                          })
+                        );
                       });
                     }}
                   />

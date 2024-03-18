@@ -20,13 +20,13 @@ import { LOGIN_PAGE_TEXT_USP } from "../utils/constants";
 import { ApiLoginResponse } from "../utils/type";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../services/redux/user";
+import { getUserAuthentication } from "../services/redux/user";
 
 export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
   const alert = location.state?.alert;
-  const user = useSelector(selectUser);
+  const user = useSelector(getUserAuthentication);
   useEffect(() => {
     if (alert) toast.error(alert, { duration: 1000 });
   }, []);

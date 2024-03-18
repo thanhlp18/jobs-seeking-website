@@ -4,7 +4,7 @@ import {
   ProfileJobLevelType,
   ProfileNavLinkItemsType,
 } from "./type";
-import { ProfileUserInformationType } from "./type/profileType";
+import { UserInformationType } from "./type/profileType";
 
 // COLOR CONSTANT
 export const COLOR_PRIMARY = "#4f46e5";
@@ -24,12 +24,12 @@ export const LOGIN_PAGE_TEXT_USP = [
 ];
 
 // HomePage.tsx
-export const HOMEPAGE_JOBS_CITIES = [
-  "Ho Chi Minh",
-  "Ha Noi",
-  "Da Nang",
-  "Can Tho",
-  "Others",
+export const HOMEPAGE_JOBS_CITIES: { label: string; value: string }[] = [
+  { label: "Ho Chi Minh", value: "Ho Chi Minh" },
+  { label: "Ha Noi", value: "Ha Noi" },
+  { label: "Da Nang", value: "Da Nang" },
+  { label: "Can Tho", value: "Can Tho" },
+  { label: "Others", value: "Others" },
 ];
 
 export const HOMEPAGE_SKILLS_TRENDING = ["Java", "React", "NodeJS", "Python"];
@@ -142,7 +142,7 @@ export const PROFILE_UPDATE_PROFILE_CTA: string[] = [
   "Add Personal Projects",
 ];
 
-export const PROFILE_CONTACT_INFORMATION: ProfileUserInformationType = {
+export const PROFILE_CONTACT_INFORMATION: UserInformationType = {
   image_url: "src/assets/profile-avatar.jpg",
   name: "Le Phuoc Thanh",
   title: "Front end developer intern",
@@ -244,7 +244,14 @@ export const PROFILE_JOB_LEVELS: ProfileJobLevelType[] = [
   },
 ];
 
-export const PROFILE_CURRENT_SALARY_CURRENCY: string[] = ["VND", "USD", "EUR"];
+export const PROFILE_CURRENT_SALARY_CURRENCY: {
+  label: string;
+  value: string;
+}[] = [
+  { label: "VND", value: "VND" },
+  { label: "USD", value: "USD" },
+  { label: "EUR", value: "EUR" },
+];
 
 export const PROFILE_WORKING_TYPE: string[] = ["At office", "Remote", "Hybrid"];
 export const PROFILE_COMPANY_TYPE: string[] = [

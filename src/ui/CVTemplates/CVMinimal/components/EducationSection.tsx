@@ -1,9 +1,8 @@
-import React from "react";
-import { Education } from "../../../../utils/type";
 import Title from "../../../../components/Title";
+import { EducationType } from "../../../../utils/type";
 
 type Props = {
-  education: Education[];
+  education: EducationType[];
   templateColor: string;
 };
 
@@ -21,8 +20,8 @@ export default function EducationSection({ education, templateColor }: Props) {
             </div>
             <p className="text-bold text-base ">{deg.degree}</p>
             <div className="text-base  text-bold">
-              <span>{deg.duration.start}</span> <span> - </span>
-              <span>{deg.duration.end}</span>
+              <span>{deg.start_date}</span> <span> - </span>
+              <span>{deg.end_date}</span>
             </div>
           </div>
           <div className=" text-base text-bold ">{deg.additionalDetail}</div>

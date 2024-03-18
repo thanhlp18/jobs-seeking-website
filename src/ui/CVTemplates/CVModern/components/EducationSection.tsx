@@ -1,9 +1,8 @@
-import React from "react";
-import { Education } from "../../../../utils/type";
 import Title from "../../../../components/Title";
+import { EducationType } from "../../../../utils/type";
 
 type Props = {
-  education: Education[];
+  education: EducationType[];
   templateColor: string;
 };
 
@@ -17,8 +16,8 @@ export default function EducationSection({ education, templateColor }: Props) {
         <div className="flex flex-col gap-2 flex-nowrap" key={index}>
           <div className="flex flex-col  flex-nowrap">
             <div className="text-sm  text-bold">
-              <span>{deg.duration.start}</span> <span> - </span>
-              <span>{deg.duration.end}</span>
+              <span>{deg.start_date}</span> <span> - </span>
+              <span>{deg.end_date}</span>
             </div>
             <div className="text-sm  text-bold font-bold">
               {deg.institution}

@@ -1,10 +1,9 @@
-import React from "react";
-import Title from "../../../../components/Title";
-import { Certificate } from "../../../../utils/type";
 import Divider from "../../../../components/Divider";
+import Title from "../../../../components/Title";
+import { CertificateType } from "../../../../utils/type";
 
 type Props = {
-  certificates: Certificate[];
+  certificates: CertificateType[];
   templateColor: string;
 };
 

@@ -1,9 +1,8 @@
-import React from "react";
-import { Education } from "../../../../utils/type";
 import Divider from "../../../../components/Divider";
+import { EducationType } from "../../../../utils/type";
 
 type Props = {
-  education: Education[];
+  education: EducationType[];
   templateColor: string;
 };
 
@@ -23,16 +22,16 @@ export default function EducationSection({ education, templateColor }: Props) {
       <Divider className="ml-6 !my-2" />
 
       <div className="flex flex-col  text-base">
-        {education.map((deg) => (
-          <div className="grid grid-cols-12 gap-3">
+        {education.map((deg, index) => (
+          <div className="grid grid-cols-12 gap-3" key={"education-" + index}>
             {/* time */}
             <div className="col-span-3 flex flex-row items-center gap-3 h-fit">
               <span
                 className={`bg-red w-2 h-2 block bg-normal rotate-45 bg-[${templateColor}]`}
               ></span>
               <div className="text-base  text-bold">
-                <span>{deg.duration.start}</span> <span> - </span>
-                <span>{deg.duration.end}</span>
+                <span>{deg.start_date}</span> <span> - </span>
+                <span>{deg.end_date}</span>
               </div>
             </div>
 

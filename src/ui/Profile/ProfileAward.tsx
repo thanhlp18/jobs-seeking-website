@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Interweave } from "interweave";
 import EditIcon from "../../components/EditIcon";
 import Title from "../../components/Title";
-import { Award } from "../../utils/type";
+import { AwardType } from "../../utils/type";
 
 type Props = {
-  award: Award;
+  award: AwardType;
   type?: string;
 };
 

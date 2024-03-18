@@ -1,7 +1,7 @@
-import { WorkExperience } from "../../../../utils/type";
+import { WorkExperienceType } from "../../../../utils/type";
 
 type Props = {
-  workExperience: WorkExperience[];
+  workExperience: WorkExperienceType[];
 };
 
 export default function WorkExperienceSection({ workExperience }: Props) {
@@ -19,7 +19,7 @@ export default function WorkExperienceSection({ workExperience }: Props) {
                   {experience.position}
                 </div>
                 <div className="text-base  text-bold ">
-                  {experience.duration.start} - {experience.duration.end}
+                  {experience.start_date} - {experience.end_date}
                 </div>
               </div>
               <p className="text-bold text-base font-bold">
@@ -28,7 +28,7 @@ export default function WorkExperienceSection({ workExperience }: Props) {
             </div>
 
             <div
-              className=" text-base text-bold ml-2 "
+              className=" text-base text-bold"
               dangerouslySetInnerHTML={{
                 __html: experience.responsibilities,
               }}

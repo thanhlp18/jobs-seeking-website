@@ -16,11 +16,16 @@ import LayoutWithoutFooter from "./ui/Layout/LayoutWithoutFooter.tsx";
 import ProfileLayout from "./ui/Profile/ProfileLayout.tsx";
 import { loadLoginStatus } from "./utils/loadersFunction.ts";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
+import LoadUserAuthenticationData from "./components/LoadUserAuthenticationData.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <LoadUserAuthenticationData>
+        <Layout />
+      </LoadUserAuthenticationData>
+    ),
     loader: loadLoginStatus,
     children: [
       {
@@ -43,9 +48,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
-        <Layout />
-      </ProtectedRoute>
+      <LoadUserAuthenticationData>
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      </LoadUserAuthenticationData>
     ),
     loader: loadLoginStatus,
     children: [
@@ -70,9 +77,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
-        <LayoutWithoutFooter />
-      </ProtectedRoute>
+      <LoadUserAuthenticationData>
+        <ProtectedRoute>
+          <LayoutWithoutFooter />
+        </ProtectedRoute>
+      </LoadUserAuthenticationData>
     ),
     loader: loadLoginStatus,
     children: [

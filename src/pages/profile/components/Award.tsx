@@ -1,8 +1,7 @@
-import React from "react";
-import { AwardType } from "../../../utils/type";
-import ProfileAward from "../../../ui/Profile/ProfileAward";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
+import ProfileAward from "../../../ui/Profile/ProfileAward";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
+import { AwardType } from "../../../utils/type";
 
 type Props = { awardList: AwardType[] };
 

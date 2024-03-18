@@ -1,8 +1,7 @@
-import React from "react";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
+import ProfilePersonalProject from "../../../ui/Profile/ProfilePersonalProject";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { PersonalProjectType } from "../../../utils/type";
-import ProfilePersonalProject from "../../../ui/Profile/ProfilePersonalProject";
 
 type Props = { personalProjectList: PersonalProjectType[] };
 

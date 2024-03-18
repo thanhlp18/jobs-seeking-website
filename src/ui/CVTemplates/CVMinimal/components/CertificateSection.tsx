@@ -1,8 +1,8 @@
 import Title from "../../../../components/Title";
-import { Certificate } from "../../../../utils/type";
+import { CertificateType } from "../../../../utils/type";
 
 type Props = {
-  certificates: Certificate[];
+  certificates: CertificateType[];
   templateColor: string;
 };
 export default function CertificateSection({
@@ -16,8 +16,11 @@ export default function CertificateSection({
       </Title>
 
       <div className="text-bold flex flex-col gap-1 text-base">
-        {certificates.map((certificate) => (
-          <div className="flex flex-col gap-1 flex-nowrap">
+        {certificates.map((certificate, index) => (
+          <div
+            className="flex flex-col gap-1 flex-nowrap"
+            key={"certificate-" + index}
+          >
             <div className="flex flex-col  flex-nowrap">
               <div className="flex flex-row gap-1 justify-between  flex-nowrap">
                 <div className="text-base  text-bold font-bold">

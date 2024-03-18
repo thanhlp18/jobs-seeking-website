@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
-import { ProfileDataForCV } from "../../../utils/type";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  getUserInformation,
+  getUserProfile,
+} from "../../../services/redux/user";
 import AboutMeSection from "./components/AboutMeSection";
 import AwardsSection from "./components/AwardsSection";
 import CertificateSection from "./components/CertificateSection";
@@ -8,7 +11,6 @@ import EducationSection from "./components/EducationSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
-import { ProfileUserInformationType } from "../../../utils/type/profileType";
 // import EditIcon from "../components/EditIcon";
 
 type props = {
@@ -16,10 +18,8 @@ type props = {
 };
 
 export default function CVCubic({ className }: props) {
-  const [userProfile] = React.useState<ProfileDataForCV>();
-  const [personalInformation] = React.useState<ProfileUserInformationType>(
-    PROFILE_CONTACT_INFORMATION
-  );
+  const userProfile = useSelector(getUserProfile);
+  const userInformation = useSelector(getUserInformation);
   const [templateColor, setTemplateColor] = useState<string>("#ed1b2f");
   useEffect(() => {
     setTemplateColor("#ed1b2f");
@@ -48,7 +48,7 @@ export default function CVCubic({ className }: props) {
             {/* About Me section */}
             <AboutMeSection
               templateColor={templateColor}
-              personalInformation={personalInformation}
+              userInformation={userInformation}
               aboutMe={userProfile.aboutMe.description}
             />
           </div>

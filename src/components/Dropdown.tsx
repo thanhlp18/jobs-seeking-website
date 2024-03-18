@@ -7,6 +7,7 @@ import { inputStyle } from "./Input";
 type props = {
   containerClassName?: string;
   label?: string;
+  value?: string;
   name?: string;
   icon?: React.ReactNode;
   options: { value: string; label: string }[];
@@ -23,6 +24,7 @@ export const StyledSelect = styled.select<{ $isIcon?: boolean }>`
 export default function Dropdown({
   containerClassName,
   name,
+  value,
   label,
   icon,
   options,
@@ -44,6 +46,7 @@ export default function Dropdown({
           className="w-full"
           $isIcon={!!icon}
           onChange={onChange}
+          value={value}
         >
           {options.map((option, index) => (
             <option key={index} value={option.value}>

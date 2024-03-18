@@ -1,41 +1,44 @@
-import React, { memo } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../services/redux/user";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import logo from "../../assets/brand_logo.svg";
+import {
+  getUserInformation,
+  getUserAuthentication,
+} from "../../services/redux/user";
 
 const Header: React.FC = () => {
-  const user = useSelector(selectUser);
-
+  const user = useSelector(getUserAuthentication);
+  const userInformation = useSelector(getUserInformation);
   return (
-    <header className="bg-gray-800 	max-w-full fixed right-0 left-0 z-50 top-0 h-11">
+    <header className="bg-gray-800 	max-w-full fixed right-0 left-0 z-50 top-0 h-fit">
       <div className="flex items-center justify-between px-4 py-2 mx-auto xl:max-w-[1280px]">
-        <div className="text-white text-lg font-bold">Logo</div>
+        <Link to="/" className="text-white">
+          <img src={logo} alt="brand-logo" width={60} />
+        </Link>
+
         <nav>
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-4 items-center">
+            <li></li>
             <li>
-              <NavLink to="/" className="text-white">
-                Trang chủ
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/search" className="text-white">
+              <Link to="/" className="text-white">
                 Tìm kiếm công việc
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink to="/companies" className="text-white">
+            {/* <li>
+              <Link to="/companies" className="text-white">
                 Công Ty
-              </NavLink>
-            </li>
+              </Link>
+            </li> */}
             <li>
-              <NavLink to="/contact" className="text-white">
+              <Link to="/contact" className="text-white">
                 Liên hệ
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink to="/create-cv" className="text-white">
+              <Link to="/create-cv" className="text-white">
                 Tạo CV
-              </NavLink>
+              </Link>
             </li>
             <li>
               {!(
@@ -43,13 +46,22 @@ const Header: React.FC = () => {
                 user.token === "" &&
                 user.token_type === ""
               ) ? (
-                <NavLink to="/profile" className="text-white">
+                <Link
+                  to="/profile"
+                  className="text-white flex flex-row items-center flex-1 gap-2 group/item"
+                >
                   Chào mừng {user.name}
-                </NavLink>
+                  <div
+                    className="bg-cover bg-center bg-no-repeat rounded-full relative block p-1 aspect-square w-8 shadow-md"
+                    style={{
+                      backgroundImage: `url(${userInformation.image_url})`,
+                    }}
+                  ></div>
+                </Link>
               ) : (
-                <NavLink to="/sign-in" className="text-white">
+                <Link to="/sign-in" className="text-white">
                   Đăng nhập
-                </NavLink>
+                </Link>
               )}
             </li>
           </ul>
@@ -59,4 +71,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default memo(Header);
+export default Header;

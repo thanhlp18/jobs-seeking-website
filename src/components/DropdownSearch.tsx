@@ -23,7 +23,6 @@ export default function DropdownSearch({
   const [selected, setSelected] = useState(
     currentValues as ComponentSelectionWithSearchType[]
   );
-  console.log("render ", currentValues);
   const [isShowSelectBox, setIsShowSelectBox] = useState(false);
   const [query, setQuery] = useState("");
   const filterSelection = useMemo(
@@ -75,11 +74,11 @@ export default function DropdownSearch({
       >
         <FontAwesomeIcon icon={faSearch} className="px-4 text-inherit " />
         <Input
-          type="no-style"
+          inputGroupType="no-style"
           name="search-skill"
           inputClassName={`flex-1 p-3 rounded-r-md focus:outline-4 focus:outline-primary font-medium text-base bg-transparent`}
           placeholder="Skills"
-          handleOnChange={(event) => {
+          onChange={(event) => {
             setQuery(event.target.value);
             setIsShowSelectBox(true);
           }}

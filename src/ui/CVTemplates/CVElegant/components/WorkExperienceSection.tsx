@@ -1,7 +1,7 @@
-import { WorkExperience } from "../../../../utils/type";
+import { WorkExperienceType } from "../../../../utils/type";
 
 type Props = {
-  workExperience: WorkExperience[];
+  workExperience: WorkExperienceType[];
   //   templateColor: string;
 };
 export default function WorkExperienceSection({ workExperience }: Props) {
@@ -11,11 +11,14 @@ export default function WorkExperienceSection({ workExperience }: Props) {
         Work Experience
       </p>
       <div className="text-bold col-span-10 text-base">
-        {workExperience.map((experience) => (
-          <div className="flex flex-col gap-2 flex-nowrap">
+        {workExperience.map((experience, index) => (
+          <div
+            className="flex flex-col gap-2 flex-nowrap"
+            key={"work-experience-" + index}
+          >
             <div className="flex flex-col  flex-nowrap">
               <div className="text-base  text-bold ">
-                {experience.duration.start} - {experience.duration.end}
+                {experience.start_date} - {experience.end_date}
               </div>
               <div className="flex flex-row gap-2  flex-nowrap font-bold">
                 <div className="text-base  text-bold">

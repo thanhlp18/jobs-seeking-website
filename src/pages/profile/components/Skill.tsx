@@ -1,8 +1,7 @@
-import React from "react";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
+import ProfileSkills from "../../../ui/Profile/ProfileSkills";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { SkillType } from "../../../utils/type";
-import ProfileSkills from "../../../ui/Profile/ProfileSkills";
 
 type Props = { skills: SkillType };
 

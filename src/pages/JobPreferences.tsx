@@ -68,7 +68,6 @@ function JobPreferences() {
     },
     []
   );
-  console.log(jobLevels, currentSalary, expectedSalary, jobLocation);
   return (
     <Wrapper className="flex flex-col gap-6" type="narrow">
       <Card className="bg-white gap-5 flex flex-col">
@@ -138,7 +137,7 @@ function JobPreferences() {
                 containerClassName="flex flex-row-reverse items-center justify-end"
                 inputClassName="w-5 h-5 mr-2 !rounded-sm !shadow-none !ring-0"
                 labelClassName="text-base font-medium text-normal"
-                handleOnChange={() => {
+                onChange={() => {
                   setJobLevels([...jobLevels, level.id]);
                 }}
               />
@@ -167,7 +166,8 @@ function JobPreferences() {
                 inputClassName="appearance-none"
                 required
                 placeholder="Enter number"
-                handleOnChange={(e) => setCurrentSalary(Number(e.target.value))}
+                value={currentSalary}
+                onChange={(e) => setCurrentSalary(Number(e.target.value))}
               />
             </div>
           </ContentWrap>
@@ -194,7 +194,8 @@ function JobPreferences() {
                   inputClassName="appearance-none"
                   required
                   placeholder="From"
-                  handleOnChange={(e) =>
+                  value={expectedSalary.expectedSalaryFrom}
+                  onChange={(e) =>
                     setExpectedSalary({
                       expectedSalaryFrom: Number(e.target.value),
                       expectedSalaryTo: expectedSalary.expectedSalaryTo,
@@ -208,7 +209,8 @@ function JobPreferences() {
                   inputClassName="appearance-none"
                   required
                   placeholder="To"
-                  handleOnChange={(e) =>
+                  value={expectedSalary.expectedSalaryTo}
+                  onChange={(e) =>
                     setExpectedSalary({
                       expectedSalaryFrom: expectedSalary.expectedSalaryFrom,
                       expectedSalaryTo: Number(e.target.value),
@@ -350,6 +352,7 @@ function JobPreferences() {
               onChange={(e) => {
                 setJobLocation(e.target.value);
               }}
+              value={jobLocation}
             />
           </ContentWrap>
         </GridLayout>

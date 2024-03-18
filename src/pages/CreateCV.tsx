@@ -45,10 +45,11 @@ export default function CreateCV() {
   return (
     <div className="grid grid-cols-12 -mt-6 -mx-4 w-screen h-screen">
       <section className="fixed top-11 w-[30%] left-0 grid grid-cols-2  bottom-0 bg-gray-600 py-6 px-4 gap-2 overflow-scroll no-scrollbar">
-        {CVTemplate.map((template) => (
+        {CVTemplate.map((template, index) => (
           <div
             className={`p-2 max-w-fit flex flex-col items-center gap-2   `}
             onClick={() => setSelectedTemplate(template.id)}
+            key={template.name + "-" + index}
           >
             <span className="relative">
               <img

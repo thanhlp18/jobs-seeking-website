@@ -1,9 +1,8 @@
-import React from "react";
-import { WorkExperience } from "../../../../utils/type";
 import Divider from "../../../../components/Divider";
+import { WorkExperienceType } from "../../../../utils/type";
 
 type Props = {
-  workExperience: WorkExperience[];
+  workExperience: WorkExperienceType[];
   templateColor: string;
 };
 
@@ -26,16 +25,16 @@ export default function WorkExperienceSection({
       <Divider className="ml-6 !my-2" />
 
       <div className="flex flex-col  text-base">
-        {workExperience.map((experience) => (
-          <div className="grid grid-cols-12 gap-3">
+        {workExperience.map((experience, index) => (
+          <div className="grid grid-cols-12 gap-3" key={"experience-" + index}>
             {/* time */}
             <div className="col-span-3 flex flex-row items-center gap-3 h-fit">
               <span
                 className={`bg-red w-2 h-2 block bg-normal rotate-45 bg-[${templateColor}]`}
               ></span>
               <div className="text-base  text-bold">
-                <span>{experience.duration.start}</span> <span> - </span>
-                <span>{experience.duration.end}</span>
+                <span>{experience.start_date}</span> <span> - </span>
+                <span>{experience.end_date}</span>
               </div>
             </div>
 

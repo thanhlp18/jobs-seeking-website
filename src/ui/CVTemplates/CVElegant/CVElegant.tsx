@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import Divider from "../../../components/Divider";
-import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
-import { ProfileDataForCV } from "../../../utils/type";
+import {
+  getUserInformation,
+  getUserProfile,
+} from "../../../services/redux/user";
 import AboutMeSection from "./components/AboutMeSection";
+import AwardsSection from "./components/AwardsSection";
 import CertificatesSection from "./components/CertificatesSection";
 import EducationSection from "./components/EducationSection";
 import PersonalDetailSection from "./components/PersonalDetailSection";
 import PersonalsProjectSection from "./components/PersonalsProjectSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
-import AwardsSection from "./components/AwardsSection";
-import { ProfileUserInformationType } from "../../../utils/type/profileType";
 // import EditIcon from "../components/EditIcon";
 
 type props = {
@@ -18,14 +19,12 @@ type props = {
 };
 
 export default function CVElegant({ className }: props) {
-  const [userProfile] = useState<ProfileDataForCV>();
-  const [personalInformation] = useState<ProfileUserInformationType>(
-    PROFILE_CONTACT_INFORMATION
-  );
+  const userProfile = useSelector(getUserProfile);
+  const userInformation = useSelector(getUserInformation);
   return (
     <div className={`${className} bg-white rounded-md overflow-hidden`}>
       {/* Render the personal information section */}
-      <PersonalDetailSection personalInformation={personalInformation} />
+      <PersonalDetailSection userInformation={userInformation} />
       <div className="p-6  flex flex-col flex-nowrap gap-1">
         {/* Render the aboutMe section */}
         <AboutMeSection aboutMe={userProfile.aboutMe.description} />

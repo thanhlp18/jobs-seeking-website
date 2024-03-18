@@ -1,8 +1,8 @@
 import Button from "../../../../components/Button";
-import { Skills } from "../../../../utils/type";
+import { SkillType } from "../../../../utils/type";
 
 type Props = {
-  skills: Skills;
+  skills: SkillType;
 };
 export default function SkillSection({ skills }: Props) {
   return (
@@ -15,7 +15,7 @@ export default function SkillSection({ skills }: Props) {
           <div className="flex flex-row items-center gap-3">
             <span className="text-base font-bold text-bold">Excellent</span>
             <div className="flex flex-row gap-2 flex-wrap w-fit">
-              {skills.excellent.map((skill, index) => (
+              {skills.excellent.map((skill: string, index: number) => (
                 <Button
                   buttonType="disabled"
                   className="rounded-lg  px-2 w-fit block text-base "
@@ -33,7 +33,7 @@ export default function SkillSection({ skills }: Props) {
             <span className="text-base font-bold text-bold">Intermediate</span>
 
             <div className="flex flex-row gap-3 w-full flex-wrap">
-              {skills.intermediate.map((skill, index) => (
+              {skills.intermediate.map((skill: string, index: number) => (
                 <Button
                   buttonType="disabled"
                   className="rounded-lg px-2 block text-base bg-gray-100 flex-wrap "
@@ -51,7 +51,7 @@ export default function SkillSection({ skills }: Props) {
             <span className="text-base font-bold text-bold">Beginner</span>
 
             <div className="flex flex-row gap-3 w-full flex-wrap">
-              {skills.beginner.map((skill, index) => (
+              {skills.beginner.map((skill: string, index: number) => (
                 <Button
                   buttonType="disabled"
                   className="rounded-lg px-2 block text-base bg-gray-100 flex-wrap "

@@ -1,8 +1,8 @@
 import Divider from "../../../../components/Divider";
-import { Certificate } from "../../../../utils/type";
+import { CertificateType } from "../../../../utils/type";
 
 type Props = {
-  certificates: Certificate[];
+  certificates: CertificateType[];
   templateColor: string;
 };
 export default function CertificateSection({
@@ -24,8 +24,8 @@ export default function CertificateSection({
       <Divider className="ml-6 !my-2" />
 
       <div className="flex flex-col  text-base">
-        {certificates.map((certificate) => (
-          <div className="grid grid-cols-12 gap-3">
+        {certificates.map((certificate, index) => (
+          <div className="grid grid-cols-12 gap-3" key={"certificate-" + index}>
             {/* time */}
             <div className="col-span-3 flex flex-row items-center gap-3 h-fit">
               <span

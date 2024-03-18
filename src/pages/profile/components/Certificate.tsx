@@ -1,8 +1,7 @@
-import React from "react";
-import { CertificateType } from "../../../utils/type";
-import ProfileCertificate from "../../../ui/Profile/ProfileCertificate";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
+import ProfileCertificate from "../../../ui/Profile/ProfileCertificate";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
+import { CertificateType } from "../../../utils/type";
 
 type Props = { certificateList: CertificateType[] };
 

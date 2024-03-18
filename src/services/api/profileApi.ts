@@ -1,7 +1,14 @@
 import axios from "axios";
 import { BASE_URL_API } from "../../utils/constants";
 import { loadLoginStatus } from "../../utils/loadersFunction";
-import { ProfileUserInformationType } from "../../utils/type/profileType";
+import {
+  AwardType,
+  CertificateType,
+  EducationType,
+  PersonalProjectType,
+  WorkExperienceType,
+} from "../../utils/type";
+import { UserInformationType } from "../../utils/type/profileType";
 
 // Generate config to use in api
 export const generateConfig = async () => {
@@ -31,7 +38,7 @@ export const getUserInformationApi = async () => {
 
 // Update user information api
 export const updateUserInformationApi = async (
-  data: ProfileUserInformationType,
+  data: UserInformationType,
   image: File | undefined
 ) => {
   const formDataToSend = new FormData();
@@ -114,4 +121,51 @@ export const getAwardApi = async () => {
   const config = await generateConfig();
   const response = await axios.get(`${BASE_URL_API}/profiles/awards`, config);
   return response.data;
+};
+
+// Get user profile api
+export const getUserProfileApi = async (
+  aboutMePromise: Promise<{ data: { description: string }[] }>,
+  educationPromise: Promise<{ data: EducationType }>,
+  workExperiencePromise: Promise<{ data: WorkExperienceType }>,
+  personalProjectsPromise: Promise<{ data: PersonalProjectType }>,
+  certificatePromise: Promise<{ data: CertificateType }>,
+  awardPromise: Promise<{ data: AwardType }>
+) => {
+  try {
+    const [
+      aboutMeRes,
+      educationRes,
+      workExperienceRes,
+      personalProjectRes,
+      certificateRes,
+      awardRes,
+    ] = await Promise.all([
+      aboutMePromise,
+      educationPromise,
+      workExperiencePromise,
+      personalProjectsPromise,
+      certificatePromise,
+      awardPromise,
+    ]);
+
+    const aboutMeData = aboutMeRes.data[0];
+    const educationData = educationRes.data;
+    const workExperienceData = workExperienceRes.data;
+    const personalProjectData = personalProjectRes.data;
+    const certificateResData = certificateRes.data;
+    const awardData = awardRes.data;
+
+    return {
+      aboutMe: aboutMeData,
+      education: educationData,
+      workExperience: workExperienceData,
+      personalProjects: personalProjectData,
+      certificates: certificateResData,
+      awards: awardData,
+    };
+  } catch (error) {
+    console.error("Error fetching user profile data:", error);
+    // Handle error appropriately, e.g., show a message to the user
+  }
 };

@@ -1,10 +1,9 @@
-import React from "react";
-import { WorkExperience } from "../../../../utils/type";
-import Title from "../../../../components/Title";
 import Divider from "../../../../components/Divider";
+import Title from "../../../../components/Title";
+import { WorkExperienceType } from "../../../../utils/type";
 
 type Props = {
-  workExperience: WorkExperience[];
+  workExperience: WorkExperienceType[];
   templateColor: string;
 };
 
@@ -25,7 +24,7 @@ export default function WorkExperienceSection({
           >
             <div className="flex flex-col  flex-nowrap">
               <div className="text-sm  text-bold ">
-                {experience.duration.start} - {experience.duration.end}
+                {experience.start_date} - {experience.end_date}
               </div>
               <Divider className="!my-1" />
               <div className="flex flex-row">

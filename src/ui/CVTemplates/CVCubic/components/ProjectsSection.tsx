@@ -1,8 +1,8 @@
 import Divider from "../../../../components/Divider";
-import { PersonalProject } from "../../../../utils/type";
+import { PersonalProjectType } from "../../../../utils/type";
 
 type Props = {
-  personalProjects: PersonalProject[];
+  personalProjects: PersonalProjectType[];
   templateColor: string;
 };
 
@@ -33,8 +33,8 @@ export default function ProjectsSection({
                 className={`bg-red w-2 h-2 block bg-normal rotate-45 bg-[${templateColor}]`}
               ></span>
               <div className="text-base  text-bold">
-                <span>{project.duration.start}</span> <span> - </span>
-                <span>{project.duration.end}</span>
+                <span>{project.start_date}</span> <span> - </span>
+                <span>{project.end_date}</span>
               </div>
             </div>
 

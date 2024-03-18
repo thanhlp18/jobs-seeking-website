@@ -1,10 +1,9 @@
-import React from "react";
-import { Skills } from "../../../../utils/type";
 import Button from "../../../../components/Button";
 import Title from "../../../../components/Title";
+import { SkillType } from "../../../../utils/type";
 
 type Props = {
-  skills: Skills;
+  skills: SkillType;
   templateColor: string;
 };
 

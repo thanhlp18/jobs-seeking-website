@@ -1,6 +1,6 @@
 // General type
-export type ProfileUserInformationType = {
-  image_url?: string;
+export type UserInformationType = {
+  image_url: string;
   name: string;
   title: string;
   email: string;
@@ -15,5 +15,5 @@ export type ProfileUserInformationType = {
 export type ApiProfileUserInformationResponseType = {
   success: boolean;
   message: string;
-  data: ProfileUserInformationType[];
+  data: UserInformationType[];
 };

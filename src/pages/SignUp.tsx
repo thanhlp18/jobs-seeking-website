@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import icon_google from "../assets/icons/icon_google.svg";
 import Button from "../components/Button";
@@ -7,7 +8,6 @@ import Link from "../components/Link";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
 import { signUpApi } from "../services/api/authenticationApi";
-import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [isAgreeGoogle, setIsAgreeGoogle] = useState(true);
@@ -24,7 +24,7 @@ export default function SignUp() {
                 type="checkbox"
                 placeholder=""
                 name="sign-with-google"
-                handleOnChange={() => {
+                onChange={() => {
                   setIsAgreeGoogle(!isAgreeGoogle);
                 }}
                 containerClassName="contents"
@@ -92,7 +92,7 @@ export default function SignUp() {
                   required
                   containerClassName="contents"
                   inputClassName="h-6 w-6 transform translate-y-1.5 mr-1"
-                  handleOnChange={() => {
+                  onChange={() => {
                     setIsAgreeTerms(!isAgreeTerms);
                   }}
                 />{" "}

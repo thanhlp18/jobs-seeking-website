@@ -1,6 +1,6 @@
-import { Award } from "../../../../utils/type";
+import { AwardType } from "../../../../utils/type";
 
-type Props = { awards: Award[] };
+type Props = { awards: AwardType[] };
 export default function AwardsSection({ awards }: Props) {
   return (
     <div className="grid grid-cols-12 gap-4">
@@ -9,8 +9,11 @@ export default function AwardsSection({ awards }: Props) {
       </p>
 
       <div className="text-bold col-span-10 text-base">
-        {awards.map((award) => (
-          <div className="flex flex-col gap-2 flex-nowrap">
+        {awards.map((award, index) => (
+          <div
+            className="flex flex-col gap-2 flex-nowrap"
+            key={"award-" + index}
+          >
             <div className="flex flex-col  flex-nowrap">
               <div className="text-base  text-bold font-bold">
                 {award.title}

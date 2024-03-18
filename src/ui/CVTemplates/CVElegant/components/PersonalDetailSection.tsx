@@ -6,33 +6,35 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "../../../../components/Title";
-import { ProfileUserInformationType } from "../../../../utils/type";
+import { UserInformationType } from "../../../../utils/type/profileType";
 
 type Props = {
-  personalInformation: ProfileUserInformationType;
+  userInformation: UserInformationType;
 };
-export default function PersonalDetailSection({ personalInformation }: Props) {
+export default function PersonalDetailSection({ userInformation }: Props) {
   return (
     <div className=" bg-slate-500 p-6 relative">
       <div className="flex gap-6 flex-col md:flex-row items-center md:items-start">
         <div>
-          <img
-            src={personalInformation.profileImage}
-            alt="profile-avatar"
-            height={140}
-            width={140}
-          />
+          <div
+            className="bg-cover bg-center bg-no-repeat  relative block w-full p-16"
+            style={{
+              backgroundImage: `url(${userInformation.image_url})`,
+              height: "120px",
+              width: "120px",
+            }}
+          ></div>
         </div>
-        <div className="gap-2 flex flex-col w-full">
+        <div className="gap-2 flex flex-col w-full flex-1">
           <div>
             <Title type="h2" className="text-center md:text-start text-white">
-              {personalInformation.name}
+              {userInformation.name}
             </Title>
             <Title
               type="h4"
               className="text-white text-center md:text-start font-normal"
             >
-              {personalInformation.title}
+              {userInformation.title}
             </Title>
           </div>
 
@@ -42,7 +44,7 @@ export default function PersonalDetailSection({ personalInformation }: Props) {
                 <FontAwesomeIcon icon={faEnvelope} />
               </span>
               <span className="text-base text-white line-clamp-1">
-                {personalInformation.email}
+                {userInformation.email}
               </span>
             </div>
             <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -50,7 +52,7 @@ export default function PersonalDetailSection({ personalInformation }: Props) {
                 <FontAwesomeIcon icon={faPhone} />
               </span>
               <span className="text-base text-white line-clamp-1">
-                {personalInformation.phone}
+                {userInformation.phone}
               </span>
             </div>
             <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -58,7 +60,7 @@ export default function PersonalDetailSection({ personalInformation }: Props) {
                 <FontAwesomeIcon icon={faGift} />
               </span>
               <span className="text-base text-white line-clamp-1">
-                {personalInformation.birthday}
+                {userInformation.birthday}
               </span>
             </div>
 
@@ -66,9 +68,9 @@ export default function PersonalDetailSection({ personalInformation }: Props) {
               <span className="text-base text-white">
                 <FontAwesomeIcon icon={faLocation} />
               </span>
-              {personalInformation.location && (
+              {userInformation.location && (
                 <span className="text-base text-white line-clamp-1">
-                  {personalInformation.location}
+                  {userInformation.location}
                 </span>
               )}
             </div>

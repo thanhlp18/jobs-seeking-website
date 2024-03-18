@@ -1,8 +1,7 @@
-import React from "react";
-import { WorkExperienceType } from "../../../utils/type";
-import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import ProfileWorkExperience from "../../../ui/Profile/ProfileWorkExperience";
+import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
+import { WorkExperienceType } from "../../../utils/type";
 
 type Props = { workExperienceList: WorkExperienceType[] };
 

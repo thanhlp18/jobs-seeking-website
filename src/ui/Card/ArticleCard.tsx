@@ -1,8 +1,7 @@
-import React from "react";
-import Title from "../../components/Title";
-import Link from "../../components/Link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "../../components/Link";
+import Title from "../../components/Title";
 type props = {
   title: string;
   description: string;

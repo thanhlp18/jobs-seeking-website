@@ -1,4 +1,3 @@
-import React from "react";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 

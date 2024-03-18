@@ -8,8 +8,6 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import Title from "../components/Title";
 import Wrapper from "../components/Wrapper";
-import CardWithTitle from "../ui/Card/CardWithTitle";
-import { PROFILE_DATA_CATEGORY } from "../utils/constants";
 
 export default function ManageCV() {
   return (
@@ -53,7 +51,7 @@ export default function ManageCV() {
           </Button>
         </div>
       </Card>
-      {PROFILE_DATA_CATEGORY.filter(
+      {/* {PROFILE_DATA_CATEGORY.filter(
         (category) => category.id === "cover-letter"
       ).map((category) => (
         <CardWithTitle
@@ -62,7 +60,7 @@ export default function ManageCV() {
           description={category.description}
           icon={category.icon}
         ></CardWithTitle>
-      ))}
+      ))} */}
     </Wrapper>
   );
 }

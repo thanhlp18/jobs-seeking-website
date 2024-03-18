@@ -1,8 +1,11 @@
 // import EditIcon from "../components/EditIcon";
 
 import { useState } from "react";
-import { PROFILE_CONTACT_INFORMATION } from "../../../utils/constants";
-import { ProfileDataForCV } from "../../../utils/type";
+import { useSelector } from "react-redux";
+import {
+  getUserInformation,
+  getUserProfile,
+} from "../../../services/redux/user";
 import AboutMeSection from "./components/AboutMeSection";
 import CertificateSection from "./components/CertificateSection";
 import EducationSection from "./components/EducationSection";
@@ -10,17 +13,14 @@ import PersonalDetailSection from "./components/PersonalDetailSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillSection from "./components/SkillSection";
 import WorkExperienceSection from "./components/WorkExperienceSection";
-import { ProfileUserInformationType } from "../../../utils/type/profileType";
 
 type props = {
   className?: string;
 };
 
 export default function CVModern({ className }: props) {
-  const [userProfile] = useState<ProfileDataForCV>();
-  const [personalInformation] = useState<ProfileUserInformationType>(
-    PROFILE_CONTACT_INFORMATION
-  );
+  const userProfile = useSelector(getUserProfile);
+  const userInformation = useSelector(getUserInformation);
   const [templateColor] = useState<string>("#012a4a");
   return (
     <div
@@ -48,7 +48,7 @@ export default function CVModern({ className }: props) {
         {/* Left section */}
         <div className="flex flex-col gap-5 col-span-4 pr-4  z-20">
           {/* Personal Detail */}
-          <PersonalDetailSection personalInformation={personalInformation} />
+          <PersonalDetailSection userInformation={userInformation} />
           {/* Education section */}
           <EducationSection
             education={userProfile.education}
@@ -65,27 +65,28 @@ export default function CVModern({ className }: props) {
         <div className="pl-4 col-span-7 2xl:col-span-8 flex flex-col  z-10">
           {/* About me  */}
           <AboutMeSection
-            aboutMe={userProfile.aboutMe.description}
-            profileImage={personalInformation.image_url}
+            aboutMeDescription={userProfile.aboutMe.description}
+            profileImage={userInformation.image_url}
           />
 
-          {/* Render the work experience section */}
-          <WorkExperienceSection
-            workExperience={userProfile.workExperience}
-            templateColor={templateColor}
-          />
-
-          {/* Projects section */}
-          <ProjectsSection
-            personalProjects={userProfile.personalProjects}
-            templateColor={templateColor}
-          />
-
-          {/* Certificates section */}
-          <CertificateSection
-            certificates={userProfile.certificates}
-            templateColor={templateColor}
-          />
+          <div className="flex flex-col mt-6">
+            {" "}
+            {/* Render the work experience section */}
+            <WorkExperienceSection
+              workExperience={userProfile.workExperience}
+              templateColor={templateColor}
+            />
+            {/* Projects section */}
+            <ProjectsSection
+              personalProjects={userProfile.personalProjects}
+              templateColor={templateColor}
+            />
+            {/* Certificates section */}
+            <CertificateSection
+              certificates={userProfile.certificates}
+              templateColor={templateColor}
+            />
+          </div>
         </div>
       </div>
     </div>

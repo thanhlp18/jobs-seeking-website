@@ -1,8 +1,7 @@
-import React from "react";
-import { Award } from "../../../../utils/type";
 import Divider from "../../../../components/Divider";
+import { AwardType } from "../../../../utils/type";
 
-type Props = { awards: Award[]; templateColor: string };
+type Props = { awards: AwardType[]; templateColor: string };
 
 export default function AwardsSection({ awards, templateColor }: Props) {
   return (
@@ -20,8 +19,8 @@ export default function AwardsSection({ awards, templateColor }: Props) {
       <Divider className="ml-6 !my-2" />
 
       <div className="flex flex-col  text-base">
-        {awards.map((award) => (
-          <div className="grid grid-cols-12 gap-3">
+        {awards.map((award, index) => (
+          <div className="grid grid-cols-12 gap-3" key={"award-" + index}>
             {/* time */}
             <div className="col-span-3 flex flex-row items-center gap-3 h-fit">
               <span

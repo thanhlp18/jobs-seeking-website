@@ -1,7 +1,7 @@
-import { PersonalProject } from "../../../../utils/type";
+import { PersonalProjectType } from "../../../../utils/type";
 
 type Props = {
-  personalProjects: PersonalProject[];
+  personalProjects: PersonalProjectType[];
 };
 
 export default function PersonalsProjectSection({ personalProjects }: Props) {
@@ -11,18 +11,21 @@ export default function PersonalsProjectSection({ personalProjects }: Props) {
         Personal Projects
       </p>
       <div className="text-bold col-span-10 text-base">
-        {personalProjects.map((project) => (
-          <div className="flex flex-col gap-2 flex-nowrap">
+        {personalProjects.map((project, index) => (
+          <div
+            className="flex flex-col gap-2 flex-nowrap"
+            key={"personal-project-" + index}
+          >
             <div className="flex flex-col  flex-nowrap">
               <div className="text-base  text-bold font-medium">
-                {project.duration.start} - {project.duration.end}
+                {project.start_date} - {project.end_date}
               </div>
               <div className="flex flex-row gap-2  flex-nowrap font-bold">
                 <div className="text-base  text-bold ">{project.title}</div>
 
                 <span>|</span>
                 <p className="text-bold text-base ">
-                  {project.duration.start} - {project.duration.end}
+                  {project.start_date} - {project.end_date}
                 </p>
               </div>
             </div>

@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Markup } from "interweave";
 import EditIcon from "../../components/EditIcon";
 import Title from "../../components/Title";
-import { PersonalProject } from "../../utils/type";
+import { PersonalProjectType } from "../../utils/type";
 
 type Props = {
-  project: PersonalProject;
+  project: PersonalProjectType;
   type?: string;
 };
 

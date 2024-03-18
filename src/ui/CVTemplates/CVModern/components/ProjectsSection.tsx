@@ -1,10 +1,9 @@
-import React from "react";
-import { PersonalProject } from "../../../../utils/type";
-import Title from "../../../../components/Title";
 import Divider from "../../../../components/Divider";
+import Title from "../../../../components/Title";
+import { PersonalProjectType } from "../../../../utils/type";
 
 type Props = {
-  personalProjects: PersonalProject[];
+  personalProjects: PersonalProjectType[];
   templateColor: string;
 };
 
@@ -21,7 +20,7 @@ export default function ProjectsSection({
         {personalProjects.map((project, index) => (
           <div className="flex flex-col  flex-nowrap" key={`project-${index}`}>
             <p className="text-bold text-sm ">
-              {project.duration.start} - {project.duration.end}
+              {project.start_date} - {project.end_date}
             </p>
             <Divider className="!my-1" />
             <div className="text-sm  text-bold font-bold">{project.title}</div>

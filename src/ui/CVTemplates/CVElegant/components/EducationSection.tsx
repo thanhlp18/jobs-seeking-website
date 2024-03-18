@@ -1,7 +1,7 @@
-import { Education } from "../../../../utils/type";
+import { EducationType } from "../../../../utils/type";
 
 type Props = {
-  education: Education[];
+  education: EducationType[];
 };
 
 export default function EducationSection({ education }: Props) {
@@ -12,16 +12,15 @@ export default function EducationSection({ education }: Props) {
       </p>
 
       <div className="text-bold col-span-10 text-base">
-        {education.map((deg) => (
-          <div className="flex flex-col gap-2 flex-nowrap">
+        {education.map((deg, index) => (
+          <div className="flex flex-col gap-2 flex-nowrap" key={index}>
             <div className="flex flex-col  flex-nowrap">
               <div className="text-base  text-bold font-bold">
                 {deg.institution}
               </div>
               <div className="flex flex-row gap-2  flex-nowrap">
                 <div className="text-base  text-bold">
-                  <span>{deg.duration.start}</span> -{" "}
-                  <span>{deg.duration.end}</span>
+                  <span>{deg.start_date}</span> - <span>{deg.end_date}</span>
                 </div>
 
                 <span>|</span>

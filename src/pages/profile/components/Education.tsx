@@ -1,8 +1,7 @@
-import React from "react";
-import ProfileEducation from "../../../ui/Profile/ProfileEducation";
-import { EducationType } from "../../../utils/type";
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
+import ProfileEducation from "../../../ui/Profile/ProfileEducation";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
+import { EducationType } from "../../../utils/type";
 
 type Props = {
   educationList: EducationType[];
