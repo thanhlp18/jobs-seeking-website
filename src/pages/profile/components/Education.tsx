@@ -2,6 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import ProfileEducation from "../../../ui/Profile/ProfileEducation";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { EducationType } from "../../../utils/type";
+import profile_education from "../../../assets/profile_education.svg";
 
 type Props = {
   educationList: EducationType[];
@@ -13,7 +14,7 @@ export const Education = ({ educationList }: Props) => {
       title={PROFILE_DATA_CATEGORY.education.title}
       titleType="h3"
       description={PROFILE_DATA_CATEGORY.education.description}
-      icon={PROFILE_DATA_CATEGORY.education.icon}
+      icon={profile_education}
     >
       {educationList.map((education, index) => (
         <ProfileEducation

@@ -12,6 +12,7 @@ import ProfileQuality from "./components/ProfileQuality";
 import Skill from "./components/Skill";
 import UserInformation from "./components/UserInformation";
 import WorkExperience from "./components/WorkExperience";
+// import profile_cover_letter from "../assets/profile_cover_letter.svg";
 
 export default function Profile() {
   const profileForCV = useSelector(getUserProfile);

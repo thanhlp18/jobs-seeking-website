@@ -37,24 +37,24 @@ export const HOMEPAGE_SKILLS_TRENDING = ["Java", "React", "NodeJS", "Python"];
 export const HOMEPAGE_USPS = [
   {
     title: "User Profile",
+    iconId: "user-profile",
     description:
       "Create an excellent profile with a well-structured format and specific guide",
     cta: "Update profile",
-    icon: "src/assets/usp-user-profile-image.svg",
   },
   {
     title: "CV Templates",
+    iconId: "cv-templates",
     description:
       "Generate professional IT CV with new templates - recommended by recruiters",
     cta: "View templates",
-    icon: "src/assets/usp-cv-templates-image.svg",
   },
   {
     title: "Blog",
+    iconId: "blog",
     description:
       "Updates about salary, benefits, working policies, and careers in IT",
     cta: "Explore blog",
-    icon: "src/assets/usp-blog-image.svg",
   },
 ];
 
@@ -159,51 +159,42 @@ export const PROFILE_DATA_CATEGORY: ProfileCategoryType = {
     title: "About Me",
     id: "about-me",
     description: "Introduce your strengths and years of experience",
-    icon: "src/assets/profile_about_me.svg",
   },
   education: {
     title: "Education",
     id: "education",
 
     description: "Share your background education",
-    icon: "src/assets/profile_education.svg",
   },
   workExperience: {
     title: "Work Experience",
     id: "work-experience",
-
     description: "Highlight detailed information about your job history",
-    icon: "src/assets/profile_work_experience.svg",
   },
   skills: {
     title: "Skills",
     id: "skills",
     description: "Showcase your skills and proficiencies",
-    icon: "src/assets/profile_skills.svg",
   },
   personalProjects: {
     title: "Personal Project",
     id: "personal-project",
     description: "Showcase your skills and proficiencies",
-    icon: "src/assets/profile_personal_project.svg",
   },
   certificates: {
     title: "Certificates",
     id: "certificates",
     description: "Provides evidence of your specific expertise and skills",
-    icon: "src/assets/profile_certificates.svg",
   },
   awards: {
     title: "Awards",
     id: "awards",
     description: "Highlight your awards or recognitions",
-    icon: "src/assets/profile_awards.svg",
   },
   coverLetter: {
     title: "Cover Letter",
     id: "cover-letter",
     description: "Introduce yourself and why you'd make a great hire",
-    icon: "src/assets/profile_cover_letter.svg",
   },
 };
 

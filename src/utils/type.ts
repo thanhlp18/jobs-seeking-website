@@ -31,7 +31,7 @@ export type ProfileDataCategoryType = {
   title: string;
   id: string;
   description: string;
-  icon: string;
+  // icon: string;
   content?: React.ReactNode;
 };
 

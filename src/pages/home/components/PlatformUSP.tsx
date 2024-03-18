@@ -3,6 +3,23 @@ import Title from "../../../components/Title";
 import Wrapper from "../../../components/Wrapper";
 import { HOMEPAGE_USPS } from "../../../utils/constants";
 
+import uspBlogImage from "../../../assets/usp-blog-image.svg";
+import uspCvTemplatesImage from "../../../assets/usp-cv-templates-image.svg";
+import uspUserProfileImage from "../../../assets/usp-user-profile-image.svg";
+
+const getPlatformUSPImage = (iconId: string) => {
+  switch (iconId) {
+    case "user-profile":
+      return uspUserProfileImage;
+    case "cv-templates":
+      return uspCvTemplatesImage;
+    case "blog":
+      return uspBlogImage;
+    default:
+      break;
+  }
+};
+
 export default function PlatformUSP() {
   return (
     <section className="py-4 pb-12">
@@ -18,7 +35,7 @@ export default function PlatformUSP() {
             >
               <div>
                 <img
-                  src={usp.icon}
+                  src={getPlatformUSPImage(usp.iconId)}
                   className="min-w-48 lg:min-w-28 p-6 pt-0 lg:p-3"
                 />
               </div>

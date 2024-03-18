@@ -2,6 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import ProfileWorkExperience from "../../../ui/Profile/ProfileWorkExperience";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { WorkExperienceType } from "../../../utils/type";
+import profile_work_experience from "../../../assets/profile_work_experience.svg";
 
 type Props = { workExperienceList: WorkExperienceType[] };
 
@@ -11,7 +12,7 @@ export default function WorkExperience({ workExperienceList }: Props) {
       title={PROFILE_DATA_CATEGORY.workExperience.title}
       titleType="h3"
       description={PROFILE_DATA_CATEGORY.workExperience.description}
-      icon={PROFILE_DATA_CATEGORY.workExperience.icon}
+      icon={profile_work_experience}
     >
       {workExperienceList.map(
         (workExperience: WorkExperienceType, index: number) => (
