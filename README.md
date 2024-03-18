@@ -29,4 +29,8 @@ School project jobs-seeking-website, using: react@typescript, react-router-dom, 
 
 ## Screen
 
-- Homescreen: ![home-screen.png](./img/home-screen.png)
+1. Home screen: ![home-screen.png](./img/home-screen.png)
+2. Login screen: ![login-screen.png](./img/login-screen.png)
+3. Profile screen: ![profile-page.png](./img/profile-page.png)
+4. CV screen: ![cv_page-screen.png](./img/cv_page-screen.png)
+5. Job Setting screen: ![job-setting-page.png(./img/job-setting-page.png)
