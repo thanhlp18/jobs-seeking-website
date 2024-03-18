@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Project Name
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+School project jobs-seeking-website, using: react@typescript, react-router-dom, tailwind css
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Library and Framework](#Library_and_Framework)
+- [Features](#features)
+- [Screens](#Screen)
 
-## Expanding the ESLint configuration
+## Library_and_Framework
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. React@typescript
+2. React-router-dom
+3. Redux tookit
+4. Tailwind CSS
+5. Axios
 
-- Configure the top-level `parserOptions` property like this:
+## Screens
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Home screen: ![home-screen.png](./img/home-screen.png)
+2. Login screen: ![login-screen.png](./img/login-screen.png)
+3. Profile screen: ![profile-page.png](./img/profile-page.png)
+4. CV screen: ![cv_page-screen.png](./img/cv_page-screen.png)
+5. Job Setting screen: ![job-setting-page.png](./img/job-setting-page.png)
