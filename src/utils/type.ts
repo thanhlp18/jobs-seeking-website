@@ -3,17 +3,23 @@ import React from "react";
 export type ApiLoginResponse = {
   status: number;
   data: {
+    name?: string;
     token?: string;
     message?: string;
-    expires_in?: number;
-    created_at?: number;
-    user_id?: string;
+
+    token_type?: string;
+    success?: boolean;
+  };
+  errors?: {
+    [key: string]: string[];
   };
 };
 
 export type LoaderLoginResponse = {
-  user_id: string;
   isLogin: boolean;
+  token?: string;
+  token_type?: string;
+  name?: string;
 };
 
 export type ProfileNavLinkItemsType = {
@@ -21,23 +27,23 @@ export type ProfileNavLinkItemsType = {
   to: string;
 }[];
 
-export type ProfileUserInformationType = {
-  name: string;
-  title: string;
-  email: string;
-  phone: string;
-  birthday: string;
-  gender?: string;
-  location?: string;
-  website?: string;
-};
-
 export type ProfileDataCategoryType = {
   title: string;
   id: string;
   description: string;
   icon: string;
   content?: React.ReactNode;
+};
+
+export type ProfileCategoryType = {
+  aboutMe: ProfileDataCategoryType;
+  education: ProfileDataCategoryType;
+  workExperience: ProfileDataCategoryType;
+  skills: ProfileDataCategoryType;
+  personalProjects: ProfileDataCategoryType;
+  certificates: ProfileDataCategoryType;
+  awards: ProfileDataCategoryType;
+  coverLetter: ProfileDataCategoryType;
 };
 
 export type ComponentSelectionWithSearchType = {
@@ -56,37 +62,40 @@ export type ToggleType = {
 };
 
 export type Duration = {
-  start: string;
-  end: string;
+  start_date: string;
+  end_date: string;
 };
 
-export type Education = {
+export type EducationType = {
   degree: string;
   institution: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   additionalDetail: string;
 };
 
-export type WorkExperience = {
+export type WorkExperienceType = {
   position: string;
   company: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   responsibilities: string;
 };
 
-export type Skills = {
+export type SkillType = {
   excellent?: string[];
   intermediate?: string[];
   beginner?: string[];
 };
 
-export type PersonalProject = {
+export type PersonalProjectType = {
   title: string;
-  duration: Duration;
+  start_date: string;
+  end_date: string;
   description: string;
 };
 
-export type Certificate = {
+export type CertificateType = {
   title: string;
   provider: string;
   issueDate: string;
@@ -94,7 +103,7 @@ export type Certificate = {
   certificateUrl: string;
 };
 
-export type Award = {
+export type AwardType = {
   title: string;
   provider: string;
   issueDate: string;
@@ -102,13 +111,11 @@ export type Award = {
 };
 
 export type ProfileDataForCV = {
-  aboutMe: {
-    description: string;
-  };
-  education: Education[];
-  workExperience: WorkExperience[];
-  skills: Skills;
-  personalProjects: PersonalProject[];
-  certificates: Certificate[];
-  awards: Award[];
+  aboutMe: { description: string };
+  education: EducationType[] | [];
+  workExperience: WorkExperienceType[] | [];
+  skills: SkillType;
+  personalProjects: PersonalProjectType[] | [];
+  certificates: CertificateType[] | [];
+  awards: AwardType[] | [];
 };

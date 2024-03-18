@@ -6,8 +6,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import Button from "../components/Button";
-import CompanyCard from "../ui/CompanyCard";
-import ArticleCard from "../ui/ArticleCard";
+import CompanyCard from "../ui/Card/CompanyCard";
+import ArticleCard from "../ui/Card/ArticleCard";
 import Dropdown from "../components/Dropdown";
 import Input from "../components/Input";
 import Link from "../components/Link";

@@ -1,22 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from "./app/store.ts";
 import "./index.css";
+import CreateCV from "./pages/CreateCV.tsx";
 import HomePage, { action as searchITJobAction } from "./pages/HomePage.tsx";
 import JobPreferences from "./pages/JobPreferences.tsx";
 import ManageCV from "./pages/ManageCV.tsx";
-import Profile from "./pages/Profile.tsx";
+import Profile from "./pages/profile/Profile.tsx";
 import SignIn, { action as signInAction } from "./pages/SignIn.tsx";
-import SignUp from "./pages/SignUp.tsx";
-import Layout from "./ui/Layout.tsx";
+import SignUp, { action as signUpAction } from "./pages/SignUp.tsx";
+import Layout from "./ui/Layout/Layout.tsx";
+import LayoutWithoutFooter from "./ui/Layout/LayoutWithoutFooter.tsx";
+import ProfileLayout from "./ui/Profile/ProfileLayout.tsx";
 import { loadLoginStatus } from "./utils/loadersFunction.ts";
-import ProfileLayout from "./ui/ProfileLayout.tsx";
-import CreateCV from "./pages/CreateCV.tsx";
+import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
+import LoadUserAuthenticationData from "./components/LoadUserAuthenticationData.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <LoadUserAuthenticationData>
+        <Layout />
+      </LoadUserAuthenticationData>
+    ),
     loader: loadLoginStatus,
     children: [
       {
@@ -32,8 +41,21 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
-        action: signInAction,
+        action: signUpAction,
       },
+    ],
+  },
+  {
+    path: "/",
+    element: (
+      <LoadUserAuthenticationData>
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      </LoadUserAuthenticationData>
+    ),
+    loader: loadLoginStatus,
+    children: [
       {
         path: "/profile",
         element: <ProfileLayout />,
@@ -50,6 +72,19 @@ const router = createBrowserRouter([
           },
         ],
       },
+    ],
+  },
+  {
+    path: "/",
+    element: (
+      <LoadUserAuthenticationData>
+        <ProtectedRoute>
+          <LayoutWithoutFooter />
+        </ProtectedRoute>
+      </LoadUserAuthenticationData>
+    ),
+    loader: loadLoginStatus,
+    children: [
       {
         path: "/create-cv",
         element: <CreateCV />,
@@ -61,6 +96,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

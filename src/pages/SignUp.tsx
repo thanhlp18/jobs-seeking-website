@@ -1,11 +1,13 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import icon_google from "../assets/icons/icon_google.svg";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Link from "../components/Link";
 import Title from "../components/Title";
-import { useState } from "react";
 import Wrapper from "../components/Wrapper";
+import { signUpApi } from "../services/api/authenticationApi";
 
 export default function SignUp() {
   const [isAgreeGoogle, setIsAgreeGoogle] = useState(true);
@@ -22,7 +24,7 @@ export default function SignUp() {
                 type="checkbox"
                 placeholder=""
                 name="sign-with-google"
-                handleOnChange={() => {
+                onChange={() => {
                   setIsAgreeGoogle(!isAgreeGoogle);
                 }}
                 containerClassName="contents"
@@ -57,7 +59,7 @@ export default function SignUp() {
               <Input
                 placeholder="Name"
                 type="text"
-                name="Name"
+                name="name"
                 id="sign-up-name"
                 required
                 label="Name"
@@ -90,7 +92,7 @@ export default function SignUp() {
                   required
                   containerClassName="contents"
                   inputClassName="h-6 w-6 transform translate-y-1.5 mr-1"
-                  handleOnChange={() => {
+                  onChange={() => {
                     setIsAgreeTerms(!isAgreeTerms);
                   }}
                 />{" "}
@@ -105,7 +107,7 @@ export default function SignUp() {
                   buttonType={isAgreeTerms ? "disabled" : "primary"}
                   className="w-full h-12 rounded-md"
                 >
-                  Login
+                  Sign Up
                 </Button>
               </span>
             </Form>
@@ -134,8 +136,31 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     formToJSON[key] = value;
   }
 
-  console.log("OKKK");
-  console.log(formToJSON);
-
-  return redirect("/home");
+  try {
+    const email = formToJSON.email.toString();
+    const password = formToJSON.password.toString();
+    const name = formToJSON.name.toString();
+    const res = await signUpApi(email, password, name);
+    if (res.status === 200) {
+      document.cookie = `token=${res.data.token}`;
+      document.cookie = `token_type=${res.data.token_type}`;
+      document.cookie = `name=${res.data.name}`;
+      console.log("res", res.data);
+      toast.success(res.data.message as string);
+      return redirect("/");
+    } else {
+      res.errors &&
+        Object.keys(res.errors).forEach((key) => {
+          res.errors &&
+            toast.error(
+              `${key[0].toUpperCase() + key.slice(1)}: ${res.errors[key].join(
+                ", "
+              )}`
+            );
+        });
+      return redirect("/sign-up");
+    }
+  } catch (err) {
+    toast.error(err as string);
+  }
 };

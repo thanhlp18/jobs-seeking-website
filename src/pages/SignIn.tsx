@@ -1,10 +1,12 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import toast from "react-hot-toast";
 import {
   ActionFunctionArgs,
   Form,
   redirect,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import icon_google from "../assets/icons/icon_google.svg";
@@ -12,19 +14,28 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Link from "../components/Link";
 import Title from "../components/Title";
-import { loginApi } from "../services/api";
+import Wrapper from "../components/Wrapper";
+import { signInApi } from "../services/api/authenticationApi";
 import { LOGIN_PAGE_TEXT_USP } from "../utils/constants";
 import { ApiLoginResponse } from "../utils/type";
 import { useEffect } from "react";
-import Wrapper from "../components/Wrapper";
+import { useSelector } from "react-redux";
+import { getUserAuthentication } from "../services/redux/user";
 
 export default function Login() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const alert = location.state?.alert;
+  const user = useSelector(getUserAuthentication);
   useEffect(() => {
-    const isLogin = localStorage.getItem("isLogin") === "true";
-    console.log(isLogin);
-    if (isLogin) navigate("/");
+    if (alert) toast.error(alert, { duration: 1000 });
   }, []);
+
+  useEffect(() => {
+    if (user.name !== "" && user.token !== "" && user.token_type !== "") {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   return (
     <Wrapper>
@@ -68,7 +79,7 @@ export default function Login() {
                 name="email"
                 id="login-email"
                 containerClassName="flex flex-col gap-1"
-                required
+                // required
                 label="Email"
               />
 
@@ -79,7 +90,7 @@ export default function Login() {
                 label="Password"
                 id="login-password"
                 containerClassName="flex flex-col gap-1"
-                required
+                // required
               />
               <span>
                 <Button
@@ -127,20 +138,27 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   for (const [key, value] of form.entries()) {
     formToJSON[key] = value;
   }
-
-  const res: ApiLoginResponse = await loginApi(
-    formToJSON.email.toString(),
-    formToJSON.password.toString()
-  );
+  const email = formToJSON.email.toString();
+  const password = formToJSON.password.toString();
+  const res: ApiLoginResponse = await signInApi(email, password);
+  console.log(res);
   if (res.status === 200) {
     document.cookie = `token=${res.data.token}`;
-    document.cookie = `token_expires=${res.data.expires_in}`;
-    document.cookie = `token_created_at=${res.data.created_at}`;
-    document.cookie = `user_id=${res.data.user_id}`;
+    document.cookie = `token_type=${res.data.token_type}`;
+    document.cookie = `name=${res.data.name}`;
+    console.log("res", res.data);
     toast.success("Login successfully!");
     return redirect("/");
   } else {
-    toast.error(res.data.message ? res.data.message : "Login fail!");
+    res.errors &&
+      Object.keys(res.errors).forEach((key) => {
+        res.errors &&
+          toast.error(
+            `${key[0].toUpperCase() + key.slice(1)}: ${res.errors[key].join(
+              ", "
+            )}`
+          );
+      });
     return null;
   }
 };
