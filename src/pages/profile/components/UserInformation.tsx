@@ -36,7 +36,6 @@ export default function UserInformation() {
   const handleChangeProfileInformation = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log(e.target.name, e.target.name == "image-url");
     if (e.target.name == "image-url") {
       if (e.target.files) {
         const newProfileImage = {

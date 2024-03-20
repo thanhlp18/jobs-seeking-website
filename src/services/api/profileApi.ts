@@ -88,6 +88,15 @@ export const getEducationApi = async () => {
 };
 
 // Update user education api
+export const updateEducationApi = async (education: EducationType) => {
+  const config = await generateConfig();
+  const response = await axios.post(
+    `${BASE_URL_API}/profiles/educations`,
+    education,
+    config
+  );
+  return response.data;
+};
 
 // Get user experiences api
 export const getWorkExperienceApi = async () => {

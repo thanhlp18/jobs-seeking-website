@@ -7,6 +7,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 type Props = {
   placeholder?: string;
   type?: "text" | "checkbox" | "email" | "password" | "number" | "date";
+
   inputGroupType?:
     | "checkbox"
     | "no-style"
