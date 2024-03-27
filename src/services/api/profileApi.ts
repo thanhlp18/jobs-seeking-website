@@ -87,12 +87,33 @@ export const getEducationApi = async () => {
   return response.data;
 };
 
-// Update user education api
-export const updateEducationApi = async (education: EducationType) => {
+// Add user education api
+export const addEducationApi = async (education: EducationType) => {
   const config = await generateConfig();
   const response = await axios.post(
     `${BASE_URL_API}/profiles/educations`,
     education,
+    config
+  );
+  return response.data;
+};
+
+// Update user education api
+export const updateEducationApi = async (education: EducationType) => {
+  const config = await generateConfig();
+  const response = await axios.put(
+    `${BASE_URL_API}/profiles/educations/${education.id}`,
+    education,
+    config
+  );
+  return response.data;
+};
+
+// Delete user education api
+export const deleteEducationApi = async (educationId: string) => {
+  const config = await generateConfig();
+  const response = await axios.delete(
+    `${BASE_URL_API}/profiles/educations/${educationId}`,
     config
   );
   return response.data;

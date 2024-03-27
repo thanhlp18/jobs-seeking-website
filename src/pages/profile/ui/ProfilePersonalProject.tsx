@@ -1,9 +1,9 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Markup } from "interweave";
-import EditIcon from "../../components/EditIcon";
-import Title from "../../components/Title";
-import { PersonalProjectType } from "../../utils/type";
+import { PersonalProjectType } from "../../../utils/type";
+import Title from "../../../components/Title";
+import EditIcon from "../../../components/EditIcon";
 
 type Props = {
   project: PersonalProjectType;

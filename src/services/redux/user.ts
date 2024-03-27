@@ -70,17 +70,60 @@ export const userSlice = createSlice({
         },
       };
     },
+    addEducation: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          education: [...state.userProfile.education, action.payload],
+        },
+      };
+    },
+    updateEducation: (state, action) => {
+      const { education } = action.payload;
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          education: [
+            ...state.userProfile.education.filter(
+              (ele) => ele.id !== education.id
+            ),
+            education,
+          ],
+        },
+      };
+    },
+    deleteEducation: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          education: state.userProfile.education.filter(
+            (ele) => ele.id !== action.payload
+          ),
+        },
+      };
+    },
   },
 });
 
-export const { signIn, updateUserProfile, updateUserInformation } =
-  userSlice.actions;
+export const {
+  signIn,
+  updateUserProfile,
+  updateUserInformation,
+  updateEducation,
+  deleteEducation,
+  addEducation,
+} = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getUserAuthentication = (state: RootState) => state.user;
 export const getUserProfile = (state: RootState) => state.user.userProfile;
 export const getUserInformation = (state: RootState) =>
   state.user.userInformation;
+export const getUserEducation = (state: RootState) =>
+  state.user.userProfile.education;
 export const getToken = (state: RootState) => state.user.token;
 
 export default userSlice.reducer;

@@ -1,8 +1,8 @@
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
-import ProfileAward from "../../../ui/Profile/ProfileAward";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { AwardType } from "../../../utils/type";
 import profile_awards from "../../../assets/profile_awards.svg";
+import ProfileAward from "../ui/ProfileAward";
 type Props = { awardList: AwardType[] };
 
 export default function Award({ awardList }: Props) {

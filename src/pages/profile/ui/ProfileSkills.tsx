@@ -1,7 +1,7 @@
-import Button from "../../components/Button";
-import Title from "../../components/Title";
-import Tooltip from "../../components/Tooltip";
-import { SkillType } from "../../utils/type";
+import Button from "../../../components/Button";
+import Title from "../../../components/Title";
+import Tooltip from "../../../components/Tooltip";
+import { SkillType } from "../../../utils/type";
 
 type Props = {
   skills: SkillType;

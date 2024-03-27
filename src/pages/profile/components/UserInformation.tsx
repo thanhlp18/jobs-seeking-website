@@ -27,6 +27,7 @@ import {
   getUserInformation,
   updateUserInformation,
 } from "../../../services/redux/user";
+import formatDateToDDMMYYYY from "../../../utils/function/formatDateToDDMMYYYY";
 
 export default function UserInformation() {
   const dispatch = useDispatch();
@@ -34,10 +35,12 @@ export default function UserInformation() {
   const [selectedImage, setSelectedImage] = useState<File | undefined>();
 
   const handleChangeProfileInformation = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     if (e.target.name == "image-url") {
-      if (e.target.files) {
+      if (e.target instanceof HTMLInputElement && e.target.files) {
         const newProfileImage = {
           ...userData,
           image_url: URL.createObjectURL(e.target.files[0]),
@@ -120,7 +123,7 @@ export default function UserInformation() {
                 <FontAwesomeIcon icon={faGift} />
               </span>
               <span className="font-medium text-base text-gray-700 line-clamp-1">
-                {userData.birthday}
+                {formatDateToDDMMYYYY(new Date(userData.birthday))}
               </span>
             </div>
             <div className="flex flex-row gap-2 flex-nowrap items-center">
@@ -189,7 +192,7 @@ export default function UserInformation() {
                       id="image-url"
                       name="image-url"
                       className="hidden"
-                      onChange={(e) => {
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         if (e.target.files) {
                           handleChangeProfileInformation(e);
                           setSelectedImage(e.target.files[0]);

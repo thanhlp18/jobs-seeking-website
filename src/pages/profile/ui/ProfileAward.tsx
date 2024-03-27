@@ -1,9 +1,9 @@
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EditIcon from "../../../components/EditIcon";
+import Title from "../../../components/Title";
+import { AwardType } from "../../../utils/type";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Interweave } from "interweave";
-import EditIcon from "../../components/EditIcon";
-import Title from "../../components/Title";
-import { AwardType } from "../../utils/type";
 
 type Props = {
   award: AwardType;

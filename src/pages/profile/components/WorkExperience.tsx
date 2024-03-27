@@ -1,8 +1,8 @@
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
-import ProfileWorkExperience from "../../../ui/Profile/ProfileWorkExperience";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { WorkExperienceType } from "../../../utils/type";
 import profile_work_experience from "../../../assets/profile_work_experience.svg";
+import ProfileWorkExperience from "../ui/ProfileWorkExperience";
 
 type Props = { workExperienceList: WorkExperienceType[] };
 

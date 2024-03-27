@@ -12,9 +12,7 @@ type Props = {
   containerClassName?: string;
   inputClassName?: string;
   labelClassName?: string;
-  onChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement> | undefined
-  ) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 export const textareaStyle = `
@@ -71,7 +69,7 @@ export default function TextArea({
         required={required ? required : false}
         name={name}
         rows={rows}
-        defaultValue={value}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
         className={` ${inputClassName}`}

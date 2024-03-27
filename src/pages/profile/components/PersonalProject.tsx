@@ -1,8 +1,8 @@
 import CardWithTitle from "../../../ui/Card/CardWithTitle";
-import ProfilePersonalProject from "../../../ui/Profile/ProfilePersonalProject";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { PersonalProjectType } from "../../../utils/type";
 import profile_personal_project from "../../../assets/profile_personal_project.svg";
+import ProfilePersonalProject from "../ui/ProfilePersonalProject";
 
 type Props = { personalProjectList: PersonalProjectType[] };
 

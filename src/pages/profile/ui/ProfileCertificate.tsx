@@ -1,13 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EditIcon from "../../../components/EditIcon";
+import Title from "../../../components/Title";
+import { CertificateType } from "../../../utils/type";
 import {
   faTrashCan,
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EditIcon from "../../components/EditIcon";
-import Title from "../../components/Title";
-import { CertificateType } from "../../utils/type";
 import { Interweave } from "interweave";
-import Link from "../../components/Link";
+import Link from "../../../components/Link";
 
 type Props = {
   certificate: CertificateType;

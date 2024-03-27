@@ -1,9 +1,10 @@
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EditIcon from "../../components/EditIcon";
-import Title from "../../components/Title";
-import { WorkExperienceType } from "../../utils/type";
+
 import { Interweave } from "interweave";
+import { WorkExperienceType } from "../../../utils/type";
+import Title from "../../../components/Title";
+import EditIcon from "../../../components/EditIcon";
 
 export default function ProfileWorkExperience({
   position,
