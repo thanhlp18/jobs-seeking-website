@@ -11,11 +11,11 @@ import {
   SELECT_YEAR,
 } from "../../../utils/constants";
 import { EducationType } from "../../../utils/type";
-import ProfileEducation from "../ui/ProfileEducation";
 import { addEducationApi } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
 import { addEducation } from "../../../services/redux/user";
 import { useDispatch } from "react-redux";
+import EducationWrapper from "./EducationWrapper";
 
 type Props = {
   educationList: EducationType[];
@@ -207,7 +207,7 @@ export const Education = ({ educationList }: Props) => {
         </div>
       </Modal>
       {educationList.map((education, index) => (
-        <ProfileEducation key={`education-${index}`} education={education} />
+        <EducationWrapper key={`education-${index}`} education={education} />
       ))}
     </CardWithTitle>
   );

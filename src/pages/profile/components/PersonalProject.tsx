@@ -2,7 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { PersonalProjectType } from "../../../utils/type";
 import profile_personal_project from "../../../assets/profile_personal_project.svg";
-import ProfilePersonalProject from "../ui/ProfilePersonalProject";
+import PersonalProjectWrapper from "./PersonalProjectWrapper";
 
 type Props = { personalProjectList: PersonalProjectType[] };
 
@@ -16,7 +16,7 @@ export default function PersonalProject({ personalProjectList }: Props) {
     >
       {personalProjectList.map(
         (project: PersonalProjectType, index: number) => (
-          <ProfilePersonalProject
+          <PersonalProjectWrapper
             project={project}
             type="personal-project"
             key={`project-${index}`}

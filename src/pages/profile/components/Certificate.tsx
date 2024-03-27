@@ -2,7 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { CertificateType } from "../../../utils/type";
 import profile_certificates from "../../../assets/profile_certificates.svg";
-import ProfileCertificate from "../ui/ProfileCertificate";
+import CertificateWrapper from "./CertificateWrapper";
 
 type Props = { certificateList: CertificateType[] };
 
@@ -15,7 +15,7 @@ export default function Certificate({ certificateList }: Props) {
       icon={profile_certificates}
     >
       {certificateList.map((certificate: CertificateType, index: number) => (
-        <ProfileCertificate
+        <CertificateWrapper
           certificate={certificate}
           key={`certificate-${index}`}
         />

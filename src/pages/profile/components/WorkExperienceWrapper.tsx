@@ -6,7 +6,7 @@ import { WorkExperienceType } from "../../../utils/type";
 import Title from "../../../components/Title";
 import EditIcon from "../../../components/EditIcon";
 
-export default function ProfileWorkExperience({
+export default function WorkExperienceWrapper({
   position,
   company,
   start_date,

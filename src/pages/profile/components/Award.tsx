@@ -2,7 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { AwardType } from "../../../utils/type";
 import profile_awards from "../../../assets/profile_awards.svg";
-import ProfileAward from "../ui/ProfileAward";
+import AwardWrapper from "./AwardWrapper";
 type Props = { awardList: AwardType[] };
 
 export default function Award({ awardList }: Props) {
@@ -14,7 +14,7 @@ export default function Award({ awardList }: Props) {
       icon={profile_awards}
     >
       {awardList?.map((award: AwardType, index: number) => (
-        <ProfileAward award={award} key={`award-${index}`} />
+        <AwardWrapper award={award} key={`award-${index}`} />
       ))}
     </CardWithTitle>
   );

@@ -2,7 +2,7 @@ import CardWithTitle from "../../../ui/Card/CardWithTitle";
 import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { SkillType } from "../../../utils/type";
 import profile_skills from "../../../assets/profile_skills.svg";
-import ProfileSkills from "../ui/ProfileSkills";
+import SkillsWrapper from "./SkillsWrapper";
 
 type Props = { skills: SkillType };
 
@@ -18,7 +18,7 @@ export default function Skill({ skills }: Props) {
         skills.beginner?.length &&
           skills.intermediate?.length &&
           skills.excellent?.length
-      ) && <ProfileSkills skills={skills} />}
+      ) && <SkillsWrapper skills={skills} />}
     </CardWithTitle>
   );
 }

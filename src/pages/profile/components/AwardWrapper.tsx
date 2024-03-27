@@ -10,7 +10,7 @@ type Props = {
   type?: string;
 };
 
-export default function ProfileAward({ award, type }: Props) {
+export default function AwardWrapper({ award, type }: Props) {
   switch (type) {
     default:
       return (

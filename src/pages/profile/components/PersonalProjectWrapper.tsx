@@ -10,7 +10,7 @@ type Props = {
   type?: string;
 };
 
-export default function ProfilePersonalProject({
+export default function PersonalProjectWrapper({
   project: { title, start_date, end_date, description },
 }: Props) {
   return (

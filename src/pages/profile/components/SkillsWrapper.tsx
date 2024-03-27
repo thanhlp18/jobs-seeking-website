@@ -8,7 +8,7 @@ type Props = {
   type?: string;
 };
 
-export default function ProfileSkills({ skills, type }: Props) {
+export default function SkillsWrapper({ skills, type }: Props) {
   const { excellent, intermediate, beginner } = skills;
   switch (type) {
     default:

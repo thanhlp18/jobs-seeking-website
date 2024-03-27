@@ -25,7 +25,7 @@ type props = {
   education: EducationType;
 };
 
-export default function ProfileEducation({ education }: props) {
+export default function EducationWrapper({ education }: props) {
   const [newEducation, setNewEducation] = useState<EducationType>(education);
   const { institution, degree, start_date, end_date, additionalDetail } =
     newEducation;

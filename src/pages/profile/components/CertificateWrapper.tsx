@@ -14,7 +14,7 @@ type Props = {
   type?: string;
 };
 
-export default function ProfileCertificate({ certificate, type }: Props) {
+export default function CertificateWrapper({ certificate, type }: Props) {
   switch (type) {
     default:
       return (
