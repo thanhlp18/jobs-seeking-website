@@ -1,12 +1,14 @@
+import axios from "axios";
+import { URL_API_LOGIN } from "../../utils/constants";
 import { ApiLoginResponse } from "../../utils/type";
-import { BASE_URL_API } from "../../utils/constants";
+import { generateConfig } from "./profileApi";
 
 export const signInApi = async (
   email: string,
   password: string
 ): Promise<ApiLoginResponse> => {
   return new Promise((resolve) => {
-    fetch(`${BASE_URL_API}/login`, {
+    fetch(`${URL_API_LOGIN}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +21,7 @@ export const signInApi = async (
           resolve({
             status: 200,
             data: {
-              name: res.name,
+              name: res.user.name,
               token: res.access_token,
               token_type: res.token_type,
               success: true,
@@ -50,7 +52,7 @@ export const signUpApi = async (
   name: string
 ): Promise<ApiLoginResponse> => {
   return new Promise((resolve) => {
-    fetch(`${BASE_URL_API}/register`, {
+    fetch(`${URL_API_LOGIN}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,4 +88,16 @@ export const signUpApi = async (
         });
       });
   });
+};
+
+export const signOutApi = async () => {
+  const config = await generateConfig(); // Assuming you have a function to generate the configuration
+  try {
+    const response = await axios.delete(`${URL_API_LOGIN}/logout`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error logging out:", error);
+    // You might want to handle error cases here
+    throw error;
+  }
 };

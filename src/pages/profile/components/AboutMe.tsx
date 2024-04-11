@@ -12,9 +12,15 @@ import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { updateAboutMeApi } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
 
-type Props = { aboutMeDescription: string };
+type Props = {
+  aboutMe: {
+    description: string;
+    id: number;
+  };
+};
 
-export default function AboutMe({ aboutMeDescription }: Props) {
+export default function AboutMe({ aboutMe }: Props) {
+  console.log(aboutMe, "about me");
   const dispatch = useDispatch();
   const userProfile = useSelector(getUserProfile);
   const handleEditAboutMe = (
@@ -22,11 +28,16 @@ export default function AboutMe({ aboutMeDescription }: Props) {
   ) => {
     if (e) {
       console.log(e.target.value, "about me");
-      dispatch(updateUserProfile({ aboutMe: { description: e.target.value } }));
+      dispatch(
+        updateUserProfile({
+          aboutMe: { description: e.target.value, id: aboutMe.id },
+        })
+      );
     }
   };
   const handleSaveAboutMe = () => {
-    updateAboutMeApi(userProfile.aboutMe.description)
+    console.log(aboutMe);
+    updateAboutMeApi(userProfile.aboutMe.description, aboutMe.id)
       .then((res) => {
         if (res.status_code === 200)
           toast.success("About me updated successfully");
@@ -42,7 +53,7 @@ export default function AboutMe({ aboutMeDescription }: Props) {
       icon={profile_about_me_icon}
     >
       <div>
-        <p>{aboutMeDescription}</p>
+        <p>{userProfile.aboutMe.description}</p>
         <Modal
           title={PROFILE_DATA_CATEGORY.aboutMe.title}
           handleSave={handleSaveAboutMe}

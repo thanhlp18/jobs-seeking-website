@@ -7,6 +7,7 @@ import SkillsWrapper from "./SkillsWrapper";
 type Props = { skills: SkillType };
 
 export default function Skill({ skills }: Props) {
+  console.log(skills, "skills");
   return (
     <CardWithTitle
       title={PROFILE_DATA_CATEGORY.skills.title}

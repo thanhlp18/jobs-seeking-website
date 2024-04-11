@@ -14,15 +14,16 @@ export default function PersonalProject({ personalProjectList }: Props) {
       description={PROFILE_DATA_CATEGORY.personalProjects.description}
       icon={profile_personal_project}
     >
-      {personalProjectList.map(
-        (project: PersonalProjectType, index: number) => (
-          <PersonalProjectWrapper
-            project={project}
-            type="personal-project"
-            key={`project-${index}`}
-          />
-        )
-      )}
+      {personalProjectList &&
+        personalProjectList.map(
+          (project: PersonalProjectType, index: number) => (
+            <PersonalProjectWrapper
+              project={project}
+              type="personal-project"
+              key={`project-${index}`}
+            />
+          )
+        )}
     </CardWithTitle>
   );
 }

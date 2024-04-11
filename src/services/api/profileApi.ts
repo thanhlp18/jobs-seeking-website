@@ -1,14 +1,24 @@
 import axios from "axios";
-import { BASE_URL_API } from "../../utils/constants";
+import {
+  BASE_URL_API,
+  URL_API_ABOUT_ME,
+  URL_API_EDUCATION,
+  URL_API_EXPERIENCE,
+  URL_API_PERSONAL_PROJECT,
+  URL_API_PROFILE,
+  URL_API_SKILLS,
+} from "../../utils/constants";
 import { loadLoginStatus } from "../../utils/loadersFunction";
 import {
   AwardType,
   CertificateType,
   EducationType,
   PersonalProjectType,
+  SkillType,
   WorkExperienceType,
 } from "../../utils/type";
 import { UserInformationType } from "../../utils/type/profileType";
+import { convertSkillsToSkillType } from "../../utils/function/convertSkillsToSkillType";
 
 // Generate config to use in api
 export const generateConfig = async () => {
@@ -32,45 +42,42 @@ export const srcToFile = async (src: string, fileName: string) => {
 // Get user information api
 export const getUserInformationApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(`${BASE_URL_API}/profile`, config);
+  const response = await axios.get(`${URL_API_PROFILE}`, config);
   return response.data;
 };
 
 // Update user information api
 export const updateUserInformationApi = async (
-  data: UserInformationType,
-  image: File | undefined
+  data: UserInformationType
+  // image: File | undefined
 ) => {
-  const formDataToSend = new FormData();
-  formDataToSend.append("name", data.name);
-  formDataToSend.append("title", data.title);
-  formDataToSend.append("email", data.email);
-  formDataToSend.append("phone", data.phone);
-  formDataToSend.append("birthday", data.birthday);
-  data.gender && formDataToSend.append("gender", data.gender);
-  data.location && formDataToSend.append("location", data.location);
-  image && formDataToSend.append("image", image);
+  // const formDataToSend = new FormData();
+  // formDataToSend.append("name", data.name);
+  // formDataToSend.append("title", data.title);
+  // formDataToSend.append("email", data.email);
+  // formDataToSend.append("phone", data.phone);
+  // formDataToSend.append("birthday", data.birthday);
+  // data.gender && formDataToSend.append("gender", data.gender);
+  // data.location && formDataToSend.append("location", data.location);
+  // image && formDataToSend.append("image", image);
+
   const config = await generateConfig();
-  const response = await axios.post(
-    `${BASE_URL_API}/profile`,
-    formDataToSend,
-    config
-  );
+  const response = await axios.put(`${URL_API_PROFILE}`, data, config);
   return response.data;
 };
 
 // Get about me api
 export const getAboutMeApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(`${BASE_URL_API}/profiles/aboutMe`, config);
+  const response = await axios.get(`${URL_API_ABOUT_ME}`, config);
   return response.data;
 };
 
 // Update about me api
-export const updateAboutMeApi = async (description: string) => {
+export const updateAboutMeApi = async (description: string, id: number) => {
   const config = await generateConfig();
-  const response = await axios.post(
-    `${BASE_URL_API}/profiles/aboutMe`,
+  const response = await axios.put(
+    `${URL_API_ABOUT_ME}/${id}`,
     { description: description },
     config
   );
@@ -80,10 +87,7 @@ export const updateAboutMeApi = async (description: string) => {
 // Get user education api
 export const getEducationApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(
-    `${BASE_URL_API}/profiles/educations`,
-    config
-  );
+  const response = await axios.get(`${URL_API_EDUCATION}`, config);
   return response.data;
 };
 
@@ -91,8 +95,14 @@ export const getEducationApi = async () => {
 export const addEducationApi = async (education: EducationType) => {
   const config = await generateConfig();
   const response = await axios.post(
-    `${BASE_URL_API}/profiles/educations`,
-    education,
+    `${URL_API_EDUCATION}`,
+    {
+      institution: education.institution,
+      degree: education.degree,
+      start_date: education.start_date,
+      end_date: education.end_date,
+      additionalDetail: education.additionalDetail || "",
+    },
     config
   );
   return response.data;
@@ -100,10 +110,17 @@ export const addEducationApi = async (education: EducationType) => {
 
 // Update user education api
 export const updateEducationApi = async (education: EducationType) => {
+  console.log(education);
   const config = await generateConfig();
   const response = await axios.put(
-    `${BASE_URL_API}/profiles/educations/${education.id}`,
-    education,
+    `${URL_API_EDUCATION}/${education.id}`,
+    {
+      institution: education.institution,
+      degree: education.degree,
+      start_date: education.start_date,
+      end_date: education.end_date,
+      additionalDetail: education.additionalDetail || "",
+    },
     config
   );
   return response.data;
@@ -122,17 +139,47 @@ export const deleteEducationApi = async (educationId: string) => {
 // Get user experiences api
 export const getWorkExperienceApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(
-    `${BASE_URL_API}/profiles/experiences`,
+  const response = await axios.get(`${URL_API_EXPERIENCE}`, config);
+  return response.data;
+};
+
+// add user experiences api
+export const addWorkExperienceApi = async (
+  workExperience: WorkExperienceType
+) => {
+  const config = await generateConfig();
+  const response = await axios.post(
+    `${URL_API_EXPERIENCE}`,
+    workExperience,
     config
   );
+  return response.data;
+};
+
+// Update user experiences api
+export const updateWorkExperienceApi = async (
+  workExperience: WorkExperienceType
+) => {
+  const config = await generateConfig();
+  const response = await axios.put(
+    `${URL_API_EXPERIENCE}/${workExperience.id}`,
+    workExperience,
+    config
+  );
+  return response.data;
+};
+
+// Get user skills api
+export const getSkillApi = async () => {
+  const config = await generateConfig();
+  const response = await axios.get(`${URL_API_SKILLS}`, config);
   return response.data;
 };
 
 // Get project api
 export const getPersonalProjectApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(`${BASE_URL_API}/profiles/projects`, config);
+  const response = await axios.get(`${URL_API_PERSONAL_PROJECT}`, config);
   return response.data;
 };
 
@@ -160,7 +207,8 @@ export const getUserProfileApi = async (
   workExperiencePromise: Promise<{ data: WorkExperienceType }>,
   personalProjectsPromise: Promise<{ data: PersonalProjectType }>,
   certificatePromise: Promise<{ data: CertificateType }>,
-  awardPromise: Promise<{ data: AwardType }>
+  awardPromise: Promise<{ data: AwardType }>,
+  skillsPromise: Promise<{ data: SkillType }>
 ) => {
   try {
     const [
@@ -170,6 +218,7 @@ export const getUserProfileApi = async (
       personalProjectRes,
       certificateRes,
       awardRes,
+      skillsRes,
     ] = await Promise.all([
       aboutMePromise,
       educationPromise,
@@ -177,14 +226,16 @@ export const getUserProfileApi = async (
       personalProjectsPromise,
       certificatePromise,
       awardPromise,
+      skillsPromise,
     ]);
-
     const aboutMeData = aboutMeRes.data[0];
+    console.log(aboutMeData);
     const educationData = educationRes.data;
     const workExperienceData = workExperienceRes.data;
     const personalProjectData = personalProjectRes.data;
     const certificateResData = certificateRes.data;
     const awardData = awardRes.data;
+    const skillsData = skillsRes.data;
 
     return {
       aboutMe: aboutMeData,
@@ -193,6 +244,7 @@ export const getUserProfileApi = async (
       personalProjects: personalProjectData,
       certificates: certificateResData,
       awards: awardData,
+      skills: convertSkillsToSkillType(skillsData),
     };
   } catch (error) {
     console.error("Error fetching user profile data:", error);

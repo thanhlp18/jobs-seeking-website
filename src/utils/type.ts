@@ -81,6 +81,7 @@ export type WorkExperienceType = {
   start_date: string;
   end_date: string;
   responsibilities: string;
+  id: string;
 };
 
 export type SkillType = {
@@ -112,7 +113,7 @@ export type AwardType = {
 };
 
 export type ProfileDataForCV = {
-  aboutMe: { description: string };
+  aboutMe: { description: string; id: number };
   education: EducationType[] | [];
   workExperience: WorkExperienceType[] | [];
   skills: SkillType;

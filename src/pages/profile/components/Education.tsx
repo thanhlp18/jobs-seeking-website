@@ -24,8 +24,8 @@ type Props = {
 const educationInitialState = {
   institution: "",
   degree: "",
-  start_date: "2000/01/01", //YYYY/MM/DD
-  end_date: "2000/01/01", //YYYY/MM/DD
+  start_date: "2000-01-01", //YYYY/MM/DD
+  end_date: "2000-01-01", //YYYY/MM/DD
   additionalDetail: "",
   id: "",
 };
@@ -47,15 +47,15 @@ export const Education = ({ educationList }: Props) => {
       name === "end-month" ||
       name === "end-year"
     ) {
-      const startMonth = newEducation.start_date.split("/")[1];
-      const startYear = newEducation.start_date.split("/")[0];
-      const endMonth = newEducation.end_date.split("/")[1];
-      const endYear = newEducation.end_date.split("/")[0];
+      const startMonth = newEducation.start_date.split("-")[1];
+      const startYear = newEducation.start_date.split("-")[0];
+      const endMonth = newEducation.end_date.split("-")[1];
+      const endYear = newEducation.end_date.split("-")[0];
       if (name === "start-month") {
         setNewEducation((preEducation) => {
           return {
             ...preEducation,
-            start_date: `${startYear}/${value}/01`,
+            start_date: `${startYear}-${value}-01`,
           };
         });
       }
@@ -63,7 +63,7 @@ export const Education = ({ educationList }: Props) => {
         setNewEducation((preEducation) => {
           return {
             ...preEducation,
-            start_date: `${value}/${startMonth}/01`,
+            start_date: `${value}-${startMonth}-01`,
           };
         });
       }
@@ -71,7 +71,7 @@ export const Education = ({ educationList }: Props) => {
         setNewEducation((preEducation) => {
           return {
             ...preEducation,
-            end_date: `${endYear}/${value}/01`,
+            end_date: `${endYear}-${value}-01`,
           };
         });
       }
@@ -79,7 +79,7 @@ export const Education = ({ educationList }: Props) => {
         setNewEducation((preEducation) => {
           return {
             ...preEducation,
-            end_date: `${value}/${endMonth}/01`,
+            end_date: `${value}-${endMonth}-01`,
           };
         });
       }
@@ -90,7 +90,10 @@ export const Education = ({ educationList }: Props) => {
     }
   };
   function handleAddEducation() {
-    if (new Date(newEducation.start_date) > new Date(newEducation.end_date)) {
+    if (
+      new Date(newEducation.start_date.replace("-", "/")) >
+      new Date(newEducation.end_date.replace("-", "/"))
+    ) {
       toast.error("Start date cannot be greater than end date");
       return;
     } else {
@@ -153,7 +156,7 @@ export const Education = ({ educationList }: Props) => {
                     inputGroupType="styled-dropdown"
                     name="start-month"
                     label="Start"
-                    value={newEducation.start_date.split("/")[1]}
+                    value={newEducation.start_date.split("-")[1]}
                     options={SELECT_MONTH_OF_YEAR}
                     onChange={handleChangeEducation}
                     containerClassName="flex flex-col gap-1 justify-end"
@@ -162,7 +165,7 @@ export const Education = ({ educationList }: Props) => {
                   <Input
                     inputGroupType="styled-dropdown"
                     name="start-year"
-                    value={newEducation.start_date.split("/")[2]}
+                    value={newEducation.start_date.split("-")[2]}
                     placeholder="major"
                     options={SELECT_YEAR}
                     onChange={handleChangeEducation}
@@ -175,7 +178,7 @@ export const Education = ({ educationList }: Props) => {
                     inputGroupType="styled-dropdown"
                     name="end-month"
                     label="End"
-                    value={newEducation.end_date.split("/")[1]}
+                    value={newEducation.end_date.split("-")[1]}
                     options={SELECT_MONTH_OF_YEAR}
                     onChange={handleChangeEducation}
                     containerClassName="flex flex-col gap-1  justify-end"
@@ -184,7 +187,7 @@ export const Education = ({ educationList }: Props) => {
                   <Input
                     inputGroupType="styled-dropdown"
                     name="end-year"
-                    value={newEducation.end_date.split("/")[2]}
+                    value={newEducation.end_date.split("-")[2]}
                     options={SELECT_YEAR}
                     onChange={handleChangeEducation}
                     containerClassName="flex flex-col gap-1 justify-end"
@@ -206,9 +209,16 @@ export const Education = ({ educationList }: Props) => {
           </div>
         </div>
       </Modal>
-      {educationList.map((education, index) => (
-        <EducationWrapper key={`education-${index}`} education={education} />
-      ))}
+      {educationList &&
+        educationList.map((education, index) => {
+          console.log(education);
+          return (
+            <EducationWrapper
+              key={`education-${index}`}
+              education={education}
+            />
+          );
+        })}
     </CardWithTitle>
   );
 };

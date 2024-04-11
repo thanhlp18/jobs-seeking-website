@@ -20,6 +20,7 @@ import {
   updateEducationApi,
 } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
+import convertDateFormat from "../../../utils/function/convertDateFormat";
 
 type props = {
   education: EducationType;
@@ -27,6 +28,7 @@ type props = {
 
 export default function EducationWrapper({ education }: props) {
   const [newEducation, setNewEducation] = useState<EducationType>(education);
+
   const { institution, degree, start_date, end_date, additionalDetail } =
     newEducation;
   const dispatch = useDispatch();
@@ -36,11 +38,24 @@ export default function EducationWrapper({ education }: props) {
     >
   ) => {
     const { name, value } = e.target;
-    setNewEducation({ ...education, [name]: value });
+    if (name === "start-month" || name === "start-year") {
+      setNewEducation({
+        ...newEducation,
+        start_date: convertDateFormat(name, value, newEducation.start_date),
+      });
+    } else if (name === "end-month" || name === "end-year") {
+      setNewEducation({
+        ...newEducation,
+        end_date: convertDateFormat(name, value, newEducation.end_date),
+      });
+    } else {
+      console.log(newEducation);
+      setNewEducation({ ...newEducation, [name]: value });
+    }
   };
   const handleSaveEducation = () => {
     // Call api function in parent component
-    updateEducationApi(education)
+    updateEducationApi(newEducation)
       .then((res) => {
         if (res.status_code == 200) {
           toast.success(res.message);
@@ -52,7 +67,6 @@ export default function EducationWrapper({ education }: props) {
       .catch((err) => {
         toast.error(err.message);
       });
-    newEducation;
   };
 
   const handleDeleteEducation = () => {
@@ -131,7 +145,7 @@ export default function EducationWrapper({ education }: props) {
                   <div className="grid grid-cols-2 gap-4 ">
                     <Input
                       inputGroupType="styled-dropdown"
-                      name="start-date"
+                      name="start-month"
                       label="Start"
                       options={SELECT_MONTH_OF_YEAR}
                       onChange={handleChangeEducation}
@@ -151,7 +165,7 @@ export default function EducationWrapper({ education }: props) {
                   <div className="grid grid-cols-2 gap-4 ">
                     <Input
                       inputGroupType="styled-dropdown"
-                      name="end-date"
+                      name="end-month"
                       label="End"
                       options={SELECT_MONTH_OF_YEAR}
                       onChange={handleChangeEducation}

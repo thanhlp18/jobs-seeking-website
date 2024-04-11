@@ -305,4 +305,11 @@ export const SELECT_YEAR: { label: string; value: string }[] = [
   { value: "2025", label: "2025" },
 ];
 
-export const BASE_URL_API = "http://localhost:8080/UserServiceRestProject/rest";
+export const BASE_URL_API = "http://localhost:8080";
+export const URL_API_LOGIN = `${BASE_URL_API}/UserServiceRestProject/rest/users`;
+export const URL_API_PROFILE = `${BASE_URL_API}/ProfileServiceRestProject/rest/profiles`;
+export const URL_API_ABOUT_ME = `${BASE_URL_API}/AboutmeServiceRestProject/rest/aboutme`;
+export const URL_API_EDUCATION = `${BASE_URL_API}/EducationServiceRestProject/rest/education`;
+export const URL_API_EXPERIENCE = `${BASE_URL_API}/ExperiencesServiceRestProject/rest/experience`;
+export const URL_API_SKILLS = `${BASE_URL_API}/SkillsServiceRestProject/rest/skills`;
+export const URL_API_PERSONAL_PROJECT = `${BASE_URL_API}/ProjectsServiceRestProject/rest/projects`;

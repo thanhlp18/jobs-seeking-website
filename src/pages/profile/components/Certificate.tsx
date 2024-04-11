@@ -14,12 +14,13 @@ export default function Certificate({ certificateList }: Props) {
       description={PROFILE_DATA_CATEGORY.certificates.description}
       icon={profile_certificates}
     >
-      {certificateList.map((certificate: CertificateType, index: number) => (
-        <CertificateWrapper
-          certificate={certificate}
-          key={`certificate-${index}`}
-        />
-      ))}
+      {certificateList &&
+        certificateList.map((certificate: CertificateType, index: number) => (
+          <CertificateWrapper
+            certificate={certificate}
+            key={`certificate-${index}`}
+          />
+        ))}
     </CardWithTitle>
   );
 }

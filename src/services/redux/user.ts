@@ -28,7 +28,7 @@ const initialState: UserState = {
     location: "",
   },
   userProfile: {
-    aboutMe: { description: "" },
+    aboutMe: { description: "", id: null },
     education: [],
     workExperience: [],
     skills: {},
@@ -51,6 +51,14 @@ export const userSlice = createSlice({
         token_type: action.payload.token_type,
       };
     },
+    signOut: (state) => {
+      return {
+        ...state,
+        name: "",
+        token: "",
+        token_type: "",
+      };
+    },
 
     updateUserInformation: (state, action) => {
       return {
@@ -70,6 +78,7 @@ export const userSlice = createSlice({
         },
       };
     },
+
     addEducation: (state, action) => {
       return {
         ...state,
@@ -105,16 +114,44 @@ export const userSlice = createSlice({
         },
       };
     },
+    addExperience: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          workExperience: [...state.userProfile.workExperience, action.payload],
+        },
+      };
+    },
+    updateExperience: (state, action) => {
+      const { workExperience } = action.payload;
+      console.log("REDUX: ", workExperience);
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          workExperience: [
+            ...state.userProfile.workExperience.filter(
+              (ele) => ele.id !== workExperience.id
+            ),
+            workExperience,
+          ],
+        },
+      };
+    },
   },
 });
 
 export const {
   signIn,
+  signOut,
   updateUserProfile,
   updateUserInformation,
   updateEducation,
   deleteEducation,
   addEducation,
+  addExperience,
+  updateExperience,
 } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
