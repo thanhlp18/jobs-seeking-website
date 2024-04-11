@@ -305,4 +305,4 @@ export const SELECT_YEAR: { label: string; value: string }[] = [
   { value: "2025", label: "2025" },
 ];
 
-export const BASE_URL_API = "http://127.0.0.1:8000/api";
+export const BASE_URL_API = "http://localhost:8080/UserServiceRestProject/rest";

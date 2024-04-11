@@ -128,7 +128,7 @@ const Input: React.FC<Props> = ({
               className="w-full"
               $isIcon={!!icon}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                if (onChange) onChange(e);
+              if (onChange) onChange(e);
               }}
             >
               {options &&
