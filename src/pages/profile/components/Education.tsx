@@ -17,6 +17,7 @@ import { addEducation } from "../../../services/redux/user";
 import { useDispatch } from "react-redux";
 import EducationWrapper from "./EducationWrapper";
 
+
 type Props = {
   educationList: EducationType[];
 };

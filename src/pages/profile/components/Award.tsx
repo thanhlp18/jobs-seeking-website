@@ -12,6 +12,7 @@ import { addAwardApi } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addAward } from "../../../services/redux/user";
+
 type Props = { awardList: AwardType[] };
 
 const initialAward: AwardType = {

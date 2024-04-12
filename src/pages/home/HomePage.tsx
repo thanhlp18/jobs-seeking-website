@@ -1,4 +1,4 @@
-import { ActionFunctionArgs, Navigate, redirect } from "react-router-dom";
+import { ActionFunctionArgs, Navigate } from "react-router-dom";
 import FeatureArticle from "./components/FeatureArticle";
 import PlatformUSP from "./components/PlatformUSP";
 import SearchBox from "./components/SearchBox";
@@ -12,6 +12,7 @@ export default function HomePage() {
       state={{ alert: "You need sign in to access this feature!" }}
     />
   );
+
   return (
     <div className="flex flex-col gap-4">
       {/* Search box */}

@@ -13,6 +13,7 @@ import { addCertificateApi } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
 import { addCertificate } from "../../../services/redux/user";
 
+
 type Props = { certificateList: CertificateType[] };
 
 const initialCertificate: CertificateType = {

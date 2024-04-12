@@ -20,6 +20,7 @@ import toast from "react-hot-toast";
 import { updateSkill } from "../../../services/redux/user";
 import { useDispatch } from "react-redux";
 
+
 type Props = { skills: SkillType };
 
 export default function Skill({ skills }: Props) {

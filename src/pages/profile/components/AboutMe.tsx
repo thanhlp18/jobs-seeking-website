@@ -12,6 +12,7 @@ import { PROFILE_DATA_CATEGORY } from "../../../utils/constants";
 import { updateAboutMeApi } from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
 
+
 type Props = {
   aboutMe: {
     description: string;
