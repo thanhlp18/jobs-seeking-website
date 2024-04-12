@@ -331,3 +331,4 @@ export const URL_API_EXPERIENCE = `${BASE_URL_API}/ExperiencesServiceRestProject
 export const URL_API_SKILLS = `${BASE_URL_API}/SkillsServiceRestProject/rest/skills`;
 export const URL_API_PERSONAL_PROJECT = `${BASE_URL_API}/ProjectsServiceRestProject/rest/projects`;
 export const URL_API_AWARDS = `${BASE_URL_API}/AwardsServiceRestProject/rest/awards`;
+export const URL_API_CERTIFICATES = `${BASE_URL_API}/CertificatesServiceRestProject/rest/certificates`;

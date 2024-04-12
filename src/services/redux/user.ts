@@ -217,6 +217,41 @@ export const userSlice = createSlice({
         },
       };
     },
+    addCertificate: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          certificates: [...state.userProfile.certificates, action.payload],
+        },
+      };
+    },
+    updateCertificate: (state, action) => {
+      const { certificate } = action.payload;
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          certificates: [
+            ...state.userProfile.certificates.filter(
+              (ele) => ele.id !== certificate.id
+            ),
+            certificate,
+          ],
+        },
+      };
+    },
+    deleteCertificate: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          certificates: state.userProfile.certificates.filter(
+            (ele) => ele.id !== action.payload
+          ),
+        },
+      };
+    },
   },
 });
 
@@ -237,6 +272,9 @@ export const {
   updateSkill,
   addAward,
   deleteAward,
+  addCertificate,
+  updateCertificate,
+  deleteCertificate,
 } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type

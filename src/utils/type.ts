@@ -104,6 +104,7 @@ export type CertificateType = {
   issueDate: string;
   description: string;
   certificateUrl: string;
+  id: string;
 };
 
 export type AwardType = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import logo from "../../assets/brand_logo.svg";
 import {
   getUserInformation,
@@ -20,6 +20,7 @@ const Header: React.FC = () => {
     signOutApi()
       .then((res) => {
         toast.success(res.message);
+        redirect("/");
       })
       .catch((err) => {
         toast.error(err.message);

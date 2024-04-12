@@ -1,14 +1,15 @@
 import axios from "axios";
 import {
-  BASE_URL_API,
   URL_API_ABOUT_ME,
   URL_API_AWARDS,
+  URL_API_CERTIFICATES,
   URL_API_EDUCATION,
   URL_API_EXPERIENCE,
   URL_API_PERSONAL_PROJECT,
   URL_API_PROFILE,
   URL_API_SKILLS,
 } from "../../utils/constants";
+import { convertSkillsToSkillType } from "../../utils/function/convertSkillsToSkillType";
 import { loadLoginStatus } from "../../utils/loadersFunction";
 import {
   AwardType,
@@ -19,7 +20,6 @@ import {
   WorkExperienceType,
 } from "../../utils/type";
 import { UserInformationType } from "../../utils/type/profileType";
-import { convertSkillsToSkillType } from "../../utils/function/convertSkillsToSkillType";
 import { uploadToCloudflare } from "./uploadToCloudflare";
 
 // Generate config to use in api
@@ -256,8 +256,49 @@ export const deletePersonalProjectApi = async (personalProjectId: string) => {
 // Get certificate api
 export const getCertificateApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(
-    `${BASE_URL_API}/profiles/certificates`,
+  const response = await axios.get(`${URL_API_CERTIFICATES}`, config);
+  return response.data;
+};
+
+// Add certificate api
+export const addCertificateApi = async (certificate: CertificateType) => {
+  const config = await generateConfig();
+  const response = await axios.post(
+    `${URL_API_CERTIFICATES}`,
+    {
+      title: certificate.title,
+      description: certificate.description,
+      issueDate: certificate.issueDate,
+      provider: certificate.provider,
+      certificateUrl: certificate.certificateUrl,
+    },
+    config
+  );
+  return response.data;
+};
+
+// Update certificate api
+export const updateCertificateApi = async (certificate: CertificateType) => {
+  const config = await generateConfig();
+  const response = await axios.put(
+    `${URL_API_CERTIFICATES}/${certificate.id}`,
+    {
+      title: certificate.title,
+      description: certificate.description,
+      issueDate: certificate.issueDate,
+      provider: certificate.provider,
+      certificateUrl: certificate.certificateUrl,
+    },
+    config
+  );
+  return response.data;
+};
+
+// Delete certificate api
+export const deleteCertificateApi = async (certificateId: string) => {
+  const config = await generateConfig();
+  const response = await axios.delete(
+    `${URL_API_CERTIFICATES}/${certificateId}`,
     config
   );
   return response.data;
