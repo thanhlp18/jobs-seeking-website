@@ -39,12 +39,11 @@ const Header: React.FC = () => {
 
         <nav>
           <ul className="flex space-x-4 items-center">
-            <li></li>
-            <li>
+            {/* <li>
               <Link to="/" className="text-white">
                 Tìm kiếm công việc
               </Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link to="/companies" className="text-white">
                 Công Ty
