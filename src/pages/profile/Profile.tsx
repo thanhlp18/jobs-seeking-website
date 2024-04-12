@@ -21,10 +21,10 @@ export default function Profile() {
   // Check user quality
   useEffect(() => {
     const tempCTA = [];
-    if (profileForCV.aboutMe.description.length === 0)
+    if (profileForCV.aboutMe?.description?.length === 0)
       tempCTA.push("Add About Me");
-    if (profileForCV.education.length === 0) tempCTA.push("Add Education");
-    if (profileForCV.workExperience.length === 0)
+    if (profileForCV.education?.length === 0) tempCTA.push("Add Education");
+    if (profileForCV.workExperience?.length === 0)
       tempCTA.push("Add Work Experience");
 
     if (
@@ -35,22 +35,21 @@ export default function Profile() {
       )
     )
       tempCTA.push("Add Skills");
-    if (profileForCV.personalProjects.length === 0)
+    if (profileForCV.personalProjects?.length === 0)
       tempCTA.push("Add Personal Projects");
-    if (profileForCV.certificates.length === 0)
+    if (profileForCV.certificates?.length === 0)
       tempCTA.push("Add Certificates");
-    if (profileForCV.awards.length === 0) tempCTA.push("Add Awards");
+    if (profileForCV.awards?.length === 0) tempCTA.push("Add Awards");
 
     setProfileCTA(tempCTA);
   }, [profileForCV]);
-
   return (
     <Wrapper className="">
       <div className="grid grid-cols-10 gap-6">
         <ProfileQuality profileCTA={profileCTA} />
         <div className="md:col-span-7 col-span-10 gap-6 grid">
           <UserInformation />
-          <AboutMe aboutMeDescription={profileForCV.aboutMe.description} />
+          <AboutMe aboutMe={profileForCV.aboutMe} />
           <Education educationList={profileForCV.education} />
           <WorkExperience workExperienceList={profileForCV.workExperience} />
           <Skill skills={profileForCV.skills} />

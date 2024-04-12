@@ -216,6 +216,23 @@ export const PROFILE_JOB_PREFERENCES_SKILLS: ComponentSelectionWithSearchType[] 
     { id: 14, name: "CSS" },
   ];
 
+export const PROFILE_JOB_PREFERENCES_SKILLS_STRING: string[] = [
+  "JavaScript",
+  "Python",
+  "Java",
+  "C++",
+  "C#",
+  "Ruby",
+  "Go",
+  "Swift",
+  "TypeScript",
+  "Kotlin",
+  "Rust",
+  "PHP",
+  "HTML",
+  "CSS",
+];
+
 export const PROFILE_JOB_LEVELS: ProfileJobLevelType[] = [
   {
     id: "job-level-fresher",
@@ -261,4 +278,57 @@ export const PROFILE_COMPANY_SIZE: string[] = [
   "1000+",
 ];
 
-export const BASE_URL_API = "http://127.0.0.1:8000/api";
+export const SELECT_MONTH_OF_YEAR: { label: string; value: string }[] = [
+  { value: "1", label: "1" },
+  { value: "2", label: "2" },
+  { value: "3", label: "3" },
+  { value: "4", label: "4" },
+  { value: "5", label: "5" },
+  { value: "6", label: "6" },
+  { value: "7", label: "7" },
+  { value: "8", label: "8" },
+  { value: "9", label: "9" },
+  { value: "10", label: "10" },
+  { value: "11", label: "11" },
+  { value: "12", label: "12" },
+];
+
+export const SELECT_YEAR: { label: string; value: string }[] = [
+  { value: "2000", label: "2000" },
+  { value: "2001", label: "2001" },
+  { value: "2002", label: "2002" },
+  { value: "2003", label: "2003" },
+  { value: "2004", label: "2004" },
+  { value: "2005", label: "2005" },
+  { value: "2006", label: "2006" },
+  { value: "2007", label: "2007" },
+  { value: "2008", label: "2008" },
+  { value: "2009", label: "2009" },
+  { value: "2010", label: "2010" },
+  { value: "2011", label: "2011" },
+  { value: "2012", label: "2012" },
+  { value: "2013", label: "2013" },
+  { value: "2014", label: "2014" },
+  { value: "2015", label: "2015" },
+  { value: "2016", label: "2016" },
+  { value: "2017", label: "2017" },
+  { value: "2018", label: "2018" },
+  { value: "2019", label: "2019" },
+  { value: "2020", label: "2020" },
+  { value: "2021", label: "2021" },
+  { value: "2022", label: "2022" },
+  { value: "2023", label: "2023" },
+  { value: "2024", label: "2024" },
+  { value: "2025", label: "2025" },
+];
+
+export const BASE_URL_API = "http://localhost:8080";
+export const URL_API_LOGIN = `${BASE_URL_API}/UserServiceRestProject/rest/users`;
+export const URL_API_PROFILE = `${BASE_URL_API}/ProfileServiceRestProject/rest/profiles`;
+export const URL_API_ABOUT_ME = `${BASE_URL_API}/AboutmeServiceRestProject/rest/aboutme`;
+export const URL_API_EDUCATION = `${BASE_URL_API}/EducationServiceRestProject/rest/education`;
+export const URL_API_EXPERIENCE = `${BASE_URL_API}/ExperiencesServiceRestProject/rest/experience`;
+export const URL_API_SKILLS = `${BASE_URL_API}/SkillsServiceRestProject/rest/skills`;
+export const URL_API_PERSONAL_PROJECT = `${BASE_URL_API}/ProjectsServiceRestProject/rest/projects`;
+export const URL_API_AWARDS = `${BASE_URL_API}/AwardsServiceRestProject/rest/awards`;
+export const URL_API_CERTIFICATES = `${BASE_URL_API}/CertificatesServiceRestProject/rest/certificates`;

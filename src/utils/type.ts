@@ -72,6 +72,7 @@ export type EducationType = {
   start_date: string;
   end_date: string;
   additionalDetail: string;
+  id: string;
 };
 
 export type WorkExperienceType = {
@@ -80,12 +81,13 @@ export type WorkExperienceType = {
   start_date: string;
   end_date: string;
   responsibilities: string;
+  id: string;
 };
 
 export type SkillType = {
-  excellent?: string[];
-  intermediate?: string[];
-  beginner?: string[];
+  excellent: string[];
+  intermediate: string[];
+  beginner: string[];
 };
 
 export type PersonalProjectType = {
@@ -93,6 +95,7 @@ export type PersonalProjectType = {
   start_date: string;
   end_date: string;
   description: string;
+  id: string;
 };
 
 export type CertificateType = {
@@ -101,6 +104,7 @@ export type CertificateType = {
   issueDate: string;
   description: string;
   certificateUrl: string;
+  id: string;
 };
 
 export type AwardType = {
@@ -108,10 +112,11 @@ export type AwardType = {
   provider: string;
   issueDate: string;
   description: string;
+  id: string;
 };
 
 export type ProfileDataForCV = {
-  aboutMe: { description: string };
+  aboutMe: { description: string; id: number };
   education: EducationType[] | [];
   workExperience: WorkExperienceType[] | [];
   skills: SkillType;

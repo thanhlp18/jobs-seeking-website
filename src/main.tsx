@@ -15,10 +15,11 @@ import SignIn, { action as signInAction } from "./pages/SignIn.tsx";
 import SignUp, { action as signUpAction } from "./pages/SignUp.tsx";
 import Layout from "./ui/Layout/Layout.tsx";
 import LayoutWithoutFooter from "./ui/Layout/LayoutWithoutFooter.tsx";
-import ProfileLayout from "./ui/Profile/ProfileLayout.tsx";
 import { loadLoginStatus } from "./utils/loadersFunction.ts";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import LoadUserAuthenticationData from "./components/LoadUserAuthenticationData.tsx";
+import ProfileLayout from "./pages/profile/ui/ProfileLayout.tsx";
+import ContactPage from "./pages/contact/ContactPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
+        action: signUpAction,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
         action: signUpAction,
       },
     ],

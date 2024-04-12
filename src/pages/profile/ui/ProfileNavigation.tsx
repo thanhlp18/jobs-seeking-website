@@ -1,7 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { PROFILE_NAV_LINK_ITEMS } from "../../utils/constants";
-import Wrapper from "../../components/Wrapper";
-import { memo } from "react";
+import Wrapper from "../../../components/Wrapper";
+import { PROFILE_NAV_LINK_ITEMS } from "../../../utils/constants";
 
 function ProfileNavigation() {
   const path = useLocation().pathname;
@@ -26,4 +25,4 @@ function ProfileNavigation() {
   );
 }
 
-export default memo(ProfileNavigation);
+export default ProfileNavigation;

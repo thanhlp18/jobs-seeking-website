@@ -7,6 +7,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 type Props = {
   placeholder?: string;
   type?: "text" | "checkbox" | "email" | "password" | "number" | "date";
+
   inputGroupType?:
     | "checkbox"
     | "no-style"
@@ -23,7 +24,9 @@ type Props = {
   inputClassName?: string;
   labelClassName?: string;
   icon?: React.ReactNode;
-  onChange?: (arg1: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
 };
 
 export const inputStyle = `
@@ -124,6 +127,9 @@ const Input: React.FC<Props> = ({
               name={name}
               className="w-full"
               $isIcon={!!icon}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              if (onChange) onChange(e);
+              }}
             >
               {options &&
                 options.map((option, index) => (

@@ -1,11 +1,18 @@
-import { ActionFunctionArgs, redirect } from "react-router-dom";
+import { ActionFunctionArgs, Navigate } from "react-router-dom";
 import FeatureArticle from "./components/FeatureArticle";
 import PlatformUSP from "./components/PlatformUSP";
 import SearchBox from "./components/SearchBox";
 import TopEmployer from "./components/TopEmployer";
 
 export default function HomePage() {
-  // const navigate = useNavigate();
+  return (
+    <Navigate
+      to="/profile"
+      replace={true}
+      state={{ alert: "You need sign in to access this feature!" }}
+    />
+  );
+
   return (
     <div className="flex flex-col gap-4">
       {/* Search box */}

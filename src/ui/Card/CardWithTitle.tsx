@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../../components/Card";
 import Divider from "../../components/Divider";
-import EditIcon from "../../components/EditIcon";
 import Title from "../../components/Title";
 
 type Props = {
@@ -49,7 +48,7 @@ export default function CardWithTitle({
         </div>
       )}
 
-      <EditIcon className="absolute top-4 right-8 text-lg " />
+      {/* <EditIcon className="absolute top-4 right-8 text-lg " /> */}
     </Card>
   );
 }

@@ -9,6 +9,7 @@ import {
   getCertificateApi,
   getEducationApi,
   getPersonalProjectApi,
+  getSkillApi,
   getUserInformationApi,
   getUserProfileApi,
   getWorkExperienceApi,
@@ -51,7 +52,9 @@ export default function LoadUserAuthenticationData({
     // Call api to get user information
     if (loginData.isLogin) {
       getUserInformationApi()
-        .then((res) => dispatch(updateUserInformation(res.data[0])))
+        .then((res) => {
+          dispatch(updateUserInformation(res.data));
+        })
         .catch((err) => {
           if (isAxiosError(err)) {
             const axiosErr = err as AxiosError;
@@ -92,13 +95,17 @@ export default function LoadUserAuthenticationData({
       const awardPromise = getAwardApi().catch((err) =>
         toast.error("Error when get 'awards' data: " + err)
       );
+      const userProfilePromise = getSkillApi().catch((err) =>
+        toast.error("Error when get 'skills' data: " + err)
+      );
       getUserProfileApi(
         aboutMePromise,
         educationPromise,
         workExperiencePromise,
         personalProjectsPromise,
         certificatePromise,
-        awardPromise
+        awardPromise,
+        userProfilePromise
       )
         .then((res) => {
           dispatch(updateUserProfile(res));
