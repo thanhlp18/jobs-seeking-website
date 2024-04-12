@@ -26,11 +26,11 @@ export default function SkillsWrapper({ skills, type }: Props) {
                 {excellent.map((skill, index) => (
                   <Button
                     buttonType="disabled"
-                    className="rounded-2xl  py-1 px-3 text-base !bg-gray-100"
+                    className="rounded-2xl  py-1 px-3 text-base bg-gray-100 hover:bg-primary hover:text-white "
                     textColor="rgb(107,114,128)"
                     key={index}
                   >
-                    {skill}
+                    <span className="pr-2">{skill}</span>
                   </Button>
                 ))}
               </div>
@@ -48,7 +48,7 @@ export default function SkillsWrapper({ skills, type }: Props) {
                 {intermediate.map((skill, index) => (
                   <Button
                     buttonType="disabled"
-                    className="rounded-2xl  py-1 px-3 text-base !bg-gray-100"
+                    className="rounded-2xl  py-1 px-3 text-base bg-gray-100 hover:bg-primary hover:text-white "
                     textColor="rgb(107,114,128)"
                     key={index}
                   >
@@ -70,7 +70,7 @@ export default function SkillsWrapper({ skills, type }: Props) {
                 {beginner.map((skill, index) => (
                   <Button
                     buttonType="disabled"
-                    className="rounded-2xl  py-1 px-3 text-base !bg-gray-100"
+                    className="rounded-2xl  py-1 px-3 text-base bg-gray-100 hover:bg-primary hover:text-white "
                     textColor="rgb(107,114,128)"
                     key={index}
                   >

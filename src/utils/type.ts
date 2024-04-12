@@ -85,9 +85,9 @@ export type WorkExperienceType = {
 };
 
 export type SkillType = {
-  excellent?: string[];
-  intermediate?: string[];
-  beginner?: string[];
+  excellent: string[];
+  intermediate: string[];
+  beginner: string[];
 };
 
 export type PersonalProjectType = {
@@ -95,6 +95,7 @@ export type PersonalProjectType = {
   start_date: string;
   end_date: string;
   description: string;
+  id: string;
 };
 
 export type CertificateType = {
@@ -110,6 +111,7 @@ export type AwardType = {
   provider: string;
   issueDate: string;
   description: string;
+  id: string;
 };
 
 export type ProfileDataForCV = {

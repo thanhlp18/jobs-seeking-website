@@ -125,7 +125,6 @@ export const userSlice = createSlice({
     },
     updateExperience: (state, action) => {
       const { workExperience } = action.payload;
-      console.log("REDUX: ", workExperience);
       return {
         ...state,
         userProfile: {
@@ -136,6 +135,85 @@ export const userSlice = createSlice({
             ),
             workExperience,
           ],
+        },
+      };
+    },
+    deleteExperience: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          workExperience: state.userProfile.workExperience.filter(
+            (ele) => ele.id !== action.payload
+          ),
+        },
+      };
+    },
+    addPersonalProject: (state, action) => {
+      const { personalProject } = action.payload;
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          personalProjects: [
+            ...state.userProfile.personalProjects,
+            personalProject,
+          ],
+        },
+      };
+    },
+    updatePersonalProject: (state, action) => {
+      const { personalProject } = action.payload;
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          personalProjects: [
+            ...state.userProfile.personalProjects.filter(
+              (ele) => ele.id !== personalProject.id
+            ),
+            personalProject,
+          ],
+        },
+      };
+    },
+    deleteProject: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          personalProjects: state.userProfile.personalProjects.filter(
+            (ele) => ele.id !== action.payload
+          ),
+        },
+      };
+    },
+    updateSkill: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          skills: action.payload,
+        },
+      };
+    },
+    addAward: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          awards: [...state.userProfile.awards, action.payload],
+        },
+      };
+    },
+    deleteAward: (state, action) => {
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          awards: state.userProfile.awards.filter(
+            (ele) => ele.id !== action.payload
+          ),
         },
       };
     },
@@ -152,6 +230,13 @@ export const {
   addEducation,
   addExperience,
   updateExperience,
+  deleteExperience,
+  addPersonalProject,
+  updatePersonalProject,
+  deleteProject,
+  updateSkill,
+  addAward,
+  deleteAward,
 } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type

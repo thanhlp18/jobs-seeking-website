@@ -216,6 +216,23 @@ export const PROFILE_JOB_PREFERENCES_SKILLS: ComponentSelectionWithSearchType[] 
     { id: 14, name: "CSS" },
   ];
 
+export const PROFILE_JOB_PREFERENCES_SKILLS_STRING: string[] = [
+  "JavaScript",
+  "Python",
+  "Java",
+  "C++",
+  "C#",
+  "Ruby",
+  "Go",
+  "Swift",
+  "TypeScript",
+  "Kotlin",
+  "Rust",
+  "PHP",
+  "HTML",
+  "CSS",
+];
+
 export const PROFILE_JOB_LEVELS: ProfileJobLevelType[] = [
   {
     id: "job-level-fresher",
@@ -313,3 +330,4 @@ export const URL_API_EDUCATION = `${BASE_URL_API}/EducationServiceRestProject/re
 export const URL_API_EXPERIENCE = `${BASE_URL_API}/ExperiencesServiceRestProject/rest/experience`;
 export const URL_API_SKILLS = `${BASE_URL_API}/SkillsServiceRestProject/rest/skills`;
 export const URL_API_PERSONAL_PROJECT = `${BASE_URL_API}/ProjectsServiceRestProject/rest/projects`;
+export const URL_API_AWARDS = `${BASE_URL_API}/AwardsServiceRestProject/rest/awards`;

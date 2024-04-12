@@ -6,7 +6,11 @@ interface Skill {
   profiles_id: number;
 }
 export function convertSkillsToSkillType(skills: Skill[]): SkillType {
-  const skillType: SkillType = {};
+  const skillType: SkillType = {
+    excellent: [],
+    intermediate: [],
+    beginner: [],
+  };
 
   skills.forEach((skill) => {
     switch (skill.level) {

@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   BASE_URL_API,
   URL_API_ABOUT_ME,
+  URL_API_AWARDS,
   URL_API_EDUCATION,
   URL_API_EXPERIENCE,
   URL_API_PERSONAL_PROJECT,
@@ -19,6 +20,7 @@ import {
 } from "../../utils/type";
 import { UserInformationType } from "../../utils/type/profileType";
 import { convertSkillsToSkillType } from "../../utils/function/convertSkillsToSkillType";
+import { uploadToCloudflare } from "./uploadToCloudflare";
 
 // Generate config to use in api
 export const generateConfig = async () => {
@@ -48,8 +50,8 @@ export const getUserInformationApi = async () => {
 
 // Update user information api
 export const updateUserInformationApi = async (
-  data: UserInformationType
-  // image: File | undefined
+  data: UserInformationType,
+  image: File | undefined
 ) => {
   // const formDataToSend = new FormData();
   // formDataToSend.append("name", data.name);
@@ -59,7 +61,10 @@ export const updateUserInformationApi = async (
   // formDataToSend.append("birthday", data.birthday);
   // data.gender && formDataToSend.append("gender", data.gender);
   // data.location && formDataToSend.append("location", data.location);
-  // image && formDataToSend.append("image", image);
+  if (image) {
+    const imageRes = await uploadToCloudflare(image);
+    console.log(imageRes);
+  }
 
   const config = await generateConfig();
   const response = await axios.put(`${URL_API_PROFILE}`, data, config);
@@ -110,7 +115,6 @@ export const addEducationApi = async (education: EducationType) => {
 
 // Update user education api
 export const updateEducationApi = async (education: EducationType) => {
-  console.log(education);
   const config = await generateConfig();
   const response = await axios.put(
     `${URL_API_EDUCATION}/${education.id}`,
@@ -130,7 +134,7 @@ export const updateEducationApi = async (education: EducationType) => {
 export const deleteEducationApi = async (educationId: string) => {
   const config = await generateConfig();
   const response = await axios.delete(
-    `${BASE_URL_API}/profiles/educations/${educationId}`,
+    `${URL_API_EDUCATION}/${educationId}`,
     config
   );
   return response.data;
@@ -150,7 +154,13 @@ export const addWorkExperienceApi = async (
   const config = await generateConfig();
   const response = await axios.post(
     `${URL_API_EXPERIENCE}`,
-    workExperience,
+    {
+      position: workExperience.position,
+      company: workExperience.company,
+      start_date: workExperience.start_date,
+      end_date: workExperience.end_date,
+      responsibilities: workExperience.responsibilities,
+    },
     config
   );
   return response.data;
@@ -169,6 +179,16 @@ export const updateWorkExperienceApi = async (
   return response.data;
 };
 
+// Delete user experiences api
+export const deleteWorkExperienceApi = async (workExperienceId: string) => {
+  const config = await generateConfig();
+  const response = await axios.delete(
+    `${URL_API_EXPERIENCE}/${workExperienceId}`,
+    config
+  );
+  return response.data;
+};
+
 // Get user skills api
 export const getSkillApi = async () => {
   const config = await generateConfig();
@@ -176,10 +196,60 @@ export const getSkillApi = async () => {
   return response.data;
 };
 
+// Update skill api
+export const updateSkillApi = async (
+  skill: { name: string; level: string }[]
+) => {
+  const config = await generateConfig();
+  const response = await axios.post(`${URL_API_SKILLS}`, skill, config);
+  return response.data;
+};
+
 // Get project api
 export const getPersonalProjectApi = async () => {
   const config = await generateConfig();
   const response = await axios.get(`${URL_API_PERSONAL_PROJECT}`, config);
+  return response.data;
+};
+
+// Add project api
+export const addPersonalProjectApi = async (
+  personalProject: PersonalProjectType
+) => {
+  const config = await generateConfig();
+  const response = await axios.post(
+    `${URL_API_PERSONAL_PROJECT}`,
+    {
+      title: personalProject.title,
+      description: personalProject.description,
+      start_date: personalProject.start_date,
+      end_date: personalProject.end_date,
+    },
+    config
+  );
+  return response.data;
+};
+
+// update project api
+export const updatePersonalProjectApi = async (
+  personalProject: PersonalProjectType
+) => {
+  const config = await generateConfig();
+  const response = await axios.put(
+    `${URL_API_PERSONAL_PROJECT}/${personalProject.id}`,
+    personalProject,
+    config
+  );
+  return response.data;
+};
+
+// Delete project api
+export const deletePersonalProjectApi = async (personalProjectId: string) => {
+  const config = await generateConfig();
+  const response = await axios.delete(
+    `${URL_API_PERSONAL_PROJECT}/${personalProjectId}`,
+    config
+  );
   return response.data;
 };
 
@@ -196,7 +266,46 @@ export const getCertificateApi = async () => {
 // Get award api
 export const getAwardApi = async () => {
   const config = await generateConfig();
-  const response = await axios.get(`${BASE_URL_API}/profiles/awards`, config);
+  const response = await axios.get(`${URL_API_AWARDS}`, config);
+  return response.data;
+};
+
+// Add award api
+export const addAwardApi = async (award: AwardType) => {
+  const config = await generateConfig();
+  const response = await axios.post(
+    `${URL_API_AWARDS}`,
+    {
+      title: award.title,
+      description: award.description,
+      issueDate: award.issueDate,
+      provider: award.provider,
+    },
+    config
+  );
+  return response.data;
+};
+
+// Update award api
+export const updateAwardApi = async (award: AwardType) => {
+  const config = await generateConfig();
+  const response = await axios.put(
+    `${URL_API_AWARDS}/${award.id}`,
+    {
+      title: award.title,
+      description: award.description,
+      issueDate: award.issueDate,
+      provider: award.provider,
+    },
+    config
+  );
+  return response.data;
+};
+
+// Delete award api
+export const deleteAwardApi = async (awardId: string) => {
+  const config = await generateConfig();
+  const response = await axios.delete(`${URL_API_AWARDS}/${awardId}`, config);
   return response.data;
 };
 
@@ -242,8 +351,8 @@ export const getUserProfileApi = async (
       education: educationData,
       workExperience: workExperienceData,
       personalProjects: personalProjectData,
-      certificates: certificateResData,
-      awards: awardData,
+      certificates: certificateResData || [],
+      awards: awardData || [],
       skills: convertSkillsToSkillType(skillsData),
     };
   } catch (error) {

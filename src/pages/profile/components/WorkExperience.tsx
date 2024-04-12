@@ -62,7 +62,7 @@ export default function WorkExperience({ workExperienceList }: Props) {
   function handleAddNewWorkExperience() {
     addWorkExperienceApi(newWorkExperience)
       .then((res) => {
-        if (res.status_code === 200) {
+        if (res.status_code === 200 || res.success) {
           // Update redux store
           dispatch(addExperience({ ...newWorkExperience, id: res.data.id }));
           toast.success(res.message);
@@ -159,10 +159,10 @@ export default function WorkExperience({ workExperienceList }: Props) {
               </div>
               <div className="mt-4">
                 <TextArea
-                  name="Responsibilities"
+                  name="responsibilities"
                   rows={2}
                   value={newWorkExperience.responsibilities}
-                  placeholder="Other detailed information"
+                  placeholder="Responsibilities"
                   inputClassName={"w-full"}
                   onChange={handleChangeNewEducation}
                 />

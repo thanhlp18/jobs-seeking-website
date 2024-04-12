@@ -99,9 +99,10 @@ export const Education = ({ educationList }: Props) => {
     } else {
       addEducationApi(newEducation)
         .then((res) => {
-          if (res.status_code === 200) {
+          if (res.status_code === 200 || res.success) {
             // Update redux store
-            dispatch(addEducation({ ...newEducation, id: res.data.id }));
+            console.log(res);
+            dispatch(addEducation({ ...newEducation, id: res.project.id }));
             toast.success(res.message);
             // Clear form
             setNewEducation(educationInitialState);

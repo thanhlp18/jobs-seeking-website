@@ -15,9 +15,15 @@ import {
 } from "../../../utils/constants";
 import TextArea from "../../../components/TextArea";
 import convertDateFormat from "../../../utils/function/convertDateFormat";
-import { updateWorkExperienceApi } from "../../../services/api/profileApi";
+import {
+  deleteWorkExperienceApi,
+  updateWorkExperienceApi,
+} from "../../../services/api/profileApi";
 import toast from "react-hot-toast";
-import { updateExperience } from "../../../services/redux/user";
+import {
+  deleteExperience,
+  updateExperience,
+} from "../../../services/redux/user";
 import { useDispatch } from "react-redux";
 
 type Props = {
@@ -28,6 +34,7 @@ export default function WorkExperienceWrapper({ workExperience }: Props) {
   const [newWorkExperience, setNewWorkExperience] =
     useState<WorkExperienceType>(workExperience);
   const dispatch = useDispatch();
+
   const handleChangeNewWorkExperience = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -69,6 +76,22 @@ export default function WorkExperienceWrapper({ workExperience }: Props) {
         toast.error(err.message);
       });
   }
+
+  const handleDeleteWorkExperience = () => {
+    deleteWorkExperienceApi(workExperience.id)
+      .then((res) => {
+        if (res.success || res.status_code == 200) {
+          toast.success(res.message);
+          dispatch(deleteExperience(workExperience.id));
+        } else {
+          toast.error(res.message);
+        }
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
   return (
     <div className="flex flex-col gap-2 flex-nowrap">
       <div className="flex flex-col  flex-nowrap">
@@ -163,8 +186,11 @@ export default function WorkExperienceWrapper({ workExperience }: Props) {
                 </div>
               </div>
             </Modal>
-            <span>
-              <FontAwesomeIcon icon={faTrashCan} className="text-gray-500" />
+            <span onClick={handleDeleteWorkExperience}>
+              <FontAwesomeIcon
+                icon={faTrashCan}
+                className="text-gray-500 hover:text-red-600"
+              />
             </span>
           </span>
         </div>
@@ -174,8 +200,8 @@ export default function WorkExperienceWrapper({ workExperience }: Props) {
       </div>
       <div className="flex flex-col  flex-nowrap">
         <div className="text-base font-medium text-bold">
-          <span>{workExperience?.start_date}</span> -{" "}
-          <span>{workExperience?.end_date}</span>
+          <span>{workExperience?.start_date.replace(/-/g, "/")}</span> -{" "}
+          <span>{workExperience?.end_date.replace(/-/g, "/")}</span>
         </div>
         <div className="font-medium text-base text-bold list-disc list-inside ">
           <Interweave content={workExperience?.responsibilities} />

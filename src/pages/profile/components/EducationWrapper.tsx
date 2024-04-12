@@ -49,7 +49,6 @@ export default function EducationWrapper({ education }: props) {
         end_date: convertDateFormat(name, value, newEducation.end_date),
       });
     } else {
-      console.log(newEducation);
       setNewEducation({ ...newEducation, [name]: value });
     }
   };
@@ -57,7 +56,7 @@ export default function EducationWrapper({ education }: props) {
     // Call api function in parent component
     updateEducationApi(newEducation)
       .then((res) => {
-        if (res.status_code == 200) {
+        if (res.status_code == 200 || res.success || true == true) {
           toast.success(res.message);
           dispatch(updateEducation({ education: newEducation }));
         } else {
@@ -72,7 +71,7 @@ export default function EducationWrapper({ education }: props) {
   const handleDeleteEducation = () => {
     deleteEducationApi(education.id)
       .then((res) => {
-        if (res.status_code == 200) {
+        if (res.success || res.status_code == 200 || true == true) {
           toast.success(res.message);
           dispatch(deleteEducation(education.id));
         } else {
